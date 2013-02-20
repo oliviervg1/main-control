@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class LightsController {
-
-	@RequestMapping(value="/apps/lights", method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/apps/lights", method = RequestMethod.GET)
 	public String displayPage(ModelMap model) {
 		return "apps/lights";
 	}
