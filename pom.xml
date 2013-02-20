@@ -10,7 +10,7 @@
 
 	<!-- BUILD PROPERTIES -->
 	<properties>
-		<spring.version>3.0.5.RELEASE</spring.version>
+		<spring.version>3.1.0.RELEASE</spring.version>
 		
 		<!-- PROJECT ENCODING PROPERTIES -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -75,6 +75,12 @@
   			<groupId>org.jmock</groupId>
   			<artifactId>jmock-junit4</artifactId>
   			<version>2.6.0-RC2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.2.0.Final</version>
 		</dependency>
 		
 	</dependencies>

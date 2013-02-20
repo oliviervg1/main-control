@@ -2,9 +2,13 @@ package com.pi.main.ressources;
 
 import java.util.ArrayList;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class AppManager {
-	private ArrayList<ConnectedApp> appList;
+	
+	@NotEmpty
 	private String selectedURL;
+	private ArrayList<ConnectedApp> appList;
 	
 	public AppManager() {
 		appList = new ArrayList<ConnectedApp>();
