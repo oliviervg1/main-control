@@ -1,13 +1,13 @@
 package com.pi.main.ressources;
 
 public class DeviceURL {
-	private String URL;
+	private String url;
 
-	public String getURL() {
-		return URL;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setURL(String URL) {
-		this.URL = URL;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }

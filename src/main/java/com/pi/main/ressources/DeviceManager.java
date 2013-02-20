@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class DeviceManager {
 	private ArrayList<ConnectedDevice> deviceList;
+	private String selectedURL;
 	
 	public DeviceManager() {
 		deviceList = new ArrayList<ConnectedDevice>();
+		selectedURL = null;
 		addDevice(new ConnectedDevice("Lights", "lights"));
 	}
 	
@@ -24,5 +26,13 @@ public class DeviceManager {
 	
 	public void removeDevice(ConnectedDevice device) {
 		deviceList.remove(device);
+	}
+
+	public String getSelectedURL() {
+		return selectedURL;
+	}
+
+	public void setSelectedURL(String selectedURL) {
+		this.selectedURL = selectedURL;
 	}
 }

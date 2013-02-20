@@ -5,14 +5,14 @@
 
 	<h1>Hello! ${message}</h1>
 	
-	<form:form method="POST" modelAttribute="deviceList">
+	<form:form modelAttribute="deviceManager">
 		<table>
 	 		<tr>
 				<td>Devices Available:</td>
 				<td>
-				    <form:select path="deviceList" multiple="false">
+				    <form:select name="url" path="selectedURL" multiple="false">
 				    	<option value="NONE"> --- Select --- </option>
-	  					<c:forEach var="device" items="${deviceList.deviceList}">
+	  					<c:forEach var="device" items="${deviceManager.deviceList}">
 	    					<option value="${device.URL}"> ${device.name} </option>
 	  					</c:forEach>
 					</form:select>
