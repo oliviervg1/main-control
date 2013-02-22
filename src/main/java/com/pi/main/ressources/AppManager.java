@@ -2,30 +2,34 @@ package com.pi.main.ressources;
 
 import java.util.ArrayList;
 
+import com.pi.main.apps.ressources.AbstractClient;
+
 public class AppManager {
 	
-	private String selectedURL;
-	private ArrayList<ConnectedApp> appList;
+	private static String selectedURL;
+	private static ArrayList<ConnectedApp> appList;
 	
 	public AppManager() {
 		appList = new ArrayList<ConnectedApp>();
 		selectedURL = null;
-		addDevice(new ConnectedApp("Lights", "lights")); // This is temporary!
+		addApp(new ConnectedApp("Lights", "lights", new AbstractClient()));
 	}
 	
 	public ArrayList<ConnectedApp> getAppList() {
 		return appList;
 	}
 	
-	public void setDeviceList(ArrayList<ConnectedApp> appList) {
-		this.appList = appList;
+	public void setAppList(ArrayList<ConnectedApp> appList) {
+		AppManager.appList = appList;
 	}
 	
-	public void addDevice(ConnectedApp app) {
-		appList.add(app);
+	public void addApp(ConnectedApp app) {
+		if (appList.contains(app) == false) {
+			appList.add(app);
+		}
 	}
 	
-	public void removeDevice(ConnectedApp app) {
+	public void removeApp(ConnectedApp app) {
 		appList.remove(app);
 	}
 
@@ -34,6 +38,15 @@ public class AppManager {
 	}
 
 	public void setSelectedURL(String selectedURL) {
-		this.selectedURL = selectedURL;
+		AppManager.selectedURL = selectedURL;
+	}
+	
+	public ConnectedApp getApp(String appName) {
+		for (ConnectedApp app : appList) {
+			if (app.getName().equalsIgnoreCase(appName)) {
+				return app;
+			}
+		}
+		return null;
 	}
 }
