@@ -110,7 +110,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>MainController</finalName>
+		<finalName>ROOT</finalName>
 		<plugins>
 			<!-- UNIT TESTS -->
   			<plugin>
