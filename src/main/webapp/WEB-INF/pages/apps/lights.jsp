@@ -1,11 +1,20 @@
-<h1>${on}</h1>
+<div class="row">
+	<div class="span12">
+		<h1>Power is currently ${state}</h1>
+		
+		<p>Bacon ipsum dolor sit amet frankfurter strip steak short loin pig venison ham filet mignon t-bone turkey ham hock turducken andouille sausage shankle. Filet mignon tail rump fatback t-bone bacon tri-tip cow beef ribs pig pancetta sirloin turducken short ribs. Filet mignon strip steak prosciutto ball tip drumstick spare ribs pork. Bacon chicken chuck leberkas ball tip. Frankfurter biltong capicola beef ribs pork loin t-bone.</p>
+		
+		<p>Venison hamburger jowl sirloin, prosciutto chicken leberkas tongue salami meatloaf capicola boudin t-bone swine. Bacon strip steak shankle, boudin corned beef biltong tenderloin sirloin short ribs swine short loin meatloaf ball tip leberkas. Short ribs short loin pork loin meatball salami. Fatback pig t-bone flank shankle kielbasa beef ribs turkey meatloaf.</p>
+	</div>
+</div>
 
-<p>Bacon ipsum dolor sit amet frankfurter strip steak short loin pig venison ham filet mignon t-bone turkey ham hock turducken andouille sausage shankle. Filet mignon tail rump fatback t-bone bacon tri-tip cow beef ribs pig pancetta sirloin turducken short ribs. Filet mignon strip steak prosciutto ball tip drumstick spare ribs pork. Bacon chicken chuck leberkas ball tip. Frankfurter biltong capicola beef ribs pork loin t-bone.</p>
-
-<p>Venison hamburger jowl sirloin, prosciutto chicken leberkas tongue salami meatloaf capicola boudin t-bone swine. Bacon strip steak shankle, boudin corned beef biltong tenderloin sirloin short ribs swine short loin meatloaf ball tip leberkas. Short ribs short loin pork loin meatball salami. Fatback pig t-bone flank shankle kielbasa beef ribs turkey meatloaf.</p>
-
-<p>Andouille bacon beef ribs t-bone tongue shoulder corned beef. Short ribs sausage flank biltong pork loin, strip steak ham hock shank andouille prosciutto. Pig ham hock ball tip, cow salami drumstick frankfurter shoulder hamburger bacon beef corned beef doner short loin. Chicken spare ribs pig salami swine. Flank shoulder chuck, swine pork belly ground round bacon hamburger sausage. Pork loin jerky filet mignon, rump leberkas fatback pancetta.</p>
-
-<p>Capicola rump sirloin, andouille frankfurter pancetta hamburger fatback jowl drumstick sausage corned beef tri-tip t-bone spare ribs. Leberkas pork tail corned beef meatball venison, beef strip steak salami. Turducken meatball biltong swine shankle fatback boudin. Pork belly sirloin tri-tip cow hamburger bacon swine andouille flank salami tongue prosciutto pork chop. Beef ribs rump ball tip capicola turkey. Ribeye tail flank chicken pork meatball. T-bone pig andouille, bresaola ball tip ham turducken leberkas drumstick beef pork loin tail tenderloin.</p>
-
-<p>Shank tail pork chop, sirloin shoulder bacon flank t-bone chicken fatback venison pastrami rump beef. Tenderloin capicola short loin pancetta venison frankfurter biltong. Spare ribs meatloaf pancetta, ground round meatball frankfurter prosciutto kielbasa ribeye pastrami. Pastrami shankle beef hamburger strip steak tenderloin cow biltong sausage ribeye venison filet mignon rump shank. Jerky filet mignon swine sausage capicola bacon.</p>
+<div class="row">
+	<div class="span12">
+		<div class="btn-centered">
+			<div class="btn-group">
+				<a class="btn btn-large no-underline" href="lights/turnOn">Turn On</a>
+			  	<a class="btn btn-large no-underline" href="lights/turnOff">Turn Off</a>
+			</div>
+		</div>
+	</div>
+</div>

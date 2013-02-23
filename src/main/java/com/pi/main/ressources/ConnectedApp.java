@@ -1,13 +1,14 @@
 package com.pi.main.ressources;
 
-import com.pi.main.apps.ressources.AbstractClient;
+import automation.api.interfaces.ConnectedClient;
+
 
 public class ConnectedApp {
 	private String name;
 	private String URL;
-	private AbstractClient client;
+	private ConnectedClient client;
 	
-	public ConnectedApp(String name, String URL, AbstractClient client) {
+	public ConnectedApp(String name, String URL, ConnectedClient client) {
 		this.name = name;
 		this.URL = URL;
 		this.client = client;
@@ -26,11 +27,11 @@ public class ConnectedApp {
 		this.URL = URL;
 	}
 
-	public AbstractClient getClient() {
+	public ConnectedClient getClient() {
 		return client;
 	}
 
-	public void setClient(AbstractClient client) {
+	public void setClient(ConnectedClient client) {
 		this.client = client;
 	}
 }

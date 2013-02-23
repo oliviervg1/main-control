@@ -2,7 +2,7 @@ package com.pi.main.ressources;
 
 import java.util.ArrayList;
 
-import com.pi.main.apps.ressources.AbstractClient;
+import com.pi.main.apps.ressources.LightingClient;
 
 public class AppManager {
 	
@@ -12,7 +12,7 @@ public class AppManager {
 	public AppManager() {
 		appList = new ArrayList<ConnectedApp>();
 		selectedURL = null;
-		addApp(new ConnectedApp("Lights", "lights", new AbstractClient()));
+		addApp(new ConnectedApp("Lights", "lights", new LightingClient())); //TODO Implement a proper add app function
 	}
 	
 	public ArrayList<ConnectedApp> getAppList() {

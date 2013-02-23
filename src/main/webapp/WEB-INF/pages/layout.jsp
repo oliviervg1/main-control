@@ -1,7 +1,6 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><tiles:insertAttribute name="Home Automation" ignore="true" /></title>
@@ -60,11 +59,22 @@
 
       /* Supporting marketing content */
       .marketing {
-        margin: 60px 0;
+        margin: 30px 0;
       }
       .marketing p + h4 {
         margin-top: 28px;
       }
+      
+      /* Centered buttons */
+      .btn-centered {
+  	  	margin: 30px 0;
+  	  	text-align: center;
+  	  }
+  	  
+  	  /* Button style */
+  	  .no-underline :hover {
+  	  	text-decoration:none;
+  	  }
       
     </style>
     <link href="/css/bootstrap-responsive.css" rel="stylesheet">
