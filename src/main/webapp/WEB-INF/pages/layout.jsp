@@ -13,6 +13,10 @@
         padding-top: 20px;
         padding-bottom: 40px;
       }
+      
+      .branding {
+	    margin-left: 40px;
+	  }
 
       /* Custom container */
       .container-narrow {
@@ -59,7 +63,7 @@
 
       /* Supporting marketing content */
       .marketing {
-        margin: 30px 0;
+        margin-left: 30px;
       }
       .marketing p + h4 {
         margin-top: 28px;
@@ -81,7 +85,7 @@
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
+      <script src="/js/html5shiv.js"></script>
     <![endif]-->
 
 </head>

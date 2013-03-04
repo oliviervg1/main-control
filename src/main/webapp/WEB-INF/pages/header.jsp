@@ -13,7 +13,9 @@
 	            </ul>
 			</li>
 		</ul>
-	    <h3>Home Automation FYP</h3>
+		
+	    <img class="pull-left" src="/img/Logo_Home_Automation.png" alt="Home_Automation_Logo" width="30" height="30">
+	    <h1 class=" lead branding">Automat.in - Smart Home</h1>
 	    
 	    <hr>
 	    
