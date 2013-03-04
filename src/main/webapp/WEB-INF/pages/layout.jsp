@@ -8,6 +8,7 @@
 
 <!-- Le styles -->
     <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 20px;
@@ -81,7 +82,6 @@
   	  }
       
     </style>
-    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -90,6 +90,10 @@
 
 </head>
 <body>
+
+<!-- Le javascript -->
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap-dropdown.js"></script>
 
 <tiles:insertAttribute name="header" />
 
@@ -100,12 +104,6 @@
 	</div>
 	<tiles:insertAttribute name="footer" />
 </div>
-
-<!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap-dropdown.js"></script>
 
 </body>
 </html>

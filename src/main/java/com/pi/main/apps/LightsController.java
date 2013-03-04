@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pi.main.apps.ressources.LightingClient;
 import com.pi.main.ressources.AppManager;
@@ -23,15 +24,21 @@ public class LightsController {
 		return "apps/lights";
 	}
 	
-	@RequestMapping(value = "apps/lights/turnOn", method = RequestMethod.GET)
+	@RequestMapping(value = "/apps/lights/turnOn", method = RequestMethod.GET)
 	public String turnOn(ModelMap model) {
 		client.powerOn();
 		return "redirect:/apps/lights";
 	}
 	
-	@RequestMapping(value = "apps/lights/turnOff", method = RequestMethod.GET)
+	@RequestMapping(value = "/apps/lights/turnOff", method = RequestMethod.GET)
 	public String turnOff(ModelMap model) {
 		client.powerOff();
 		return "redirect:/apps/lights";
+	}
+	
+	@RequestMapping(value = "/apps/lights/getState", method = RequestMethod.GET)
+	public @ResponseBody String getTime() {
+	    String state = "Power is currently " + client.getState();
+	    return state;
 	}
 }
