@@ -5,7 +5,7 @@
 			<li><a href="/home">Home</a></li>
 	        <li><a href="#">About</a></li>
 	        <li><a href="#">Contact</a></li>
-	        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Available Applications <b class="caret"></b></a>
+	        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Installed Applications <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 	                <c:forEach var="app" items="${appManager.appList}">
 	    			<li><a href="/apps/${app.URL}">${app.name}</a></li>

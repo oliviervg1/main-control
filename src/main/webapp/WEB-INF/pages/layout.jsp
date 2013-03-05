@@ -72,7 +72,7 @@
       
       /* Centered buttons */
       .btn-centered {
-  	  	margin: 30px 0;
+  	  	margin-top: 30px;
   	  	text-align: center;
   	  }
   	  

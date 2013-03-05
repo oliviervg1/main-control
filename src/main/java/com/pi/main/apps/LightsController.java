@@ -37,7 +37,13 @@ public class LightsController {
 	}
 	
 	@RequestMapping(value = "/apps/lights/getState", method = RequestMethod.GET)
-	public @ResponseBody String getTime() {
+	public @ResponseBody String getState() {
+	    String state = "Power is currently " + client.getState();
+	    return state;
+	}
+	
+	@RequestMapping(value = "/apps/lights/homeTile", method = RequestMethod.GET)
+	public @ResponseBody String homeTile() {
 	    String state = "Power is currently " + client.getState();
 	    return state;
 	}

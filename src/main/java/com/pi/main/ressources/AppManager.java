@@ -12,7 +12,18 @@ public class AppManager {
 	public AppManager() {
 		appList = new ArrayList<ConnectedApp>();
 		selectedURL = null;
-		addApp(new ConnectedApp("Lights", "lights", new LightingClient())); //TODO Implement a proper add app function
+		
+		//TODO Implement a proper add app function
+		addApp(new ConnectedApp("Lights", "lights", new LightingClient())); 
+		
+		// DUMMY APPS FOR TESTING PURPOSES
+		addApp(new ConnectedApp("Dummy", "dummy", null));
+		addApp(new ConnectedApp("Dummy", "dummy", null));
+		addApp(new ConnectedApp("Dummy", "dummy", null));
+		addApp(new ConnectedApp("Dummy", "dummy", null));
+		addApp(new ConnectedApp("Dummy", "dummy", null));
+		addApp(new ConnectedApp("Dummy", "dummy", null));
+		addApp(new ConnectedApp("Dummy", "dummy", null));
 	}
 	
 	public ArrayList<ConnectedApp> getAppList() {
