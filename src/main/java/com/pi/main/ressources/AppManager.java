@@ -17,13 +17,13 @@ public class AppManager {
 		addApp(new ConnectedApp("Lights", "lights", new LightingClient())); 
 		
 		// DUMMY APPS FOR TESTING PURPOSES
-		addApp(new ConnectedApp("Dummy", "dummy", null));
-		addApp(new ConnectedApp("Dummy", "dummy", null));
-		addApp(new ConnectedApp("Dummy", "dummy", null));
-		addApp(new ConnectedApp("Dummy", "dummy", null));
-		addApp(new ConnectedApp("Dummy", "dummy", null));
-		addApp(new ConnectedApp("Dummy", "dummy", null));
-		addApp(new ConnectedApp("Dummy", "dummy", null));
+//		addApp(new ConnectedApp("Dummy", "dummy", null));
+//		addApp(new ConnectedApp("Dummy", "dummy", null));
+//		addApp(new ConnectedApp("Dummy", "dummy", null));
+//		addApp(new ConnectedApp("Dummy", "dummy", null));
+//		addApp(new ConnectedApp("Dummy", "dummy", null));
+//		addApp(new ConnectedApp("Dummy", "dummy", null));
+//		addApp(new ConnectedApp("Dummy", "dummy", null));
 	}
 	
 	public ArrayList<ConnectedApp> getAppList() {
