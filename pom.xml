@@ -10,7 +10,7 @@
 
 	<!-- BUILD PROPERTIES -->
 	<properties>
-		<spring.version>3.1.0.RELEASE</spring.version>
+		<spring.version>3.2.1.RELEASE</spring.version>
 		
 		<!-- PROJECT ENCODING PROPERTIES -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
