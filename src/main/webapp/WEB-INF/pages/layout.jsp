@@ -80,6 +80,21 @@
   	  .no-underline :hover {
   	  	text-decoration:none;
   	  }
+  	  
+  	  .app-logo { 
+   	  position: relative; 
+  	  width: 100%; /* for IE 6 */
+	  }
+	  
+	  .app-text { 
+   	  position: absolute; 
+      top: 105px;
+      left: 15px; 
+      width: 100%;
+      color: #fff;
+      text-decoration:none;
+      text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075); 
+      }
       
     </style>
 

@@ -3,7 +3,7 @@
 
 <div class="row">
 	<div class="span12">
-		<h1>Pinned applications:</h1>
+		<h1 class="lead">Pinned applications:</h1>
 	</div>
 </div>
 
@@ -29,14 +29,13 @@
 		</c:if>	
 		
 		<li class="span3">
-		   	<div class="thumbnail">
+		   	<a href="/apps/${app.URL}" class="thumbnail app-logo">
 		      <img src="/img/${app.name}_Logo.png" alt="${app.name}_Logo">
-		      <h3>${app.name}</h3>
-		      <p id="homeTile${loop.index}">Loading tile...</p>
-		      <div class="btn-centered">
-		     	<a href="/apps/${app.URL}" class="btn">View App</a>
+		      <div class="app-text">
+		      	<h3>${app.name}</h3>
+		      	<p id="homeTile${loop.index}">Loading tile...</p>
 		      </div>
-		    </div>
+		    </a>
 		</li>
 		
 		<c:choose>

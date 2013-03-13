@@ -14,7 +14,7 @@
 			</li>
 		</ul>
 		
-	    <img class="pull-left" src="/img/Logo_Home_Automation.png" alt="Home_Automation_Logo" width="30" height="30">
+	    <img class="pull-left" src="/img/Logo_Home_Automation_Header.png" alt="Home_Automation_Logo">
 	    <h1 class=" lead branding">Automat.in - Smart Home</h1>
 	    
 	    <hr>
