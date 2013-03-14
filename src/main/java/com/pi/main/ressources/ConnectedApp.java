@@ -2,7 +2,6 @@ package com.pi.main.ressources;
 
 import automation.api.interfaces.ConnectedClient;
 
-
 public class ConnectedApp {
 	private String name;
 	private String URL;

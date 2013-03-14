@@ -14,6 +14,7 @@ public class AppManager {
 		selectedURL = null;
 		
 		//TODO Implement a proper add app function
+		//TODO implement DSL here!
 		addApp(new ConnectedApp("Lights", "lights", new LightingClient())); 
 		
 		// DUMMY APPS FOR TESTING PURPOSES
@@ -52,9 +53,9 @@ public class AppManager {
 		AppManager.selectedURL = selectedURL;
 	}
 	
-	public ConnectedApp getApp(String appName) {
+	public ConnectedApp getApp(String appURL) {
 		for (ConnectedApp app : appList) {
-			if (app.getName().equalsIgnoreCase(appName)) {
+			if (app.getURL().equalsIgnoreCase(appURL)) {
 				return app;
 			}
 		}

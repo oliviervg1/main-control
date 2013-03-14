@@ -10,7 +10,7 @@ public class LightingClient extends AbstractClient{
 		super("http://192.168.0.9:8080/relay-control-1.0.0/SocketController?wsdl", new QName("http://relay.pi.com/", "SocketControllerService"));
 	}
 	
-	public void powerOn() {
+	public void turnOn() {
 		try {
 			device.invokeMethod("powerOn");
 		} catch (NoSuchMethodException e) {
@@ -19,7 +19,7 @@ public class LightingClient extends AbstractClient{
 		}
 	}
 	
-	public void powerOff() {
+	public void turnOff() {
 		try {
 			device.invokeMethod("powerOff");
 		} catch (NoSuchMethodException e) {
@@ -29,6 +29,17 @@ public class LightingClient extends AbstractClient{
 	}
 	
 	public String getState() {
+		String state = "unknown";
+		try {
+			state = (String) device.invokeMethod("getState");
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return state;
+	}
+	
+	public String homeTile() {
 		String state = "unknown";
 		try {
 			state = (String) device.invokeMethod("getState");
