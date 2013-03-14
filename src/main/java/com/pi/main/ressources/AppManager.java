@@ -2,6 +2,7 @@ package com.pi.main.ressources;
 
 import java.util.ArrayList;
 
+import com.pi.main.apps.ressources.DummyClient;
 import com.pi.main.apps.ressources.LightingClient;
 
 public class AppManager {
@@ -18,13 +19,13 @@ public class AppManager {
 		addApp(new ConnectedApp("Lights", "lights", new LightingClient())); 
 		
 		// DUMMY APPS FOR TESTING PURPOSES
-//		addApp(new ConnectedApp("Dummy", "dummy", null));
-//		addApp(new ConnectedApp("Dummy", "dummy", null));
-//		addApp(new ConnectedApp("Dummy", "dummy", null));
-//		addApp(new ConnectedApp("Dummy", "dummy", null));
-//		addApp(new ConnectedApp("Dummy", "dummy", null));
-//		addApp(new ConnectedApp("Dummy", "dummy", null));
-//		addApp(new ConnectedApp("Dummy", "dummy", null));
+		addApp(new ConnectedApp("Dummy", "dummy", new DummyClient()));
+		addApp(new ConnectedApp("Dummy", "dummy", new DummyClient()));
+		addApp(new ConnectedApp("Dummy", "dummy", new DummyClient()));
+		addApp(new ConnectedApp("Dummy", "dummy", new DummyClient()));
+		addApp(new ConnectedApp("Dummy", "dummy", new DummyClient()));
+		addApp(new ConnectedApp("Dummy", "dummy", new DummyClient()));
+		addApp(new ConnectedApp("Dummy", "dummy", new DummyClient()));
 	}
 	
 	public ArrayList<ConnectedApp> getAppList() {

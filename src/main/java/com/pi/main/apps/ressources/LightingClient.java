@@ -31,7 +31,7 @@ public class LightingClient extends AbstractClient{
 	public String getState() {
 		String state = "unknown";
 		try {
-			state = (String) device.invokeMethod("getState");
+			state = "Power is currently " + (String) device.invokeMethod("getState");
 		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,7 +42,7 @@ public class LightingClient extends AbstractClient{
 	public String homeTile() {
 		String state = "unknown";
 		try {
-			state = (String) device.invokeMethod("getState");
+			state = "Power is currently " + (String) device.invokeMethod("getState");
 		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

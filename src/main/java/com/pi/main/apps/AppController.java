@@ -45,7 +45,7 @@ public class AppController {
 		client = appManager.getApp(appURL).getClient();
 		String state = "null";
 		try {
-			state = "Power is currently " + (String) client.invokeMethod("getState");
+			state = (String) client.invokeMethod("getState");
 		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -58,7 +58,7 @@ public class AppController {
 		client = appManager.getApp(appURL).getClient();
 		String state = "null";
 		try {
-			state = "Power is currently " + (String) client.invokeMethod("homeTile");
+			state = (String) client.invokeMethod("homeTile");
 		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
