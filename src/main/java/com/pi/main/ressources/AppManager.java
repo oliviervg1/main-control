@@ -15,17 +15,22 @@ public class AppManager {
 		selectedURL = null;
 		
 		//TODO Implement a proper add app function
-		//TODO implement DSL here!
-		addApp(new ConnectedApp("Lights", "lights", new LightingClient())); 
+		addApp(new ConnectedApp.Builder()
+			.name("Lights")
+			.pageName("Let there be lights!")
+			.URL("lights")
+			.description("The 'Lights' application allows you to remotely monitor the energy consumption of a power socket. You can also turn it on or off!")
+			.client(new LightingClient())
+			.build());
 		
 		// DUMMY APPS FOR TESTING PURPOSES
-		addApp(new ConnectedApp("Dummy", "dummy", new DummyClient()));
-		addApp(new ConnectedApp("Dummy", "dummy", new DummyClient()));
-		addApp(new ConnectedApp("Dummy", "dummy", new DummyClient()));
-		addApp(new ConnectedApp("Dummy", "dummy", new DummyClient()));
-		addApp(new ConnectedApp("Dummy", "dummy", new DummyClient()));
-		addApp(new ConnectedApp("Dummy", "dummy", new DummyClient()));
-		addApp(new ConnectedApp("Dummy", "dummy", new DummyClient()));
+		addApp(new ConnectedApp.Builder()
+			.name("Dummy")
+			.pageName("This is a DUMMY APP!")
+			.URL("dummy")
+			.description("LOLOL")
+			.client(new DummyClient())
+			.build());
 	}
 	
 	public ArrayList<ConnectedApp> getAppList() {
