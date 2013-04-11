@@ -4,13 +4,9 @@ import automation.api.AbstractClient;
 
 public class DummyClient extends AbstractClient {
 
-	private String test;
+	private String test = "false";
 	
-	public DummyClient() {
-		super();
-		test = "false";
-	}
-	
+	@Override
 	public String homeTile() {
 		if (test.equalsIgnoreCase("true")) {
 	    	test = "false";
@@ -21,5 +17,10 @@ public class DummyClient extends AbstractClient {
 	    }
 
 	    return "Dummy state is " + test;
+	}
+
+	@Override
+	public String getState() {
+		return "";
 	}
 }

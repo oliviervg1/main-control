@@ -107,8 +107,19 @@
 <body>
 
 <!-- Le javascript -->
-<script src="/js/jquery.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 <script src="/js/bootstrap-dropdown.js"></script>
+
+<!-- Include the core media player JavaScript. -->
+<script type="text/javascript" src="osmplayer/bin/osmplayer.compressed.js"></script>
+
+<!-- Include the DarkHive ThemeRolller jQuery UI theme. -->
+<link rel="stylesheet" href="/osmplayer/jquery-ui/dark-hive/jquery-ui-1.8.18.custom.css">
+
+<!-- Include the Default template CSS and JavaScript. -->
+<link rel="stylesheet" href="/osmplayer/templates/default/css/osmplayer_default.css">
+<link rel="stylesheet" href="/osmplayer/templates/default/osmplayer.default.js">
 
 <tiles:insertAttribute name="header" />
 

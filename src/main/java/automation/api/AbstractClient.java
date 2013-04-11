@@ -10,13 +10,13 @@ import javax.xml.ws.Service;
 import automation.api.interfaces.ConnectedClient;
 import automation.api.interfaces.ConnectedDevice;
 
-public class AbstractClient implements ConnectedClient {
+abstract public class AbstractClient implements ConnectedClient {
 
 	protected ConnectedDevice device;
 	private Method method;
 
 	public AbstractClient() {
-		
+		device = null;
 	}
 	
 	public AbstractClient(String WS_URL, QName qname) {
@@ -31,6 +31,9 @@ public class AbstractClient implements ConnectedClient {
         Service service = Service.create(url, qname);
         device = service.getPort(ConnectedDevice.class);
 	}
+	
+	abstract public String getState();
+	abstract public String homeTile();
 
 	@Override
 	final public Object invokeMethod(String methodName) throws NoSuchMethodException {

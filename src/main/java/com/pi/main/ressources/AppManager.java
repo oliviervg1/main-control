@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.pi.main.apps.ressources.DummyClient;
 import com.pi.main.apps.ressources.LightingClient;
+import com.pi.main.apps.ressources.MediaClient;
 
 public class AppManager {
 	
@@ -21,6 +22,14 @@ public class AppManager {
 			.URL("lights")
 			.description("The 'Lights' application allows you to remotely monitor the energy consumption of a power socket. You can also turn it on or off!")
 			.client(new LightingClient())
+			.build());
+		
+		addApp(new ConnectedApp.Builder()
+			.name("Media")
+			.pageName("Care to listen to some music?")
+			.URL("media")
+			.description("The 'Media' application allows you to listen to music or watch videos anywhere in your house!")
+			.client(new MediaClient())
 			.build());
 		
 		// DUMMY APPS FOR TESTING PURPOSES

@@ -28,6 +28,7 @@ public class LightingClient extends AbstractClient{
 		}
 	}
 	
+	@Override
 	public String getState() {
 		String state = "unknown";
 		try {
@@ -39,6 +40,7 @@ public class LightingClient extends AbstractClient{
 		return state;
 	}
 	
+	@Override
 	public String homeTile() {
 		String state = "unknown";
 		try {
