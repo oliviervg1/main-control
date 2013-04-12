@@ -8,7 +8,8 @@
 
 <script type="text/javascript">
   $(function() {
-    $("video").osmplayer({
+    $("#osmplayer").osmplayer({
+      playlist: '/assets/osmplayer/playlist.xml',
       width: '100%',
       height: '600px'
     });
@@ -17,5 +18,5 @@
 
 <div>
 	<h1 class="lead">Video Test</h1>
-	<video src="http://progressive.totaleclips.com.edgesuite.net/105/e105598_257.mp4" poster="http://www.movieposter.com/posters/archive/main/143/MPW-71686"></video>
+	<div id="osmplayer"></div>
 </div>
