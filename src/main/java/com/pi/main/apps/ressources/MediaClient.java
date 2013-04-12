@@ -18,12 +18,14 @@ public class MediaClient extends AbstractClient {
 		return "Media app: coming soon!";
 	}
 	
-	// TEST
 	public void addTrack() {
 		xml.addTrack("Muse Live", "http://www.youtube.com/watch?v=Jiro61UjbB4", "Youtube");
 	}
 	
-	// TEST
+	public void addTrack(String title, String location, String type) {
+		xml.addTrack(title, location, type);
+	}
+	
 	public void removeTrack() {
 		xml.removeTrack("Muse Live");
 	}

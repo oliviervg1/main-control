@@ -5,6 +5,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import automation.api.interfaces.ConnectedClient;
@@ -27,10 +28,25 @@ public class AppController {
 	}
 	
 	@RequestMapping(value = "/apps/{appURL}/{webMethod}", method = RequestMethod.GET)
-	public String turnOn(ModelMap model, @PathVariable String appURL, @PathVariable String webMethod) {
-		ConnectedClient client = appManager.getApp(appURL).getClient();		
+	public String invokeWebMethod(ModelMap model, @PathVariable String appURL, @PathVariable String webMethod,
+					@RequestParam(value="p1", required=false) Object p1,
+					@RequestParam(value="p2", required=false) Object p2,
+					@RequestParam(value="p3", required=false) Object p3) {
+		
+		ConnectedClient client = appManager.getApp(appURL).getClient();
+		
+		Object[] parameters = new Object[3];
+		parameters[0] = p1;
+		parameters[1] = p2;
+		parameters[2] = p3;
+		
 		try {
-			client.invokeMethod(webMethod);
+			if (p1 == null && p2 == null && p3 == null) {
+				client.invokeMethod(webMethod);
+			}
+			else {
+				client.invokeMethod(webMethod,parameters);
+			}
 		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
