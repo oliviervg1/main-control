@@ -29,16 +29,16 @@ public class AppController {
 	
 	@RequestMapping(value = "/apps/{appURL}/{webMethod}", method = RequestMethod.GET)
 	public String invokeWebMethod(ModelMap model, @PathVariable String appURL, @PathVariable String webMethod,
-					@RequestParam(value="p", required=false) Object[] paramters) {
+					@RequestParam(value="p", required=false) Object[] parameters) {
 		
 		ConnectedClient client = appManager.getApp(appURL).getClient();
 				
 		try {
-			if (paramters == null) {
+			if (parameters == null) {
 				client.invokeMethod(webMethod);
 			}
 			else {
-				client.invokeMethod(webMethod,paramters);
+				client.invokeMethod(webMethod,parameters);
 			}
 		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
