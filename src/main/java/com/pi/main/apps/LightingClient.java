@@ -1,4 +1,4 @@
-package com.pi.main.apps.ressources;
+package com.pi.main.apps;
 
 import javax.xml.namespace.QName;
 
@@ -25,7 +25,7 @@ public class LightingClient extends AbstractClient{
 	
 	@Override
 	public String getState() throws Exception {
-		String state = "unknown";
+		String state = "Device unavailable";
 		if (isDeviceAvailable()) {
 			state = "Power is currently " + (String) device.invokeMethod("getState");
 		}
@@ -34,7 +34,7 @@ public class LightingClient extends AbstractClient{
 	
 	@Override
 	public String homeTile() throws Exception {
-		String state = "unknown";
+		String state = "Device unavailable";
 		if (isDeviceAvailable()) {
 			state = "Power is currently " + (String) device.invokeMethod("getState");
 		}

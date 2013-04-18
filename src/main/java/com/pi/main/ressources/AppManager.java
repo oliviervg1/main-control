@@ -2,9 +2,9 @@ package com.pi.main.ressources;
 
 import java.util.ArrayList;
 
-import com.pi.main.apps.ressources.DummyClient;
-import com.pi.main.apps.ressources.LightingClient;
-import com.pi.main.apps.ressources.MediaClient;
+import com.pi.main.apps.DummyClient;
+import com.pi.main.apps.LightingClient;
+import com.pi.main.apps.MediaClient;
 
 public class AppManager {
 	

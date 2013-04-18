@@ -1,4 +1,4 @@
-package com.pi.main.ressources;
+package com.pi.main.apps.ressources;
 
 import java.io.File;
 import java.io.FileWriter;

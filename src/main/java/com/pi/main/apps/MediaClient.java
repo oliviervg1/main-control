@@ -1,6 +1,6 @@
-package com.pi.main.apps.ressources;
+package com.pi.main.apps;
 
-import com.pi.main.ressources.XMLEditor;
+import com.pi.main.apps.ressources.XMLEditor;
 
 import automation.api.AbstractClient;
 

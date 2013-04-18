@@ -1,4 +1,4 @@
-package com.pi.main.apps.ressources;
+package com.pi.main.apps;
 
 import automation.api.AbstractClient;
 
