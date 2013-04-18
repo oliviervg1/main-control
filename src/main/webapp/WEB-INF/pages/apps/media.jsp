@@ -103,9 +103,7 @@
 				    <label>Video URL</label>
 				    <input type="text" id="videoUrl" placeholder="Type URL here...">
 				    <span class="help-block">Example: http://www.youtube.com/watch?v=X5_MAxoYwsQ</span>
-				    <div class="modal-footer">
-				    	<button data-dismiss="modal" aria-hidden="true" type="submit" class="btn">Add video</button>
-				    </div>
+				    <button type="submit" class="btn">Add video</button>
 				  </fieldset>
 				</form>
 			  </div>
