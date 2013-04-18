@@ -13,8 +13,6 @@ public abstract class AbstractDevice implements ConnectedDevice{
 	
 	public AbstractDevice() {
 		method = null;
-		
-		// Allows users to perform some actions when object is created
 		onStartup();
 	}
 	
@@ -28,28 +26,22 @@ public abstract class AbstractDevice implements ConnectedDevice{
 	@Override
 	final public Object invokeMethod(String methodName, Object[] parametersArray) throws NoSuchMethodException {
 		Object ret = 0;
-		
 		try {
-			
 			if (parametersArray == null || parametersArray.length == 0) {
 				method = this.getClass().getDeclaredMethod(methodName);
 			}
 			else {
 				method = this.getClass().getDeclaredMethod(methodName, findParameterTypes(parametersArray));
-			}
-						
+			}			
 			ret = method.invoke(this, parametersArray);
-			
 			// Cannot pass null over SOAP, so force to 0 if method has set ret to null
 			if (ret == null) {
 				ret = 0;
-			}
-						
+			}			
 		} catch (SecurityException | IllegalAccessException | InvocationTargetException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}   
-		
 		return ret;
 	}
 	

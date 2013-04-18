@@ -40,7 +40,7 @@ public class AppController {
 			else {
 				client.invokeMethod(webMethod,parameters);
 			}
-		} catch (NoSuchMethodException e) {
+		} catch (Exception e) {
 			return "redirect:/error";
 		}
 		return "redirect:/apps/" + appManager.getApp(appURL).getURL();
@@ -52,7 +52,7 @@ public class AppController {
 		String state = "null";
 		try {
 			state = (String) client.invokeMethod("getState");
-		} catch (NoSuchMethodException e) {
+		} catch (Exception e) {
 			return "redirect:/error";
 		}
 	    return state;
@@ -64,7 +64,7 @@ public class AppController {
 		String state = "null";
 		try {
 			state = (String) client.invokeMethod("homeTile");
-		} catch (NoSuchMethodException e) {
+		} catch (Exception e) {
 			return "redirect:/error";
 		}
 	    return state;

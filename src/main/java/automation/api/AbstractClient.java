@@ -1,5 +1,4 @@
 package automation.api;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -26,8 +25,8 @@ abstract public class AbstractClient implements ConnectedClient {
 	}
 	
 	abstract public void onStartup();
-	abstract public String getState() throws NoSuchMethodException;
-	abstract public String homeTile() throws NoSuchMethodException;
+	abstract public String getState() throws Exception;
+	abstract public String homeTile() throws Exception;
 	
 	@Override
 	final public void connectToRemoteDevice(String WS_URL, QName qname) {
@@ -52,34 +51,24 @@ abstract public class AbstractClient implements ConnectedClient {
 	}
 
 	@Override
-	final public Object invokeMethod(String methodName) throws NoSuchMethodException {
+	final public Object invokeMethod(String methodName) throws Exception {
 		return invokeMethod(methodName, null);
 	}
 
 	@Override
-	final public Object invokeMethod(String methodName, Object[] parametersArray) throws NoSuchMethodException {	
+	final public Object invokeMethod(String methodName, Object[] parametersArray) throws Exception {	
 		Object ret = 0;
-
 		if (parametersArray == null || parametersArray.length == 0) {
 			method = this.getClass().getDeclaredMethod(methodName);
 		}
 		else {
 			method = this.getClass().getDeclaredMethod(methodName, findParameterTypes(parametersArray));
 		}
-
-		try {
-			ret = method.invoke(this, parametersArray);
-		} catch (IllegalAccessException | IllegalArgumentException
-				| InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		ret = method.invoke(this, parametersArray);
 		// force to 0 if method has set ret to null
 		if (ret == null) {
 			ret = 0;
 		}   
-
 		return ret;
 	}
 
