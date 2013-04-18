@@ -41,8 +41,7 @@ public class AppController {
 				client.invokeMethod(webMethod,parameters);
 			}
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "redirect:/error";
 		}
 		return "redirect:/apps/" + appManager.getApp(appURL).getURL();
 	}
@@ -54,8 +53,7 @@ public class AppController {
 		try {
 			state = (String) client.invokeMethod("getState");
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "redirect:/error";
 		}
 	    return state;
 	}
@@ -67,8 +65,7 @@ public class AppController {
 		try {
 			state = (String) client.invokeMethod("homeTile");
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "redirect:/error";
 		}
 	    return state;
 	}

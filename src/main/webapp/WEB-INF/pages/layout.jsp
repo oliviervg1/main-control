@@ -107,6 +107,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 	<script src="/js/bootstrap-dropdown.js"></script>
+	<script src="/js/bootstrap-tab.js"></script>
 
 	<!-- The stylesheet for the player -->
     <link rel="stylesheet" href="/assets/osmplayer/jquery-ui/dark-hive/jquery-ui-1.8.18.custom.css">

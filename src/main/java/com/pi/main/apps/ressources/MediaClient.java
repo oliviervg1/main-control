@@ -9,6 +9,9 @@ public class MediaClient extends AbstractClient {
 	private XMLEditor xml = new XMLEditor("/home/pi/FYP/apache-tomcat-7.0.35/webapps/assets/osmplayer/playlist.xml"); 
 	
 	@Override
+	public void onStartup() {}
+	
+	@Override
 	public String getState() {
 		return "Media app: coming soon!";
 	}

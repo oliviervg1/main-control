@@ -6,6 +6,7 @@ import java.net.URL;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
+import javax.xml.ws.WebServiceException;
 
 import automation.api.interfaces.ConnectedClient;
 import automation.api.interfaces.ConnectedDevice;
@@ -13,27 +14,42 @@ import automation.api.interfaces.ConnectedDevice;
 abstract public class AbstractClient implements ConnectedClient {
 
 	protected ConnectedDevice device;
+	private URL url;
+	private QName qname;
 	private Method method;
 
 	public AbstractClient() {
 		device = null;
+		url = null;
+		qname = null;
+		onStartup();
 	}
 	
-	public AbstractClient(String WS_URL, QName qname) {
-		URL url = null;
+	abstract public void onStartup();
+	abstract public String getState() throws NoSuchMethodException;
+	abstract public String homeTile() throws NoSuchMethodException;
+	
+	@Override
+	final public void connectToRemoteDevice(String WS_URL, QName qname) {
 		try {
-			url = new URL(WS_URL);
+			this.url = new URL(WS_URL);
+			this.qname = qname;
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			this.url = null;
+			this.qname = null;
 		}
-        
-        Service service = Service.create(url, qname);
-        device = service.getPort(ConnectedDevice.class);
 	}
 	
-	abstract public String getState();
-	abstract public String homeTile();
+	@Override
+	final public boolean isDeviceAvailable() {
+		try {                              
+			Service service = Service.create(url, qname);
+			device = service.getPort(ConnectedDevice.class);
+			return true;
+		} catch (WebServiceException e) {
+			return false;
+		}
+	}
 
 	@Override
 	final public Object invokeMethod(String methodName) throws NoSuchMethodException {
@@ -41,7 +57,7 @@ abstract public class AbstractClient implements ConnectedClient {
 	}
 
 	@Override
-	final public Object invokeMethod(String methodName, Object[] parametersArray) throws NoSuchMethodException {
+	final public Object invokeMethod(String methodName, Object[] parametersArray) throws NoSuchMethodException {	
 		Object ret = 0;
 
 		if (parametersArray == null || parametersArray.length == 0) {

@@ -23,4 +23,7 @@ public class DummyClient extends AbstractClient {
 	public String getState() {
 		return "";
 	}
+
+	@Override
+	public void onStartup() {}
 }
