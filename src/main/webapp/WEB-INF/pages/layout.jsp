@@ -96,6 +96,11 @@
       text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075); 
       }
       
+      .table a {
+      display:block;
+      text-decoration:none;
+      }
+      
     </style>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -108,6 +113,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 	<script src="/js/bootstrap-dropdown.js"></script>
 	<script src="/js/bootstrap-tab.js"></script>
+	<script src="/js/bootstrap-modal.js"></script>
 
 	<!-- The stylesheet for the player -->
     <link rel="stylesheet" href="/assets/osmplayer/jquery-ui/dark-hive/jquery-ui-1.8.18.custom.css">

@@ -1,5 +1,7 @@
 package com.pi.main.apps;
 
+import java.util.ArrayList;
+
 import automation.api.AbstractClient;
 
 public class DummyClient extends AbstractClient {
@@ -26,4 +28,9 @@ public class DummyClient extends AbstractClient {
 
 	@Override
 	public void onStartup() {}
+
+	@Override
+	public ArrayList<String> getModels() throws Exception {
+		return new ArrayList<String>();
+	}
 }

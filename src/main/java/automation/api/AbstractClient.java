@@ -2,6 +2,7 @@ package automation.api;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
@@ -13,6 +14,7 @@ import automation.api.interfaces.ConnectedDevice;
 abstract public class AbstractClient implements ConnectedClient {
 
 	protected ConnectedDevice device;
+	protected ArrayList<String> models;
 	private URL url;
 	private QName qname;
 	private Method method;
@@ -27,6 +29,7 @@ abstract public class AbstractClient implements ConnectedClient {
 	abstract public void onStartup();
 	abstract public String getState() throws Exception;
 	abstract public String homeTile() throws Exception;
+	abstract public ArrayList<String> getModels() throws Exception;
 	
 	@Override
 	final public void connectToRemoteDevice(String WS_URL, QName qname) {
@@ -80,5 +83,4 @@ abstract public class AbstractClient implements ConnectedClient {
 		}
 		return parameterTypes;
 	}
-
 }

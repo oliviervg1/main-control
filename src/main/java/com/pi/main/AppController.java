@@ -1,5 +1,7 @@
 package com.pi.main;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,12 +20,17 @@ public class AppController {
 	
 	private AppManager appManager = new AppManager();
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/apps/{appURL}", method = RequestMethod.GET)
 	public String displayPage(ModelMap model, @PathVariable String appURL) {
 		ConnectedApp app = appManager.getApp(appURL);
 		model.addAttribute("pageName", app.getPageName());
 		model.addAttribute("pageDetails", app.getDescription());
-	
+		try {
+			model.addAttribute("appModels", (ArrayList<String>) app.getClient().invokeMethod("getModels"));
+		} catch (Exception e) {
+			return "redirect:/error";
+		}
 		return "apps/" + app.getURL();
 	}
 	
@@ -31,8 +38,7 @@ public class AppController {
 	public String invokeWebMethod(ModelMap model, @PathVariable String appURL, @PathVariable String webMethod,
 					@RequestParam(value="p", required=false) Object[] parameters) {
 		
-		ConnectedClient client = appManager.getApp(appURL).getClient();
-				
+		ConnectedClient client = appManager.getApp(appURL).getClient();		
 		try {
 			if (parameters == null) {
 				client.invokeMethod(webMethod);
@@ -49,24 +55,20 @@ public class AppController {
 	@RequestMapping(value = "/apps/{appURL}/getState", method = RequestMethod.GET)
 	public @ResponseBody String getState(@PathVariable String appURL) {
 		ConnectedClient client = appManager.getApp(appURL).getClient();
-		String state = "null";
 		try {
-			state = (String) client.invokeMethod("getState");
+			return (String) client.invokeMethod("getState");
 		} catch (Exception e) {
-			return "redirect:/error";
+			return "Error";
 		}
-	    return state;
 	}
 	
 	@RequestMapping(value = "/apps/{appURL}/homeTile", method = RequestMethod.GET)
 	public @ResponseBody String homeTile(@PathVariable String appURL) {
 		ConnectedClient client = appManager.getApp(appURL).getClient();
-		String state = "null";
 		try {
-			state = (String) client.invokeMethod("homeTile");
+			return (String) client.invokeMethod("homeTile");
 		} catch (Exception e) {
-			return "redirect:/error";
+			return "Error";
 		}
-	    return state;
 	}
 }

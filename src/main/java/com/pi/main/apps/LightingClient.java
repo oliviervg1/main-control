@@ -1,5 +1,7 @@
 package com.pi.main.apps;
 
+import java.util.ArrayList;
+
 import javax.xml.namespace.QName;
 
 import automation.api.AbstractClient;
@@ -39,5 +41,10 @@ public class LightingClient extends AbstractClient{
 			state = "Power is currently " + (String) device.invokeMethod("getState");
 		}
 		return state;
+	}
+
+	@Override
+	public ArrayList<String> getModels() throws Exception {
+		return new ArrayList<String>();
 	}
 }

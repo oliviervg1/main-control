@@ -1,5 +1,7 @@
 package com.pi.main.apps;
 
+import java.util.ArrayList;
+
 import com.pi.main.apps.ressources.XMLEditor;
 
 import automation.api.AbstractClient;
@@ -27,5 +29,10 @@ public class MediaClient extends AbstractClient {
 	
 	public void removeTrack(String id) {
 		xml.removeTrack(id);
+	}
+	
+	@Override
+	public ArrayList<String> getModels() {
+		return xml.getTrackList();
 	}
 }

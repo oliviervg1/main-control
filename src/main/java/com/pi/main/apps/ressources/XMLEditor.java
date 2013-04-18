@@ -3,6 +3,7 @@ package com.pi.main.apps.ressources;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.jdom2.Document;
@@ -27,7 +28,7 @@ public class XMLEditor {
 		doc = null;
 	}
 	
-	public void loadXML() {
+	private void loadXML() {
 		File xmlFile = new File(file); 
 		try {
 			doc = (Document) builder.build(xmlFile);
@@ -37,13 +38,26 @@ public class XMLEditor {
 		}
 	}
 	
-	public void outputXML() {
+	private void outputXML() {
 		try {
 			xmlOutput.output(doc, new FileWriter(file));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public ArrayList<String> getTrackList() {
+		loadXML();
+		Element rootNode = doc.getRootElement();
+		Element trackList = rootNode.getChild("trackList");
+		
+		ArrayList<String> trackNames = new ArrayList<String>();
+		for (Element track : trackList.getChildren()) {
+			trackNames.add(track.getAttributeValue("id"));
+		}
+		
+		return trackNames;
 	}
 	
 	public void addTrack(String title, String location, String type) {
