@@ -69,11 +69,9 @@
 		
 		<div>
 			<!-- Button to trigger modals -->
-			<div class="row-fluid btn-centered">
-				<div class="span6">	
+			<div class="row-fluid">
+				<div class="btn-group btn-centered pull-right">	
 					<a href="#addVideo" role="button" class="btn btn-large" data-toggle="modal">Add a video to playlist</a>
-				</div>
-				<div class="span6">
 					<a href="#deleteVideo" role="button" class="btn btn-danger btn-large" data-toggle="modal">Remove a video from playlist</a>
 				</div>
 			</div>
@@ -85,25 +83,44 @@
 			    <h3 id="ModalLabel">Which video are you looking to add?</h3>
 			  </div>
 			  <div class="modal-body">
-			     <form onSubmit="return addVideo()" action="">
+			     <form class="form-horizontal" onSubmit="return addVideo()" action="">
 				  <fieldset>
+				    
 				    <legend>Please fill the following:</legend>
-				    <label>Video title</label>
-				    <input type="text" id="videoTitle" placeholder="Type title here...">
-				    <label>Video type</label>
-				    <label class="radio inline">
-					  <input type="radio" name="optionsRadios" id="optionsRadios1" value="Youtube" checked> Youtube
-					</label>
-					<label class="radio inline">
-					  <input type="radio" name="optionsRadios" id="optionsRadios2" value="Vimeo"> Vimeo
-					</label>
-					<label class="radio inline">
-					  <input type="radio" name="optionsRadios" id="optionsRadios3" value="HTML5"> HTML5
-					</label>
-				    <label>Video URL</label>
-				    <input type="text" id="videoUrl" placeholder="Type URL here...">
-				    <span class="help-block">Example: http://www.youtube.com/watch?v=X5_MAxoYwsQ</span>
-				    <button type="submit" class="btn">Add video</button>
+				    
+				    <div class="control-group">
+				    	<label class="control-label" for="videoTitle">Title</label>
+				    	<div class="controls">
+				    		<input type="text" id="videoTitle" placeholder="Type title here...">
+				    	</div>
+				    </div>
+				    
+				    <div class="control-group">
+				    	<label class="control-label" for="videoType">Type</label>
+				    	<div class="controls" id="videoType">
+					    	<label class="radio inline">
+						  		<input type="radio" name="optionsRadios" id="optionsRadios1" value="Youtube" checked> Youtube
+							</label>
+							<label class="radio inline">
+							  <input type="radio" name="optionsRadios" id="optionsRadios2" value="Vimeo"> Vimeo
+							</label>
+							<label class="radio inline">
+							  <input type="radio" name="optionsRadios" id="optionsRadios3" value="HTML5"> HTML5
+							</label>
+						</div>
+					</div>
+						
+					<div class="control-group">
+					    <label class="control-label" for="videoUrl">URL</label>
+					    <div class="controls">
+						    <input type="text" id="videoUrl" placeholder="Type URL here...">
+						    <span class="help-block"><em>e.g. http://www.youtube.com/watch?v=X5_MAxoYwsQ</em></span>
+						</div>
+					</div>   
+					    
+				    <div class="modal-footer">
+				    	<button aria-hidden="true" type="submit" class="btn">Add video</button>
+				    </div>
 				  </fieldset>
 				</form>
 			  </div>
