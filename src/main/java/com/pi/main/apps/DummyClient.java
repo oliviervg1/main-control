@@ -1,8 +1,7 @@
 package com.pi.main.apps;
 
+import java.io.File;
 import java.util.ArrayList;
-
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import automation.api.AbstractClient;
 
@@ -37,6 +36,6 @@ public class DummyClient extends AbstractClient {
 	}
 
 	@Override
-	public void uploadFile(String fileName, CommonsMultipartFile fileData)
+	public void uploadFile(String fileName, File fileData)
 			throws Exception {}
 }

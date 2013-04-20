@@ -1,4 +1,5 @@
 package automation.api;
+import java.io.File;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -7,8 +8,6 @@ import java.util.ArrayList;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import javax.xml.ws.WebServiceException;
-
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import automation.api.interfaces.ConnectedClient;
 import automation.api.interfaces.ConnectedDevice;
@@ -31,7 +30,7 @@ abstract public class AbstractClient implements ConnectedClient {
 	abstract public void onStartup();
 	abstract public String getState() throws Exception;
 	abstract public String homeTile() throws Exception;
-	abstract public void uploadFile(String fileName, CommonsMultipartFile fileData) throws Exception;
+	abstract public void uploadFile(String fileName, File fileData) throws Exception;
 	abstract public ArrayList<String> getModels() throws Exception;
 	
 	@Override

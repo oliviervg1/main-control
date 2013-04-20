@@ -1,10 +1,9 @@
 package com.pi.main.apps;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.xml.namespace.QName;
-
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import automation.api.AbstractClient;
 
@@ -51,6 +50,6 @@ public class LightingClient extends AbstractClient{
 	}
 
 	@Override
-	public void uploadFile(String fileName, CommonsMultipartFile fileData)
+	public void uploadFile(String fileName, File fileData)
 			throws Exception {}
 }

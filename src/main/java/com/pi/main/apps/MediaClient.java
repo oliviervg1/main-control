@@ -1,11 +1,7 @@
 package com.pi.main.apps;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-
-import org.apache.commons.io.FileUtils;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.pi.main.apps.ressources.XMLEditor;
 
@@ -37,10 +33,8 @@ public class MediaClient extends AbstractClient {
 	}
 	
 	@Override
-	public void uploadFile(String fileName, CommonsMultipartFile fileData) throws IOException {
-		File file = new File("/home/pi/FYP/apache-tomcat-7.0.35/webapps/media/" + fileData.getOriginalFilename());
-		FileUtils.writeByteArrayToFile(file, fileData.getBytes());
-		xml.addTrack(fileName, "http://www.stuart-holland.com:8080/media/" + fileData.getOriginalFilename(), "HTML5");
+	public void uploadFile(String fileName, File file) {
+		xml.addTrack(fileName, "http://www.stuart-holland.com:8080/uploads/" + file.getName(), "HTML5");
 	}
 	
 	@Override

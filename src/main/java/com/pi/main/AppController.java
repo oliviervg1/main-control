@@ -1,5 +1,6 @@
 package com.pi.main;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
@@ -62,10 +63,12 @@ public class AppController {
 	    	return "redirect:/error";
 	    }
 		ConnectedClient client = appManager.getApp(appURL).getClient();
-		Object parameters[] = {uploadItem.getName(), uploadItem.getFileData()};
+		File file = new File("/home/pi/FYP/apache-tomcat-7.0.35/webapps/uploads/" + uploadItem.getFileData().getOriginalFilename());
 		try {
+			uploadItem.getFileData().transferTo(file);
+			Object parameters[] = {uploadItem.getName(), file};
 			client.invokeMethod("uploadFile", parameters);
-		} catch (Exception e) {
+		}  catch (Exception e) {
 			return "redirect:/error";
 		}
 	    return "redirect:/apps/" + appURL;
