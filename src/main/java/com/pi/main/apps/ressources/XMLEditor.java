@@ -9,6 +9,7 @@ import java.util.List;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
+import org.jdom2.Namespace;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
@@ -50,7 +51,8 @@ public class XMLEditor {
 	public ArrayList<String> getTrackList() {
 		loadXML();
 		Element rootNode = doc.getRootElement();
-		Element trackList = rootNode.getChild("trackList");
+		Namespace ns = rootNode.getNamespace();
+		Element trackList = rootNode.getChild("trackList", ns);
 		
 		ArrayList<String> trackNames = new ArrayList<String>();
 		for (Element track : trackList.getChildren()) {
@@ -63,12 +65,13 @@ public class XMLEditor {
 	public void addTrack(String title, String location, String type) {
 		loadXML();
 		Element rootNode = doc.getRootElement();
-		Element trackList = rootNode.getChild("trackList");
+		Namespace ns = rootNode.getNamespace();
+		Element trackList = rootNode.getChild("trackList", ns);
 		
-		Element elementToAdd = new Element("track");
+		Element elementToAdd = new Element("track", ns);
 		elementToAdd.setAttribute("id", title);
-		elementToAdd.addContent(new Element("title").setText(type + ": " + title));
-		elementToAdd.addContent(new Element("location").setText(location));
+		elementToAdd.addContent(new Element("title", ns).setText(type + ": " + title));
+		elementToAdd.addContent(new Element("location", ns).setText(location));
 			
 		trackList.addContent(elementToAdd);
 		outputXML();
@@ -77,7 +80,8 @@ public class XMLEditor {
 	public void removeTrack(String id) {
 		loadXML();
 		Element rootNode = doc.getRootElement();
-		Element trackList = rootNode.getChild("trackList");
+		Namespace ns = rootNode.getNamespace();
+		Element trackList = rootNode.getChild("trackList", ns);
 		
 		// Get list of tracks
 		List<Element> tracks = trackList.getChildren();

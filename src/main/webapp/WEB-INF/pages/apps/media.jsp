@@ -71,7 +71,7 @@
 		<div id="osmAudio"></div>
 	</div>
    	<div class="tab-pane fade" id="video">
-    	<h1 class="lead">Video Test</h1>
+    	<h1 class="lead">Video player</h1>
 		<div id="osmVideo"></div>
 		
 		<div>
@@ -134,15 +134,19 @@
 							</div>   
 							    
 						    <div class="modal-footer">
-						    	<button aria-hidden="true" type="submit" class="btn">Add video</button>
+						    	<button aria-hidden="true" type="submit" class="btn btn-primary">Add video</button>
+						    	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 						    </div>
 						  </fieldset>
 						</form>
 					</div>
-				</div>
 				
-				<div class="tab-pane fade" id="upload">
-				    <h1 class="lead">Upload code here!</h1>
+					<div class="tab-pane fade" id="upload">
+				    	<h1 class="lead">Upload code here!</h1>
+				    	<div class="modal-footer">
+						    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+						</div>
+					</div>
 				</div>
 			  </div>
 			</div>
