@@ -29,6 +29,13 @@
 </script>
 
 <script type="text/javascript">
+  $('#videoTabs a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+  });
+</script>
+
+<script type="text/javascript">
 	function addVideo() {
 		var video = 'media/addTrack?p=' + getTitle() + '&p=' + getUrl() + '&p=' + getType();
 		window.location.href = video;
@@ -83,46 +90,60 @@
 			    <h3 id="ModalLabel">Which video are you looking to add?</h3>
 			  </div>
 			  <div class="modal-body">
-			     <form class="form-horizontal" onSubmit="return addVideo()" action="">
-				  <fieldset>
-				    
-				    <legend>Please fill the following:</legend>
-				    
-				    <div class="control-group">
-				    	<label class="control-label" for="videoTitle">Title</label>
-				    	<div class="controls">
-				    		<input type="text" id="videoTitle" placeholder="Type title here...">
-				    	</div>
-				    </div>
-				    
-				    <div class="control-group">
-				    	<label class="control-label" for="videoType">Type</label>
-				    	<div class="controls" id="videoType">
-					    	<label class="radio inline">
-						  		<input type="radio" name="optionsRadios" id="optionsRadios1" value="Youtube" checked> Youtube
-							</label>
-							<label class="radio inline">
-							  <input type="radio" name="optionsRadios" id="optionsRadios2" value="Vimeo"> Vimeo
-							</label>
-							<label class="radio inline">
-							  <input type="radio" name="optionsRadios" id="optionsRadios3" value="HTML5"> HTML5
-							</label>
-						</div>
+			     
+			     <ul id="videoTabs" class="nav nav-tabs">
+					<li class="active"><a href="#external" data-toggle="tab">External content</a></li>
+				    <li><a href="#upload" data-toggle="tab">Upload video</a></li>
+				 </ul>
+				 
+				 <div id="videoTabsContent" class="tab-content">
+					 <div class="tab-pane fade in active" id="external">
+						 <form class="form-horizontal" onSubmit="return addVideo()" action="">
+						  <fieldset>
+						    
+						    <legend>Please fill the following:</legend>
+						    
+						    <div class="control-group">
+						    	<label class="control-label" for="videoTitle">Title</label>
+						    	<div class="controls">
+						    		<input type="text" id="videoTitle" placeholder="Type title here...">
+						    	</div>
+						    </div>
+						    
+						    <div class="control-group">
+						    	<label class="control-label" for="videoType">Type</label>
+						    	<div class="controls" id="videoType">
+							    	<label class="radio inline">
+								  		<input type="radio" name="optionsRadios" id="optionsRadios1" value="Youtube" checked> Youtube
+									</label>
+									<label class="radio inline">
+									  <input type="radio" name="optionsRadios" id="optionsRadios2" value="Vimeo"> Vimeo
+									</label>
+									<label class="radio inline">
+									  <input type="radio" name="optionsRadios" id="optionsRadios3" value="HTML5"> HTML5
+									</label>
+								</div>
+							</div>
+								
+							<div class="control-group">
+							    <label class="control-label" for="videoUrl">URL</label>
+							    <div class="controls">
+								    <input type="text" id="videoUrl" placeholder="Type URL here...">
+								    <span class="help-block"><em>e.g. http://www.youtube.com/watch?v=X5_MAxoYwsQ</em></span>
+								</div>
+							</div>   
+							    
+						    <div class="modal-footer">
+						    	<button aria-hidden="true" type="submit" class="btn">Add video</button>
+						    </div>
+						  </fieldset>
+						</form>
 					</div>
-						
-					<div class="control-group">
-					    <label class="control-label" for="videoUrl">URL</label>
-					    <div class="controls">
-						    <input type="text" id="videoUrl" placeholder="Type URL here...">
-						    <span class="help-block"><em>e.g. http://www.youtube.com/watch?v=X5_MAxoYwsQ</em></span>
-						</div>
-					</div>   
-					    
-				    <div class="modal-footer">
-				    	<button aria-hidden="true" type="submit" class="btn">Add video</button>
-				    </div>
-				  </fieldset>
-				</form>
+				</div>
+				
+				<div class="tab-pane fade" id="upload">
+				    <h1 class="lead">Upload code here!</h1>
+				</div>
 			  </div>
 			</div>
 			 
