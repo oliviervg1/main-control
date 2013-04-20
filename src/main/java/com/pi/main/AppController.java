@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +16,7 @@ import automation.api.interfaces.ConnectedClient;
 
 import com.pi.main.ressources.AppManager;
 import com.pi.main.ressources.ConnectedApp;
+import com.pi.main.ressources.UploadItem;
 
 @Controller
 public class AppController {
@@ -26,12 +29,13 @@ public class AppController {
 		ConnectedApp app = appManager.getApp(appURL);
 		model.addAttribute("pageName", app.getPageName());
 		model.addAttribute("pageDetails", app.getDescription());
+		model.addAttribute("uploadItem", new UploadItem());
 		try {
 			model.addAttribute("appModels", (ArrayList<String>) app.getClient().invokeMethod("getModels"));
 		} catch (Exception e) {
 			return "redirect:/error";
 		}
-		return "apps/" + app.getURL();
+		return "apps/" + appURL;
 	}
 	
 	@RequestMapping(value = "/apps/{appURL}/{webMethod}", method = RequestMethod.GET)
@@ -49,7 +53,22 @@ public class AppController {
 		} catch (Exception e) {
 			return "redirect:/error";
 		}
-		return "redirect:/apps/" + appManager.getApp(appURL).getURL();
+		return "redirect:/apps/" + appURL;
+	}
+	
+	@RequestMapping(value = "/apps/{appURL}/uploadFile", method = RequestMethod.POST)
+	public String uploadFile(@ModelAttribute("uploadItem") UploadItem uploadItem, @PathVariable String appURL, BindingResult result) {
+		if (result.hasErrors()) {
+	    	return "redirect:/error";
+	    }
+		ConnectedClient client = appManager.getApp(appURL).getClient();
+		Object parameters[] = {uploadItem.getName(), uploadItem.getFileData()};
+		try {
+			client.invokeMethod("uploadFile", parameters);
+		} catch (Exception e) {
+			return "redirect:/error";
+		}
+	    return "redirect:/apps/" + appURL;
 	}
 
 	@RequestMapping(value = "/apps/{appURL}/getState", method = RequestMethod.GET)

@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <script type="text/javascript">
   $(function() {
@@ -142,10 +143,30 @@
 					</div>
 				
 					<div class="tab-pane fade" id="upload">
-				    	<h1 class="lead">Upload code here!</h1>
-				    	<div class="modal-footer">
-						    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-						</div>
+				    	<form:form class="form-horizontal" modelAttribute="uploadItem" action="media/uploadFile" method="post" enctype="multipart/form-data">
+				            <fieldset>
+				                <legend>Upload fields:</legend>
+				 
+				                <div class="control-group">
+				                    <form:label class="control-label" for="name" path="name">Title</form:label>
+				                    <div class="controls">
+				                    	<form:input path="name" placeholder="Type title here..."/>
+				                    </div>
+				                </div>
+				 
+				                <div class="control-group">
+				                    <form:label class="control-label" for="fileData" path="fileData">File</form:label>
+				                    <div class="controls">
+				                   		<form:input path="fileData" type="file"/>
+				                   	</div>
+				                </div>
+				 
+				                <div class="modal-footer">
+						    		<button aria-hidden="true" type="submit" class="btn btn-primary">Upload video</button>
+								    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+								</div>
+				            </fieldset>
+				        </form:form>
 					</div>
 				</div>
 			  </div>

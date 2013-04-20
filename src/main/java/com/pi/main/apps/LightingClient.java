@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.xml.namespace.QName;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 import automation.api.AbstractClient;
 
 public class LightingClient extends AbstractClient{
@@ -47,4 +49,8 @@ public class LightingClient extends AbstractClient{
 	public ArrayList<String> getModels() throws Exception {
 		return new ArrayList<String>();
 	}
+
+	@Override
+	public void uploadFile(String fileName, CommonsMultipartFile fileData)
+			throws Exception {}
 }

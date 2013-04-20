@@ -2,6 +2,8 @@ package com.pi.main.apps;
 
 import java.util.ArrayList;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 import automation.api.AbstractClient;
 
 public class DummyClient extends AbstractClient {
@@ -33,4 +35,8 @@ public class DummyClient extends AbstractClient {
 	public ArrayList<String> getModels() throws Exception {
 		return new ArrayList<String>();
 	}
+
+	@Override
+	public void uploadFile(String fileName, CommonsMultipartFile fileData)
+			throws Exception {}
 }
