@@ -3,6 +3,8 @@ package com.pi.main.apps.ressources;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +19,14 @@ import org.jdom2.output.XMLOutputter;
 public class XMLEditor {
 	
 	private String file;
+	private String baseDir;
 	private SAXBuilder builder;
 	private XMLOutputter xmlOutput;
 	private Document doc;
 
-	public XMLEditor(String file) {
-		this.file = file; 
+	public XMLEditor(String file, String uploadDir) {
+		this.file = file;
+		this.baseDir = uploadDir;
 		builder = new SAXBuilder();
 		xmlOutput = new XMLOutputter();
 		xmlOutput.setFormat(Format.getPrettyFormat());
@@ -108,6 +112,19 @@ public class XMLEditor {
 			if(element.getAttribute("id").getValue().equalsIgnoreCase(id)) {
 				elementToRemove = element;
 			}
+		}
+		
+		// Check if the element is hosted locally
+		try {
+			URL filePath = new URL(elementToRemove.getChild("location", ns).getValue());
+			// TODO Make this better!
+			File fileToRemove = new File(baseDir + filePath.getPath());
+			if (fileToRemove.isFile()) {
+				fileToRemove.delete();
+			}
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 			
 		trackList.removeContent(elementToRemove);

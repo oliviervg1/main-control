@@ -9,7 +9,7 @@ import automation.api.AbstractClient;
 
 public class MediaClient extends AbstractClient {
 
-	private XMLEditor xml = new XMLEditor("/home/pi/FYP/apache-tomcat-7.0.35/webapps/assets/osmplayer/playlist.xml"); 
+	private XMLEditor xml = new XMLEditor("/home/pi/FYP/apache-tomcat-7.0.35/webapps/assets/osmplayer/playlist.xml", "/home/pi/FYP/apache-tomcat-7.0.35/webapps"); 
 	
 	@Override
 	public void onStartup() {}
