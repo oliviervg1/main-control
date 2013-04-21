@@ -19,14 +19,12 @@ import org.jdom2.output.XMLOutputter;
 public class XMLEditor {
 	
 	private String file;
-	private String baseDir;
 	private SAXBuilder builder;
 	private XMLOutputter xmlOutput;
 	private Document doc;
 
-	public XMLEditor(String file, String uploadDir) {
+	public XMLEditor(String file) {
 		this.file = file;
-		this.baseDir = uploadDir;
 		builder = new SAXBuilder();
 		xmlOutput = new XMLOutputter();
 		xmlOutput.setFormat(Format.getPrettyFormat());
@@ -96,7 +94,7 @@ public class XMLEditor {
 		outputXML();
 	}
 	
-	public void removeTrack(String id) {
+	public URL removeTrack(String id) {
 		loadXML();
 		Element rootNode = doc.getRootElement();
 		Namespace ns = rootNode.getNamespace();
@@ -114,14 +112,9 @@ public class XMLEditor {
 			}
 		}
 		
-		// Check if the element is hosted locally
+		URL filePath = null;
 		try {
-			URL filePath = new URL(elementToRemove.getChild("location", ns).getValue());
-			// TODO Make this better!
-			File fileToRemove = new File(baseDir + filePath.getPath());
-			if (fileToRemove.isFile()) {
-				fileToRemove.delete();
-			}
+			filePath = new URL(elementToRemove.getChild("location", ns).getValue());
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -129,5 +122,7 @@ public class XMLEditor {
 			
 		trackList.removeContent(elementToRemove);
 		outputXML();
+		
+		return filePath;
 	}
 }

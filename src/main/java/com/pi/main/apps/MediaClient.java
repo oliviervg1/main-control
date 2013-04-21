@@ -1,6 +1,7 @@
 package com.pi.main.apps;
 
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 
 import com.pi.main.apps.ressources.XMLEditor;
@@ -9,7 +10,7 @@ import automation.api.AbstractClient;
 
 public class MediaClient extends AbstractClient {
 
-	private XMLEditor xml = new XMLEditor("/home/pi/FYP/apache-tomcat-7.0.35/webapps/assets/osmplayer/playlist.xml", "/home/pi/FYP/apache-tomcat-7.0.35/webapps"); 
+	private XMLEditor xml = new XMLEditor("/home/pi/FYP/apache-tomcat-7.0.35/webapps/assets/osmplayer/playlist.xml"); 
 	
 	@Override
 	public void onStartup() {}
@@ -36,7 +37,11 @@ public class MediaClient extends AbstractClient {
 	}
 	
 	public void removeTrack(String id) {
-		xml.removeTrack(id);
+		URL locationToRemove = xml.removeTrack(id);
+		File fileToRemove = new File("/home/pi/FYP/apache-tomcat-7.0.35/webapps" + locationToRemove.getPath());
+		if (fileToRemove.isFile()) {
+			fileToRemove.delete();
+		}
 	}
 	
 	@Override
