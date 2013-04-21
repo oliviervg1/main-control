@@ -62,6 +62,21 @@ public class XMLEditor {
 		return trackNames;
 	}
 	
+	public String getTrackLocation(String trackId) {
+		loadXML();
+		Element rootNode = doc.getRootElement();
+		Namespace ns = rootNode.getNamespace();
+		Element trackList = rootNode.getChild("trackList", ns);
+		
+		for (Element track : trackList.getChildren()) {
+			if (trackId == track.getAttributeValue("id")) {
+				return track.getChild("location", ns).getValue();
+			}
+		}
+		
+		return null;
+	}
+	
 	public void addTrack(String title, String location, String type) {
 		loadXML();
 		Element rootNode = doc.getRootElement();

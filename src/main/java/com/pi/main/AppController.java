@@ -1,7 +1,6 @@
 package com.pi.main;
 
 import java.io.File;
-import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,7 +23,6 @@ public class AppController {
 	
 	private AppManager appManager = new AppManager();
 	
-	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/apps/{appURL}", method = RequestMethod.GET)
 	public String displayPage(ModelMap model, @PathVariable String appURL) {
 		ConnectedApp app = appManager.getApp(appURL);
@@ -32,14 +30,28 @@ public class AppController {
 		model.addAttribute("pageDetails", app.getDescription());
 		model.addAttribute("uploadItem", new UploadItem());
 		try {
-			model.addAttribute("appModels", (ArrayList<String>) app.getClient().invokeMethod("getModels"));
+			model.addAttribute("appModels", app.getClient().invokeMethod("getModels"));
 		} catch (Exception e) {
 			return "redirect:/error";
 		}
 		return "apps/" + appURL;
 	}
 	
-	@RequestMapping(value = "/apps/{appURL}/{webMethod}", method = RequestMethod.GET)
+	@RequestMapping(value = "/apps/{appURL}/{subPage}", method = RequestMethod.GET)
+	public String displaySubPage(ModelMap model, @PathVariable String appURL, @PathVariable String subPage) {
+		ConnectedApp app = appManager.getApp(appURL);
+		model.addAttribute("pageName", app.getPageName());
+		model.addAttribute("pageDetails", app.getDescription());
+		model.addAttribute("uploadItem", new UploadItem());
+		try {
+			model.addAttribute("appModels", app.getClient().invokeMethod("getModels"));
+		} catch (Exception e) {
+			return "redirect:/error";
+		}
+		return "apps/" + subPage;
+	}
+	
+	@RequestMapping(value = "/apps/{appURL}/webMethod/{webMethod}", method = RequestMethod.GET)
 	public String invokeWebMethod(ModelMap model, @PathVariable String appURL, @PathVariable String webMethod,
 					@RequestParam(value="p", required=false) Object[] parameters) {
 		

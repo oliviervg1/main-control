@@ -24,6 +24,13 @@ public class MediaClient extends AbstractClient {
 		return "Media app: coming soon!";
 	}
 	
+	public void playTrack(String id) throws Exception {
+		Object parameters[] = {xml.getTrackLocation(id)};
+		if (isDeviceAvailable()) {
+			device.invokeMethod("playTrack", parameters);
+		}
+	}
+	
 	public void addTrack(String title, String location, String type) {
 		xml.addTrack(title, location, type);
 	}

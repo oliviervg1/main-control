@@ -3,22 +3,18 @@
 
 <script type="text/javascript">
   $(function() {
-    $("#osmAudio").osmplayer({
-      file: '/media/music/test.mp3',
-      width: '100%',
-      showController: 'true',
-      controllerOnly: 'true'
-    });
-  });
-</script>
-
-<script type="text/javascript">
-  $(function() {
     $("#osmVideo").osmplayer({
       playlist: '/assets/osmplayer/playlist.xml',
       width: '100%',
       height: '600px'
     });
+    
+    $("#osmAudio").osmplayer({
+        file: '/media/music/test.mp3',
+        width: '100%',
+        showController: 'true',
+        controllerOnly: 'true'
+      });
   });
 </script>
 
@@ -27,9 +23,7 @@
     e.preventDefault();
     $(this).tab('show');
   });
-</script>
-
-<script type="text/javascript">
+  
   $('#videoTabs a').click(function (e) {
     e.preventDefault();
     $(this).tab('show');
@@ -38,7 +32,7 @@
 
 <script type="text/javascript">
 	function addVideo() {
-		var video = 'media/addTrack?p=' + getTitle() + '&p=' + getUrl() + '&p=' + getType();
+		var video = 'media/webMethod/addTrack?p=' + getTitle() + '&p=' + getUrl() + '&p=' + getType();
 		window.location.href = video;
 		return false;
 	};
@@ -61,26 +55,57 @@
 	};
 </script>
 
+
 <ul id="mediaTabs" class="nav nav-tabs">
-	<li class="active"><a href="#audio" data-toggle="tab">Audio</a></li>
-    <li><a href="#video" data-toggle="tab">Video</a></li>
+	<li class="active"><a href="#video" data-toggle="tab">Video</a></li>
+    <li><a href="#audio" data-toggle="tab">Audio</a></li>
 </ul>
             
 <div id="mediaTabsContent" class="tab-content">
-	<div class="tab-pane fade in active" id="audio">
-    	<h1 class="lead">Audio Test</h1>
-		<div id="osmAudio"></div>
-	</div>
-   	<div class="tab-pane fade" id="video">
+	
+	<!-- Video Player -->
+	<div class="tab-pane fade active in" id="video">
+
     	<h1 class="lead">Video player</h1>
 		<div id="osmVideo"></div>
 		
 		<div>
 			<!-- Button to trigger modals -->
-			<div class="row-fluid">
-				<div class="btn-group btn-centered pull-right">	
-					<a href="#addVideo" role="button" class="btn btn-large" data-toggle="modal">Add a video to playlist</a>
-					<a href="#deleteVideo" role="button" class="btn btn-danger btn-large" data-toggle="modal">Remove a video from playlist</a>
+			<div class="row-fluid btn-centered">
+				<div class="pull-left">
+					<a href="#playVideo" role="button" class="btn" data-toggle="modal">Play a video on remote device</a>
+				</div>
+				<div class="btn-group pull-right">	
+					<a href="#addVideo" role="button" class="btn" data-toggle="modal">Add a video to playlist</a>
+					<a href="#deleteVideo" role="button" class="btn btn-danger" data-toggle="modal">Remove a video from playlist</a>
+				</div>
+			</div>
+			
+			<div id="playVideo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+				<div class="modal-header">
+			    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			    	<h3 id="ModalLabel">Which video would you like to watch?</h3>
+			  	</div>
+			  	<div class="modal-body">
+			  		<table class="table table-hover">
+					  <thead>
+					    <tr>
+					      <th>#</th>
+					      <th>Title</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <c:forEach var="track" items="${appModels}" varStatus="loop">
+					    	<tr>
+					    		<td>${loop.index}</td>
+								<td><a href="media/webMethod/playTrack?p=${track}">${track}</a></td>
+							</tr>
+						</c:forEach>
+					  </tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 				</div>
 			</div>
 			
@@ -90,8 +115,8 @@
 			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 			    <h3 id="ModalLabel">Which video are you looking to add?</h3>
 			  </div>
-			  <div class="modal-body">
-			     
+			  
+			  <div class="modal-body">   
 			     <ul id="videoTabs" class="nav nav-tabs">
 					<li class="active"><a href="#external" data-toggle="tab">External content</a></li>
 				    <li><a href="#upload" data-toggle="tab">Upload video</a></li>
@@ -190,7 +215,7 @@
 				    <c:forEach var="track" items="${appModels}" varStatus="loop">
 				    	<tr>
 				    		<td>${loop.index}</td>
-							<td><a href="media/removeTrack?p=${track}">${track}</a></td>
+							<td><a href="media/webMethod/removeTrack?p=${track}">${track}</a></td>
 						</tr>
 					</c:forEach>
 				  </tbody>
@@ -201,5 +226,11 @@
 			  </div>
 			</div>
 		</div>
+	</div>
+	
+	<!-- Audio Player -->
+	<div class="tab-pane fade" id="audio">
+    	<h1 class="lead">Audio player</h1>
+		<div id="osmAudio"></div>
 	</div>
 </div>

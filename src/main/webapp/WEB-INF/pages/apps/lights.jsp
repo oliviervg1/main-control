@@ -27,8 +27,8 @@ $('#state').ready(function() {
 	<div class="span12">
 		<div class="btn-centered">
 			<div class="btn-group">
-				<a class="btn btn-large no-underline" href="lights/turnOn">Turn On</a>
-			  	<a class="btn btn-large no-underline" href="lights/turnOff">Turn Off</a>
+				<a class="btn btn-large no-underline" href="lights/webMethod/turnOn">Turn On</a>
+			  	<a class="btn btn-large no-underline" href="lights/webMethod/turnOff">Turn Off</a>
 			</div>
 		</div>
 	</div>
