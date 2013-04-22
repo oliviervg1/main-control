@@ -25,6 +25,16 @@ public class MediaClient extends AbstractClient {
 		return "Media app: coming soon!";
 	}
 	
+	@Override
+	public void uploadFile(String fileName, File file) {
+		xml.addTrack(fileName, "http://www.stuart-holland.com:8080/uploads/" + file.getName(), "HTML5");
+	}
+	
+	@Override
+	public ArrayList<String> getModels() {
+		return xml.getTrackList();
+	}
+	
 	public void playTrack(String id) throws Exception {
 		Object parameters[] = {xml.getTrackLocation(id)};
 		if (isDeviceAvailable()) {
@@ -42,15 +52,5 @@ public class MediaClient extends AbstractClient {
 		if (fileToRemove.isFile()) {
 			fileToRemove.delete();
 		}
-	}
-	
-	@Override
-	public void uploadFile(String fileName, File file) {
-		xml.addTrack(fileName, "http://www.stuart-holland.com:8080/uploads/" + file.getName(), "HTML5");
-	}
-	
-	@Override
-	public ArrayList<String> getModels() {
-		return xml.getTrackList();
 	}
 }

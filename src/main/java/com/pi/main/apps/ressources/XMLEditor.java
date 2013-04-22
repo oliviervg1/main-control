@@ -112,9 +112,9 @@ public class XMLEditor {
 			}
 		}
 		
-		URL filePath = null;
+		URL filepathToDelete = null;
 		try {
-			filePath = new URL(elementToRemove.getChild("location", ns).getValue());
+			filepathToDelete = new URL(elementToRemove.getChild("location", ns).getValue());
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -123,6 +123,6 @@ public class XMLEditor {
 		trackList.removeContent(elementToRemove);
 		outputXML();
 		
-		return filePath;
+		return filepathToDelete;
 	}
 }
