@@ -46,7 +46,7 @@ public class AppController {
 		try {
 			model.addAttribute("appModels", app.getClient().invokeMethod("getModels"));
 		} catch (Exception e) {
-			return "redirect:/error";
+ 			return "redirect:/error";
 		}
 		return "apps/" + subPage;
 	}

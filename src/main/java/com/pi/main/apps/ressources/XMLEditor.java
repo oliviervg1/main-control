@@ -71,8 +71,8 @@ public class XMLEditor {
 		Element trackList = rootNode.getChild("trackList", ns);
 		
 		for (Element track : trackList.getChildren()) {
-			if (trackId == track.getAttributeValue("id")) {
-				return track.getChild("location", ns).getValue();
+			if (track.getAttribute("id").getValue().equalsIgnoreCase(trackId)) {
+				return track.getChild("location", ns).getText();
 			}
 		}
 		
