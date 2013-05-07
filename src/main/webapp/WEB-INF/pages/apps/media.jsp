@@ -5,8 +5,7 @@
   $(function() {
     $("#osmVideo").osmplayer({
       playlist: '/assets/osmplayer/playlist.xml',
-      width: '100%',
-      height: '600px'
+      width: '100%'
     });
     
     $("#osmAudio").osmplayer({
@@ -55,32 +54,30 @@
 	};
 </script>
 
-
-<ul id="mediaTabs" class="nav nav-tabs">
-	<li class="active"><a href="#video" data-toggle="tab">Video</a></li>
-    <li><a href="#audio" data-toggle="tab">Audio</a></li>
-</ul>
-            
-<div id="mediaTabsContent" class="tab-content">
-	
-	<!-- Video Player -->
-	<div class="tab-pane fade active in" id="video">
-
-    	<h1 class="lead">Video player</h1>
-		<div id="osmVideo"></div>
+<!--=============================================================-->
+<section class="row-fluid">
+	<ul id="mediaTabs" class="nav nav-tabs">
+		<li class="active"><a href="#video" data-toggle="tab">Video</a></li>
+	    <li><a href="#audio" data-toggle="tab">Audio</a></li>
+	</ul>
+	            
+	<div id="mediaTabsContent" class="tab-content">
 		
-		<div>
-			<!-- Button to trigger modals -->
-			<div class="row-fluid btn-centered">
-				<div class="pull-left">
-					<a href="#playVideo" role="button" class="btn" data-toggle="modal">Play a video on remote device</a>
-				</div>
-				<div class="btn-group pull-right">	
-					<a href="#addVideo" role="button" class="btn" data-toggle="modal">Add a video to playlist</a>
-					<a href="#deleteVideo" role="button" class="btn btn-danger" data-toggle="modal">Remove a video from playlist</a>
-				</div>
-			</div>
+		<!-- Video Player -->
+		<div class="tab-pane fade active in" id="video">
+	
+	    	<h1 class="lead">Video player</h1>
+			<div id="osmVideo"></div>
 			
+			<!-- Button to trigger modals -->
+			<div class="pull-left">
+				<a href="#playVideo" role="button" class="btn" data-toggle="modal">Play a video on remote device</a>
+			</div>
+			<div class="btn-group pull-right">	
+				<a href="#addVideo" role="button" class="btn" data-toggle="modal">Add a video to playlist</a>
+				<a href="#deleteVideo" role="button" class="btn btn-danger" data-toggle="modal">Remove a video from playlist</a>
+			</div>
+				
 			<div id="playVideo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
 				<div class="modal-header">
 			    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -108,14 +105,14 @@
 					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 				</div>
 			</div>
-			
+				
 			<!-- Add Video -->
 			<div id="addVideo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
 			  <div class="modal-header">
 			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 			    <h3 id="ModalLabel">Which video are you looking to add?</h3>
 			  </div>
-			  
+				  
 			  <div class="modal-body">   
 			     <ul id="videoTabs" class="nav nav-tabs">
 					<li class="active"><a href="#external" data-toggle="tab">External content</a></li>
@@ -135,7 +132,7 @@
 						    		<input type="text" id="videoTitle" placeholder="Type title here...">
 						    	</div>
 						    </div>
-						    
+							    
 						    <div class="control-group">
 						    	<label class="control-label" for="videoType">Type</label>
 						    	<div class="controls" id="videoType">
@@ -150,7 +147,7 @@
 									</label>
 								</div>
 							</div>
-								
+									
 							<div class="control-group">
 							    <label class="control-label" for="videoUrl">URL</label>
 							    <div class="controls">
@@ -166,26 +163,26 @@
 						  </fieldset>
 						</form>
 					</div>
-				
+					
 					<div class="tab-pane fade" id="upload">
 				    	<form:form class="form-horizontal" modelAttribute="uploadItem" action="media/uploadFile" method="post" enctype="multipart/form-data">
 				            <fieldset>
 				                <legend>Upload fields:</legend>
-				 
+					 
 				                <div class="control-group">
 				                    <form:label class="control-label" for="name" path="name">Title</form:label>
 				                    <div class="controls">
-				                    	<form:input path="name" placeholder="Type title here..."/>
+					                   	<form:input path="name" placeholder="Type title here..."/>
 				                    </div>
 				                </div>
-				 
+					 
 				                <div class="control-group">
 				                    <form:label class="control-label" for="fileData" path="fileData">File</form:label>
 				                    <div class="controls">
 				                   		<form:input path="fileData" type="file"/>
 				                   	</div>
 				                </div>
-				 
+					 
 				                <div class="modal-footer">
 						    		<button aria-hidden="true" type="submit" class="btn btn-primary">Upload video</button>
 								    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -196,7 +193,7 @@
 				</div>
 			  </div>
 			</div>
-			 
+				 
 			<!-- Delete Video -->
 			<div id="deleteVideo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
 			  <div class="modal-header">
@@ -226,11 +223,11 @@
 			  </div>
 			</div>
 		</div>
+		
+		<!-- Audio Player -->
+		<div class="tab-pane fade" id="audio">
+	    	<h1 class="lead">Audio player</h1>
+			<div id="osmAudio"></div>
+		</div>
 	</div>
-	
-	<!-- Audio Player -->
-	<div class="tab-pane fade" id="audio">
-    	<h1 class="lead">Audio player</h1>
-		<div id="osmAudio"></div>
-	</div>
-</div>
+</section>

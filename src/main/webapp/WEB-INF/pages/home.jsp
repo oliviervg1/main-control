@@ -25,6 +25,7 @@
 		</script>	
 		
 		<c:if test="${loop.index % 4 eq 0}">
+			<div class="span12">
 			<ul class="thumbnails">
 		</c:if>	
 		
@@ -41,11 +42,14 @@
 		<c:choose>
 			<c:when test="${loop.index % 4 eq 3}">
 				</ul>
+				</div>
 			</c:when>
 			<c:when test="${loop.index + 1 eq fn:length(appManager.appList)}">
 				</ul>
+				</div>
 			</c:when>
 		</c:choose>
 	</c:forEach>
+	</div>
 </div>
 	

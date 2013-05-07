@@ -16,7 +16,7 @@ public class MediaApp extends AbstractApp {
 	
 	@Override
 	public void onStartup() {
-		connectToRemoteDevice("http://192.168.0.4:8080/media-companion-1.0.0/MediaPlayer?wsdl", new QName("http://media.pi.com/", "MediaPlayerService"));
+		connectToRemoteDevice("http://192.168.0.234:8080/media-companion-1.0.0/MediaPlayer?wsdl", new QName("http://media.pi.com/", "MediaPlayerService"));
 	}
 	
 	@Override
