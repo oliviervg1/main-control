@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.pi.main</groupId>
+	<groupId>com.pi.automation</groupId>
 	<artifactId>MainController</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<name>Home Automation Web Controller</name>
+	<version>1.0.0</version>
+	<name>Main Controller</name>
 	<url>http://maven.apache.org</url>
 
 	<!-- BUILD PROPERTIES -->
