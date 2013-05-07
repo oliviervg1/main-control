@@ -1,20 +1,20 @@
 package com.pi.main.ressources;
 
-import automation.api.interfaces.ConnectedClient;
+import automation.api.interfaces.ConnectedApp;
 
-public class ConnectedApp {
+public class App {
 	private final String name;
 	private final String pageName;
 	private final String URL;
 	private final String description;
-	private final ConnectedClient client;
+	private final ConnectedApp app;
 	
 	public static class Builder {
 		private String name;
 		private String pageName;
 		private String URL;
 		private String description;
-		private ConnectedClient client;
+		private ConnectedApp app;
 		
 		//builder methods for setting property
         public Builder name(String name) {
@@ -37,22 +37,22 @@ public class ConnectedApp {
         	return this; 
         }
         
-        public Builder client(ConnectedClient client) {
-        	this.client = client; 
+        public Builder app(ConnectedApp app) {
+        	this.app = app; 
         	return this; 
         }
       
         //return fully built object
-        public ConnectedApp build() {
-            return new ConnectedApp(this);
+        public App build() {
+            return new App(this);
         }
 	}
 	
-	private ConnectedApp(Builder builder) {
+	private App(Builder builder) {
 		this.name = builder.name;
 		this.pageName = builder.pageName;
 		this.URL = builder.URL;
-		this.client = builder.client;
+		this.app = builder.app;
 		this.description = builder.description;
 	}
 	
@@ -72,7 +72,7 @@ public class ConnectedApp {
 		return description;
 	}
 
-	public ConnectedClient getClient() {
-		return client;
+	public ConnectedApp getApp() {
+		return app;
 	}
 }

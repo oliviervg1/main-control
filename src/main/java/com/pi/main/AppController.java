@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import automation.api.interfaces.ConnectedClient;
+import automation.api.interfaces.ConnectedApp;
 
 import com.pi.main.ressources.AppManager;
-import com.pi.main.ressources.ConnectedApp;
+import com.pi.main.ressources.App;
 import com.pi.main.ressources.UploadItem;
 
 @Controller
@@ -25,12 +25,12 @@ public class AppController {
 	
 	@RequestMapping(value = "/apps/{appURL}", method = RequestMethod.GET)
 	public String displayPage(ModelMap model, @PathVariable String appURL) {
-		ConnectedApp app = appManager.getApp(appURL);
+		App app = appManager.getApp(appURL);
 		model.addAttribute("pageName", app.getPageName());
 		model.addAttribute("pageDetails", app.getDescription());
 		model.addAttribute("uploadItem", new UploadItem());
 		try {
-			model.addAttribute("appModels", app.getClient().invokeMethod("getModels"));
+			model.addAttribute("appModels", app.getApp().invokeMethod("getModels"));
 		} catch (Exception e) {
 			return "redirect:/error";
 		}
@@ -39,12 +39,12 @@ public class AppController {
 	
 	@RequestMapping(value = "/apps/{appURL}/{subPage}", method = RequestMethod.GET)
 	public String displaySubPage(ModelMap model, @PathVariable String appURL, @PathVariable String subPage) {
-		ConnectedApp app = appManager.getApp(appURL);
+		App app = appManager.getApp(appURL);
 		model.addAttribute("pageName", app.getPageName());
 		model.addAttribute("pageDetails", app.getDescription());
 		model.addAttribute("uploadItem", new UploadItem());
 		try {
-			model.addAttribute("appModels", app.getClient().invokeMethod("getModels"));
+			model.addAttribute("appModels", app.getApp().invokeMethod("getModels"));
 		} catch (Exception e) {
  			return "redirect:/error";
 		}
@@ -55,12 +55,11 @@ public class AppController {
 	public String invokeWebMethod(ModelMap model, @PathVariable String appURL, @PathVariable String webMethod,
 					@RequestParam(value="p", required=false) Object[] parameters) {
 		
-		ConnectedClient client = appManager.getApp(appURL).getClient();		
+		ConnectedApp client = appManager.getApp(appURL).getApp();		
 		try {
 			if (parameters == null) {
 				client.invokeMethod(webMethod);
-			}
-			else {
+			} else {
 				client.invokeMethod(webMethod,parameters);
 			}
 		} catch (Exception e) {
@@ -74,7 +73,7 @@ public class AppController {
 		if (result.hasErrors()) {
 	    	return "redirect:/error";
 	    }
-		ConnectedClient client = appManager.getApp(appURL).getClient();
+		ConnectedApp client = appManager.getApp(appURL).getApp();
 		File file = new File("/home/pi/FYP/apache-tomcat-7.0.35/webapps/uploads/" + uploadItem.getFileData().getOriginalFilename());
 		try {
 			uploadItem.getFileData().transferTo(file);
@@ -88,21 +87,21 @@ public class AppController {
 
 	@RequestMapping(value = "/apps/{appURL}/getState", method = RequestMethod.GET)
 	public @ResponseBody String getState(@PathVariable String appURL) {
-		ConnectedClient client = appManager.getApp(appURL).getClient();
+		ConnectedApp client = appManager.getApp(appURL).getApp();
 		try {
 			return (String) client.invokeMethod("getState");
 		} catch (Exception e) {
-			return "Error";
+			return "Error Occured";
 		}
 	}
 	
 	@RequestMapping(value = "/apps/{appURL}/homeTile", method = RequestMethod.GET)
 	public @ResponseBody String homeTile(@PathVariable String appURL) {
-		ConnectedClient client = appManager.getApp(appURL).getClient();
+		ConnectedApp client = appManager.getApp(appURL).getApp();
 		try {
 			return (String) client.invokeMethod("homeTile");
 		} catch (Exception e) {
-			return "Error";
+			return "Error Occured";
 		}
 	}
 }

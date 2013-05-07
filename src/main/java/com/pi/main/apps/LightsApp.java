@@ -5,29 +5,29 @@ import java.util.ArrayList;
 
 import javax.xml.namespace.QName;
 
-import automation.api.AbstractClient;
+import automation.api.AbstractApp;
 
-public class LightingClient extends AbstractClient{
+public class LightsApp extends AbstractApp{
 		
 	@Override
 	public void onStartup() {
-		connectToRemoteDevice("http://192.168.0.9:8080/relay-control-1.0.0/SocketController?wsdl", new QName("http://relay.pi.com/", "SocketControllerService"));
+		connectToRemoteDevice("http://192.168.0.9:8080/lights-companion-1.0.0/SocketController?wsdl", new QName("http://relay.pi.com/", "SocketControllerService"));
 	}
 	
-	public void turnOn() throws Exception {
+	public void turnOn() throws NoSuchMethodException  {
 		if (isDeviceAvailable()) {
 			device.invokeMethod("powerOn");
 		}
 	}
 	
-	public void turnOff() throws Exception {
+	public void turnOff() throws NoSuchMethodException {
 		if (isDeviceAvailable()) {
 			device.invokeMethod("powerOff");
 		}
 	}
 	
 	@Override
-	public String getState() throws Exception {
+	public String getState() throws NoSuchMethodException {
 		String state = "Device unavailable";
 		if (isDeviceAvailable()) {
 			state = "Power is currently " + (String) device.invokeMethod("getState");
@@ -36,7 +36,7 @@ public class LightingClient extends AbstractClient{
 	}
 	
 	@Override
-	public String homeTile() throws Exception {
+	public String homeTile() throws NoSuchMethodException {
 		String state = "Device unavailable";
 		if (isDeviceAvailable()) {
 			state = "Power is currently " + (String) device.invokeMethod("getState");
@@ -45,11 +45,10 @@ public class LightingClient extends AbstractClient{
 	}
 
 	@Override
-	public ArrayList<String> getModels() throws Exception {
+	public ArrayList<String> getModels() {
 		return new ArrayList<String>();
 	}
 
 	@Override
-	public void uploadFile(String fileName, File fileData)
-			throws Exception {}
+	public void uploadFile(String fileName, File fileData) {}
 }

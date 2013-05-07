@@ -2,61 +2,61 @@ package com.pi.main.ressources;
 
 import java.util.ArrayList;
 
-import com.pi.main.apps.DummyClient;
-import com.pi.main.apps.LightingClient;
-import com.pi.main.apps.MediaClient;
+import com.pi.main.apps.DummyApp;
+import com.pi.main.apps.LightsApp;
+import com.pi.main.apps.MediaApp;
 
 public class AppManager {
 	
 	private static String selectedURL;
-	private static ArrayList<ConnectedApp> appList;
+	private static ArrayList<App> appList;
 	
 	public AppManager() {
-		appList = new ArrayList<ConnectedApp>();
+		appList = new ArrayList<App>();
 		selectedURL = null;
 		
 		//TODO Implement a proper add app function
-		addApp(new ConnectedApp.Builder()
+		addApp(new App.Builder()
 			.name("Lights")
 			.pageName("Let there be lights!")
 			.URL("lights")
 			.description("The 'Lights' application allows you to remotely monitor the energy consumption of a power socket. You can also turn it on or off!")
-			.client(new LightingClient())
+			.app(new LightsApp())
 			.build());
 		
-		addApp(new ConnectedApp.Builder()
+		addApp(new App.Builder()
 			.name("Media")
 			.pageName("Care to listen to some music?")
 			.URL("media")
 			.description("The 'Media' application allows you to listen to music or watch videos anywhere in your house!")
-			.client(new MediaClient())
+			.app(new MediaApp())
 			.build());
 		
 		// DUMMY APPS FOR TESTING PURPOSES
-		addApp(new ConnectedApp.Builder()
+		addApp(new App.Builder()
 			.name("Dummy")
 			.pageName("This is a DUMMY APP!")
 			.URL("dummy")
 			.description("LOLOL")
-			.client(new DummyClient())
+			.app(new DummyApp())
 			.build());
 	}
 	
-	public ArrayList<ConnectedApp> getAppList() {
+	public ArrayList<App> getAppList() {
 		return appList;
 	}
 	
-	public void setAppList(ArrayList<ConnectedApp> appList) {
+	public void setAppList(ArrayList<App> appList) {
 		AppManager.appList = appList;
 	}
 	
-	public void addApp(ConnectedApp app) {
+	public void addApp(App app) {
 		if (appList.contains(app) == false) {
 			appList.add(app);
 		}
 	}
 	
-	public void removeApp(ConnectedApp app) {
+	public void removeApp(App app) {
 		appList.remove(app);
 	}
 
@@ -68,8 +68,8 @@ public class AppManager {
 		AppManager.selectedURL = selectedURL;
 	}
 	
-	public ConnectedApp getApp(String appURL) {
-		for (ConnectedApp app : appList) {
+	public App getApp(String appURL) {
+		for (App app : appList) {
 			if (app.getURL().equalsIgnoreCase(appURL)) {
 				return app;
 			}

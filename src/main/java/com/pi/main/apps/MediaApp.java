@@ -8,19 +8,19 @@ import javax.xml.namespace.QName;
 
 import com.pi.main.apps.ressources.XMLEditor;
 
-import automation.api.AbstractClient;
+import automation.api.AbstractApp;
 
-public class MediaClient extends AbstractClient {
+public class MediaApp extends AbstractApp {
 
 	private XMLEditor xml = new XMLEditor("/home/pi/FYP/apache-tomcat-7.0.35/webapps/assets/osmplayer/playlist.xml"); 
 	
 	@Override
 	public void onStartup() {
-		connectToRemoteDevice("http://192.168.0.4:8080/media-control-1.0.0/MediaPlayer?wsdl", new QName("http://media.pi.com/", "MediaPlayerService"));
+		connectToRemoteDevice("http://192.168.0.4:8080/media-companion-1.0.0/MediaPlayer?wsdl", new QName("http://media.pi.com/", "MediaPlayerService"));
 	}
 	
 	@Override
-	public String getState() throws Exception {
+	public String getState() throws NoSuchMethodException {
 		if (isDeviceAvailable()) {
 			return (String) device.invokeMethod("getPlayingFile");
 		} else {
@@ -29,7 +29,7 @@ public class MediaClient extends AbstractClient {
 	}
 
 	@Override
-	public String homeTile() throws Exception {
+	public String homeTile() throws NoSuchMethodException {
 		if (isDeviceAvailable()) {
 			return (String) device.invokeMethod("getPlayingFile");
 		} else {
@@ -59,7 +59,7 @@ public class MediaClient extends AbstractClient {
 		}
 	}
 	
-	public void playTrack(String id) throws Exception {
+	public void playTrack(String id) throws NoSuchMethodException {
 		String fileToPlay = xml.getTrackLocation(id);
 		fileToPlay = fileToPlay.replace(" ", "%20");
 		Object parameters[] = {fileToPlay};
@@ -68,20 +68,20 @@ public class MediaClient extends AbstractClient {
 		}
 	}
 	
-	public void togglePlay() throws Exception {
+	public void togglePlay() throws NoSuchMethodException {
 		if (isDeviceAvailable()) {
 			device.invokeMethod("togglePlay");
 		}
 	}
 	
-	public void setVolume(float volume) throws Exception {
+	public void setVolume(float volume) throws NoSuchMethodException {
 		Object parameters[] = {volume};
 		if (isDeviceAvailable()) {
 			device.invokeMethod("setVolume", parameters);
 		}
 	}
 	
-	public float getVolume() throws Exception {
+	public float getVolume() throws NoSuchMethodException {
 		if (isDeviceAvailable()) {
 			return (float) device.invokeMethod("getVolume");
 		} else {
@@ -89,28 +89,28 @@ public class MediaClient extends AbstractClient {
 		}
 	}
 	
-	public void setTimePosition(long seconds) throws Exception {
+	public void setTimePosition(long seconds) throws NoSuchMethodException {
 		Object parameters[] = {seconds};
 		if (isDeviceAvailable()) {
 			device.invokeMethod("setTimePosition", parameters);
 		}
 	}
 	
-	public long getTimePosition() throws Exception {
+	public long getTimePosition() throws NoSuchMethodException {
 		if (isDeviceAvailable()) {
 			return (long) device.invokeMethod("getTimePosition");
 		}
 		return 0;
 	}
 	
-	public long getTotalTime() throws Exception {
+	public long getTotalTime() throws NoSuchMethodException {
 		if (isDeviceAvailable()) {
 			return (long) device.invokeMethod("getTotalTime");
 		}
 		return 0;
 	}
 	
-	public void close() throws Exception {
+	public void close() throws NoSuchMethodException {
 		if (isDeviceAvailable()) {
 			device.invokeMethod("close");
 		}

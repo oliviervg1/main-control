@@ -4,7 +4,7 @@ import java.io.File;
 
 import javax.xml.namespace.QName;
 
-public interface ConnectedClient {
+public interface ConnectedApp {
 	void uploadFile(String fileName, File fileData) throws Exception;
 	void connectToRemoteDevice(String WS_URL, QName qname);
 	boolean isDeviceAvailable();

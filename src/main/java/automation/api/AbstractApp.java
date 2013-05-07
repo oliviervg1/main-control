@@ -9,10 +9,10 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import javax.xml.ws.WebServiceException;
 
-import automation.api.interfaces.ConnectedClient;
+import automation.api.interfaces.ConnectedApp;
 import automation.api.interfaces.ConnectedDevice;
 
-abstract public class AbstractClient implements ConnectedClient {
+abstract public class AbstractApp implements ConnectedApp {
 
 	protected ConnectedDevice device;
 	protected ArrayList<String> models;
@@ -20,7 +20,7 @@ abstract public class AbstractClient implements ConnectedClient {
 	private QName qname;
 	private Method method;
 
-	public AbstractClient() {
+	public AbstractApp() {
 		device = null;
 		url = null;
 		qname = null;

@@ -3,9 +3,9 @@ package com.pi.main.apps;
 import java.io.File;
 import java.util.ArrayList;
 
-import automation.api.AbstractClient;
+import automation.api.AbstractApp;
 
-public class DummyClient extends AbstractClient {
+public class DummyApp extends AbstractApp {
 
 	private String test = "false";
 	
@@ -13,12 +13,9 @@ public class DummyClient extends AbstractClient {
 	public String homeTile() {
 		if (test.equalsIgnoreCase("true")) {
 	    	test = "false";
-	    }
-
-	    else if (test.equalsIgnoreCase("false")) {
+	    } else if (test.equalsIgnoreCase("false")) {
 	    	test = "true";
 	    }
-
 	    return "Dummy state is " + test;
 	}
 
@@ -31,11 +28,10 @@ public class DummyClient extends AbstractClient {
 	public void onStartup() {}
 
 	@Override
-	public ArrayList<String> getModels() throws Exception {
+	public ArrayList<String> getModels() {
 		return new ArrayList<String>();
 	}
 
 	@Override
-	public void uploadFile(String fileName, File fileData)
-			throws Exception {}
+	public void uploadFile(String fileName, File fileData) {}
 }
