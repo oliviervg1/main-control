@@ -6,17 +6,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class HomepageController {
+public class DashboardController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String redirectToHomepage(ModelMap model) {
-		return "redirect:/home";
+		return "redirect:/dashboard";
 	}
 	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String displayHomepage(ModelMap model) {
 		model.addAttribute("pageName", "Welcome!");
 		model.addAttribute("pageDetails", "Control and monitor your house appliances from a simple and intuitive web interface.");
-		return "home";
+		return "dashboard";
 	}
 }

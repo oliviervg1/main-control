@@ -73,9 +73,28 @@
 
 	<!-- Custom styles -->
 	<style type="text/css">
+    .btn-centered {
+  	  	margin-top: 30px;
+  	  	text-align: center;
+  	}
+	
 	#homeTiles .span4 {
     	margin-right:-10px;
 	}
+	
+	.app-logo { 
+   	  	position: relative; 
+  	  	width: 100%; /* for IE 6 */
+	}
+
+	.app-text { 
+   	  	position: absolute; 
+      	top: 105px;
+      	left: 15px; 
+      	width: 100%;
+      	color: #fff;
+      	text-decoration:none;
+    }
 	</style>
 </head>
 
@@ -108,7 +127,7 @@ jQuery(function() {
 
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li class="active"><a href="/home">Home</a></li>
+						<li class="active"><a href="/dashboard">Apps</a></li>
 						<li><a href="#">About</a></li>
 						<li><a href="#">Contact</a></li>
 					</ul>
@@ -144,7 +163,7 @@ jQuery(function() {
 		<div id="left-panel-content">
 			<ul>
 				<li>
-					<a href="/home"><span class="icon-dashboard"></span>Dashboard</a>
+					<a href="/dashboard"><span class="icon-dashboard"></span>Dashboard</a>
 				</li>
 				<c:forEach var="app" items="${appManager.appList}">
 	    		<li>

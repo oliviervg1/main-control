@@ -8,8 +8,8 @@
         <put-attribute name="body" value="" />
     </definition>
  
-    <definition name="home" extends="base.definition">
-        <put-attribute name="body" value="/WEB-INF/pages/home.jsp" />
+    <definition name="dashboard" extends="base.definition">
+        <put-attribute name="body" value="/WEB-INF/pages/dashboard.jsp" />
     </definition>
     
     <definition name="apps/lights" extends="base.definition">

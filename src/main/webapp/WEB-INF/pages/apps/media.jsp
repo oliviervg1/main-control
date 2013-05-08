@@ -70,12 +70,12 @@
 			<div id="osmVideo"></div>
 			
 			<!-- Button to trigger modals -->
-			<div class="pull-left">
-				<a href="#playVideo" role="button" class="btn" data-toggle="modal">Play a video on remote device</a>
+			<div class="btn-centered pull-left">
+				<a href="#playVideo" role="button" class="btn btn-large" data-toggle="modal">Play a video on remote device</a>
 			</div>
-			<div class="btn-group pull-right">	
-				<a href="#addVideo" role="button" class="btn" data-toggle="modal">Add a video to playlist</a>
-				<a href="#deleteVideo" role="button" class="btn btn-danger" data-toggle="modal">Remove a video from playlist</a>
+			<div class="btn-group btn-centered pull-right">	
+				<a href="#addVideo" role="button" class="btn btn-large" data-toggle="modal">Add a video to playlist</a>
+				<a href="#deleteVideo" role="button" class="btn btn-large btn-danger" data-toggle="modal">Remove a video from playlist</a>
 			</div>
 				
 			<div id="playVideo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">

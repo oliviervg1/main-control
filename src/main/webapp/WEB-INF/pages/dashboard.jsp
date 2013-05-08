@@ -50,6 +50,5 @@
 			</c:when>
 		</c:choose>
 	</c:forEach>
-	</div>
 </div>
 	
