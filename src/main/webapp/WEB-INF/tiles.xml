@@ -9,23 +9,18 @@
     </definition>
  
     <definition name="home" extends="base.definition">
-        <put-attribute name="title" value="Home Automation" />
         <put-attribute name="body" value="/WEB-INF/pages/home.jsp" />
     </definition>
     
     <definition name="apps/lights" extends="base.definition">
-        <put-attribute name="title" value="Lights Application" />
         <put-attribute name="body" value="/WEB-INF/pages/apps/lights.jsp" />
     </definition>
     
     <definition name="apps/media" extends="base.definition">
-        <put-attribute name="title" value="Media Application" />
         <put-attribute name="body" value="/WEB-INF/pages/apps/media.jsp" />
     </definition>
     
     <definition name="apps/dummy" extends="base.definition">
-        <put-attribute name="title" value="Dummy Application" />
         <put-attribute name="body" value="/WEB-INF/pages/apps/dummy.jsp" />
     </definition>
- 
 </tiles-definitions>

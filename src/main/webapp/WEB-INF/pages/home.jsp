@@ -24,12 +24,12 @@
 		});
 		</script>	
 		
-		<c:if test="${loop.index % 4 eq 0}">
+		<c:if test="${loop.index % 3 eq 0}">
 			<div class="span12">
 			<ul class="thumbnails">
 		</c:if>	
 		
-		<li class="span3">
+		<li class="span4">
 		   	<a href="/apps/${app.URL}" class="thumbnail app-logo">
 		      <img src="/img/${app.name}_Logo.png" alt="${app.name}_Logo">
 		      <div class="app-text">
@@ -40,7 +40,7 @@
 		</li>
 		
 		<c:choose>
-			<c:when test="${loop.index % 4 eq 3}">
+			<c:when test="${loop.index % 3 eq 2}">
 				</ul>
 				</div>
 			</c:when>

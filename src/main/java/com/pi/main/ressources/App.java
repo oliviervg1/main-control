@@ -7,6 +7,7 @@ public class App {
 	private final String pageName;
 	private final String URL;
 	private final String description;
+	private final String icon;
 	private final ConnectedApp app;
 	
 	public static class Builder {
@@ -14,6 +15,7 @@ public class App {
 		private String pageName;
 		private String URL;
 		private String description;
+		private String icon;
 		private ConnectedApp app;
 		
 		//builder methods for setting property
@@ -37,6 +39,11 @@ public class App {
         	return this; 
         }
         
+        public Builder icon(String icon) {
+        	this.icon = icon;
+        	return this;
+        }
+        
         public Builder app(ConnectedApp app) {
         	this.app = app; 
         	return this; 
@@ -53,6 +60,7 @@ public class App {
 		this.pageName = builder.pageName;
 		this.URL = builder.URL;
 		this.app = builder.app;
+		this.icon = builder.icon;
 		this.description = builder.description;
 	}
 	
@@ -70,6 +78,10 @@ public class App {
 	
 	public String getDescription() {
 		return description;
+	}
+	
+	public String getIcon() {
+		return icon;
 	}
 
 	public ConnectedApp getApp() {

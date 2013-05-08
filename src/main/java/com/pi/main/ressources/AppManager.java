@@ -21,6 +21,7 @@ public class AppManager {
 			.pageName("Let there be lights!")
 			.URL("lights")
 			.description("The 'Lights' application allows you to remotely monitor the energy consumption of a power socket. You can also turn it on or off!")
+			.icon("icon-lightbulb")
 			.app(new LightsApp())
 			.build());
 		
@@ -29,6 +30,7 @@ public class AppManager {
 			.pageName("Care to listen to some music?")
 			.URL("media")
 			.description("The 'Media' application allows you to listen to music or watch videos anywhere in your house!")
+			.icon("icon-music")
 			.app(new MediaApp())
 			.build());
 		
@@ -38,6 +40,7 @@ public class AppManager {
 			.pageName("This is a DUMMY APP!")
 			.URL("dummy")
 			.description("LOLOL")
+			.icon("icon-circle-blank")
 			.app(new DummyApp())
 			.build());
 	}

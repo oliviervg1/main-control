@@ -70,6 +70,13 @@
 	<script type="text/javascript" src="/assets/osmplayer/templates/default/js/osmplayer.playLoader.default.js"></script>
 	<script type="text/javascript" src="/assets/osmplayer/templates/default/js/osmplayer.playlist.default.js"></script>
 	<script type="text/javascript" src="/assets/osmplayer/templates/default/js/osmplayer.teaser.default.js"></script>
+
+	<!-- Custom styles -->
+	<style type="text/css">
+	#homeTiles .span4 {
+    	margin-right:-10px;
+	}
+	</style>
 </head>
 
 <body>
@@ -77,7 +84,6 @@
 <script>
 //<![CDATA[
 jQuery(function() {
-  var found = false;
   jQuery('#left-panel-content li').each(function() {
     var href = jQuery(this).find('a').attr('href');
     if (href === window.location.pathname) {
@@ -85,9 +91,6 @@ jQuery(function() {
       found = true;
     } 
   });
-  if (!found) {
-	jQuery('.lp-dropdown').addClass('active');
-  }
 });  
 //]]>
 </script>
@@ -122,9 +125,6 @@ jQuery(function() {
 								<li>
 									<a href="#">Profile</a>
 								</li>
-								<li>
-									<a href="#">Settings</a>
-								</li>
 								<li class="divider"></li>
 								<li>
 									<a href="#">Sign Out</a>
@@ -146,15 +146,16 @@ jQuery(function() {
 				<li>
 					<a href="/home"><span class="icon-dashboard"></span>Dashboard</a>
 				</li>
-				<li class="lp-dropdown">
-					<a href="#" class="lp-dropdown-toggle" id="extras-dropdown"><span class="icon-pencil"></span>Apps</a>
-					<ul class="lp-dropdown-menu" data-dropdown-owner="extras-dropdown">
-						<c:forEach var="app" items="${appManager.appList}">
-	    				<li>
-	    					<a tabindex="-1" href="/apps/${app.URL}"><span class="icon-circle-blank"></span>${app.name}</a>
-	    				</li>
-	  					</c:forEach>
-					</ul>
+				<c:forEach var="app" items="${appManager.appList}">
+	    		<li>
+	    			<a href="/apps/${app.URL}"><span class="${app.icon}"></span>${app.name}</a>
+	    		</li>
+	  			</c:forEach>
+	  			<li>
+					<a href="#"><span class="icon-group"></span>Social</a>
+				</li>
+				<li>
+					<a href="#"><span class="icon-cog"></span>Settings</a>
 				</li>
 			</ul>
 		</div>
