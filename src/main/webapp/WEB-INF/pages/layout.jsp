@@ -119,7 +119,7 @@ jQuery(function() {
 	<header class="navbar navbar-fixed-top" id="main-navbar">
 		<div class="navbar-inner">
 			<div class="container">
-				<a class="logo" href="/home"><img alt="automatin_logo" src="/assets/images/af-logo.png"></a>
+				<a class="logo" href="/dashboard"><img alt="automatin_logo" src="/assets/images/af-logo.png"></a>
 
 				<a class="btn nav-button collapsed" data-toggle="collapse" data-target=".nav-collapse">
 					<span class="icon-reorder"></span>
@@ -138,7 +138,7 @@ jQuery(function() {
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle usermenu" data-toggle="dropdown">
 								<img alt="Avatar" src="/assets/images/avatar.png">
-								<span>&nbsp;&nbsp;Admin</span>
+								<span>&nbsp;&nbsp;${loggedUser}</span>
 							</a>
 							<ul class="dropdown-menu">
 								<li>
@@ -146,7 +146,7 @@ jQuery(function() {
 								</li>
 								<li class="divider"></li>
 								<li>
-									<a href="#">Sign Out</a>
+									<a href="<c:url value="/j_spring_security_logout" />" > Sign Out</a>
 								</li>
 							</ul>
 						</li>
@@ -171,10 +171,13 @@ jQuery(function() {
 	    		</li>
 	  			</c:forEach>
 	  			<li>
+					<a href="#"><span class="icon-bullhorn"></span>Voice</a>
+				</li>
+	  			<li>
 					<a href="#"><span class="icon-group"></span>Social</a>
 				</li>
 				<li>
-					<a href="#"><span class="icon-cog"></span>Settings</a>
+					<a href="#"><span class="icon-wrench"></span>Settings</a>
 				</li>
 			</ul>
 		</div>

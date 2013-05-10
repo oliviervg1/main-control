@@ -1,5 +1,7 @@
 package com.pi.main;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,6 +16,10 @@ public class MenuHandler extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
+		Principal principal = request.getUserPrincipal();
+		if (principal != null) {
+			request.setAttribute("loggedUser", principal.getName());
+		}
 		request.setAttribute("appManager", appManager);
 		return super.preHandle(request, response, handler);
 	}

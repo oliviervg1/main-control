@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class DashboardController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String redirectToHomepage(ModelMap model) {
+	public String redirectToDashboard(ModelMap model) {
 		return "redirect:/dashboard";
 	}
 	
