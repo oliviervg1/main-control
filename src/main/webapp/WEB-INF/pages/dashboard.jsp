@@ -34,7 +34,7 @@
 		      <img src="/img/${app.name}_Logo.png" alt="${app.name}_Logo">
 		      <div class="app-text">
 		      	<h3>${app.name}</h3>
-		      	<p id="homeTile${loop.index}">Loading tile...</p>
+		      	<p id="homeTile${loop.index}"><i class="icon-spinner icon-spin"></i>Loading tile...</p>
 		      </div>
 		    </a>
 		</li>
