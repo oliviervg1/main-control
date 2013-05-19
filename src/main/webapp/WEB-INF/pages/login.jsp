@@ -141,13 +141,19 @@
 			-moz-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0;
 			box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0;
 		}
+		
+		.remember-me {
+			color: black;
+			padding-left: 15px; 
+			margin-top: 5px;
+		}
 
 		.signin-container form .btn {
 			line-height: 26px;
 			margin-top: 15px;
 		}
 
-		.signin-container input {
+		.fields input {
 			background: rgba(255, 255, 255, 1);
 			border: solid #dedede;
 			border-width:  0 0 1px 0;
@@ -163,29 +169,30 @@
 			width: 100%;
 		}
 
-		.signin-container input[type=password] {
+		.fields input[type=password] {
 			padding-right: 70px;
 		}
 
-		.signin-container input:nth-child(1) {
+		.fields input:nth-child(1) {
 			-webkit-border-radius: 3px 3px 0 0;
 			-moz-border-radius: 3px 3px 0 0;
 			border-radius: 3px 3px 0 0;
 		}
 
-		.signin-container input:nth-child(2) {
+		.fields input:nth-child(2) {
 			border: none;
 			-webkit-border-radius: 0 0 3px 3px;
 			-moz-border-radius: 0 0 3px 3px;
 			border-radius: 0 0 3px 3px;
 		}
 
-		.signin-container input:focus {
+		.fields input:focus {
 			border-color: #dedede;
 			-webkit-box-shadow: none;
 			-moz-box-shadow: none;
 			box-shadow: none;
 		}
+		
 	</style>
 	
 	<script type="text/javascript">
@@ -215,7 +222,7 @@
 		</a>
 		
 		<c:if test="${not empty error}">
-			<div class="errorblock">
+			<div>
 				Your login attempt was not successful, try again. Caused :
 				${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 			</div>
@@ -226,8 +233,10 @@
 				<div class="fields">
 					<input type="text" name="j_username" placeholder="Username" id="id_username" tabindex="1">
 
-					<input type="password" name="j_password" placeholder="Password" id="id_password" tabindex="2">
+					<input type="password" name="j_password" placeholder="Password" id="id_password" tabindex="2">						
 				</div>
+												
+				<label class="checkbox"><input type="checkbox" name="_spring_security_remember_me" id="j_remember" tabindex="3"/>Remember Me?</label>
 				
 				<button type="submit" value="submit" class="btn btn-primary btn-block" tabindex="4">Sign In</button>
 			</fieldset>

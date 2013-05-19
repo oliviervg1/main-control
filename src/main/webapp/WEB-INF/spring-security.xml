@@ -27,6 +27,7 @@
 		<form-login login-page="/login" default-target-url="/dashboard"
 			authentication-failure-url="/loginfailed" />
 		<logout logout-success-url="/logout" />
+		<remember-me key="myAppKey" token-validity-seconds="864000" />
 	</http>
  
 	<authentication-manager>

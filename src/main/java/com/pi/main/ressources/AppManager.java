@@ -37,9 +37,9 @@ public class AppManager {
 		// DUMMY APPS FOR TESTING PURPOSES
 		addApp(new App.Builder()
 			.name("Dummy")
-			.pageName("This is a DUMMY APP!")
+			.pageName("Danger: test zone")
 			.URL("dummy")
-			.description("LOLOL")
+			.description("This is where I test features before moving them into production.")
 			.icon("icon-circle-blank")
 			.app(new DummyApp())
 			.build());
