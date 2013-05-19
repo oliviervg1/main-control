@@ -143,8 +143,8 @@
 		}
 		
 		.remember-me {
-			color: black;
-			padding-left: 15px; 
+			color: white;
+			margin-left: 65px; 
 			margin-top: 5px;
 		}
 
@@ -236,7 +236,7 @@
 					<input type="password" name="j_password" placeholder="Password" id="id_password" tabindex="2">						
 				</div>
 												
-				<label class="checkbox"><input type="checkbox" name="_spring_security_remember_me" id="j_remember" tabindex="3"/>Remember Me?</label>
+				<label class="checkbox remember-me"><input type="checkbox" name="_spring_security_remember_me" id="j_remember" tabindex="3"/>Remember Me?</label>
 				
 				<button type="submit" value="submit" class="btn btn-primary btn-block" tabindex="4">Sign In</button>
 			</fieldset>
