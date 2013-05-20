@@ -1,6 +1,7 @@
 package com.pi.main;
 
 import java.io.File;
+import java.util.HashMap;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,6 +17,8 @@ import automation.api.interfaces.ConnectedApp;
 
 import com.pi.main.ressources.AppManager;
 import com.pi.main.ressources.App;
+import com.pi.main.ressources.TwitterParameters;
+import com.pi.main.ressources.TwitterStreamFilterHandler;
 import com.pi.main.ressources.UploadItem;
 
 @Controller
@@ -23,6 +26,15 @@ public class AppController {
 	
 	private AppManager appManager = new AppManager();
 	
+	public AppController() {
+		//TODO fix this
+		String[] keywords = {"@AutomatIn"};
+		TwitterParameters.addUser("olivier_vg");
+		TwitterStreamFilterHandler stream = new TwitterStreamFilterHandler(keywords);
+		stream.start();
+	}
+	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/apps/{appURL}", method = RequestMethod.GET)
 	public String displayPage(ModelMap model, @PathVariable String appURL) {
 		App app = appManager.getApp(appURL);
@@ -30,13 +42,17 @@ public class AppController {
 			model.addAttribute("pageName", app.getPageName());
 			model.addAttribute("pageDetails", app.getDescription());
 			model.addAttribute("uploadItem", new UploadItem());
-			model.addAttribute("appModels", app.getApp().invokeMethod("getModels"));
+			HashMap<String, Object> models = (HashMap<String, Object>) app.getApp().invokeMethod("getModels");
+			for (String modelName : models.keySet()) {
+				model.addAttribute(modelName, models.get(modelName));
+			}
 		} catch (Exception e) {
 			return "redirect:/error";
 		}
 		return "apps/" + appURL;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/apps/{appURL}/{subPage}", method = RequestMethod.GET)
 	public String displaySubPage(ModelMap model, @PathVariable String appURL, @PathVariable String subPage) {
 		App app = appManager.getApp(appURL);
@@ -44,8 +60,10 @@ public class AppController {
 			model.addAttribute("pageName", app.getPageName());
 			model.addAttribute("pageDetails", app.getDescription());
 			model.addAttribute("uploadItem", new UploadItem());
-			model.addAttribute("appModels", app.getApp().invokeMethod("getModels"));
-		} catch (Exception e) {
+			HashMap<String, Object> models = (HashMap<String, Object>) app.getApp().invokeMethod("getModels");
+			for (String modelName : models.keySet()) {
+				model.addAttribute(modelName, models.get(modelName));
+			}		} catch (Exception e) {
  			return "redirect:/error";
 		}
 		return "apps/" + subPage;

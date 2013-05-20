@@ -1,6 +1,7 @@
 package com.pi.main.ressources;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.pi.main.apps.DummyApp;
 import com.pi.main.apps.LightsApp;
@@ -11,6 +12,7 @@ public class AppManager {
 	private static String selectedURL;
 	private static ArrayList<App> appList;
 	
+	@SuppressWarnings("serial")
 	public AppManager() {
 		appList = new ArrayList<App>();
 		selectedURL = null;
@@ -23,6 +25,12 @@ public class AppManager {
 			.description("The 'Lights' application allows you to remotely monitor the energy consumption of a power socket. You can also turn it on or off!")
 			.icon("icon-lightbulb")
 			.app(new LightsApp())
+			.methodsAvailable(new HashMap<String,String>() {
+				{
+					put("On", "turnOn");
+					put("Off", "turnOff");
+				}
+			})
 			.build());
 		
 		addApp(new App.Builder()
@@ -32,6 +40,7 @@ public class AppManager {
 			.description("The 'Media' application allows you to listen to music or watch videos anywhere in your house!")
 			.icon("icon-music")
 			.app(new MediaApp())
+			.methodsAvailable(new HashMap<String,String>())
 			.build());
 		
 		// DUMMY APPS FOR TESTING PURPOSES
@@ -42,6 +51,7 @@ public class AppManager {
 			.description("This is where I test features before moving them into production.")
 			.icon("icon-circle-blank")
 			.app(new DummyApp())
+			.methodsAvailable(new HashMap<String,String>())
 			.build());
 	}
 	

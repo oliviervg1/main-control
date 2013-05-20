@@ -2,7 +2,7 @@ package com.pi.main.apps;
 
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.xml.namespace.QName;
 
@@ -43,8 +43,10 @@ public class MediaApp extends AbstractApp {
 	}
 	
 	@Override
-	public ArrayList<String> getModels() {
-		return xml.getTrackList();
+	public HashMap<String, Object> getModels() {
+		HashMap<String, Object> models = new HashMap<String, Object>();
+		models.put("tracks", xml.getTrackList());
+		return models;
 	}
 	
 	public void addTrack(String title, String location, String type) {

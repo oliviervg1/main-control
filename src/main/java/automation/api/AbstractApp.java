@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
@@ -31,7 +32,7 @@ abstract public class AbstractApp implements ConnectedApp {
 	abstract public String getState() throws Exception;
 	abstract public String homeTile() throws Exception;
 	abstract public void uploadFile(String fileName, File fileData) throws Exception;
-	abstract public ArrayList<String> getModels() throws Exception;
+	abstract public HashMap<String,Object> getModels() throws Exception;
 	
 	@Override
 	final public void connectToRemoteDevice(String WS_URL, QName qname) {

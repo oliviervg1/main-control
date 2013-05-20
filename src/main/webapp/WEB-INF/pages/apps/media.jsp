@@ -92,7 +92,7 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-					    <c:forEach var="track" items="${appModels}" varStatus="loop">
+					    <c:forEach var="track" items="${tracks}" varStatus="loop">
 					    	<tr>
 					    		<td>${loop.index}</td>
 								<td><a href="media/webMethod/playTrack?p=${track}">${track}</a></td>
@@ -209,7 +209,7 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <c:forEach var="track" items="${appModels}" varStatus="loop">
+				    <c:forEach var="track" items="${tracks}" varStatus="loop">
 				    	<tr>
 				    		<td>${loop.index}</td>
 							<td><a href="media/webMethod/removeTrack?p=${track}">${track}</a></td>

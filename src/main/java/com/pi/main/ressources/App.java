@@ -1,5 +1,7 @@
 package com.pi.main.ressources;
 
+import java.util.HashMap;
+
 import automation.api.interfaces.ConnectedApp;
 
 public class App {
@@ -9,6 +11,7 @@ public class App {
 	private final String description;
 	private final String icon;
 	private final ConnectedApp app;
+	private final HashMap<String, String> methodsAvailable;
 	
 	public static class Builder {
 		private String name;
@@ -17,7 +20,8 @@ public class App {
 		private String description;
 		private String icon;
 		private ConnectedApp app;
-		
+		private HashMap<String, String> methodsAvailable;
+	
 		//builder methods for setting property
         public Builder name(String name) {
         	this.name = name; 
@@ -48,6 +52,11 @@ public class App {
         	this.app = app; 
         	return this; 
         }
+        
+        public Builder methodsAvailable(HashMap<String,String> methods) {
+        	this.methodsAvailable = methods;
+        	return this;
+        }
       
         //return fully built object
         public App build() {
@@ -62,6 +71,7 @@ public class App {
 		this.app = builder.app;
 		this.icon = builder.icon;
 		this.description = builder.description;
+		this.methodsAvailable = builder.methodsAvailable;
 	}
 	
 	public String getName() {
@@ -86,5 +96,9 @@ public class App {
 
 	public ConnectedApp getApp() {
 		return app;
+	}
+	
+	public HashMap<String, String> getMethodsAvailable() {
+		return methodsAvailable;
 	}
 }

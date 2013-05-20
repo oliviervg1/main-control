@@ -1,7 +1,7 @@
 package com.pi.main.apps;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import automation.api.AbstractApp;
 
@@ -28,8 +28,8 @@ public class DummyApp extends AbstractApp {
 	public void onStartup() {}
 
 	@Override
-	public ArrayList<String> getModels() {
-		return new ArrayList<String>();
+	public HashMap<String, Object> getModels() {
+		return new HashMap<String, Object>();
 	}
 
 	@Override
