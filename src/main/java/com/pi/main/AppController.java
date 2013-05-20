@@ -26,10 +26,10 @@ public class AppController {
 	@RequestMapping(value = "/apps/{appURL}", method = RequestMethod.GET)
 	public String displayPage(ModelMap model, @PathVariable String appURL) {
 		App app = appManager.getApp(appURL);
-		model.addAttribute("pageName", app.getPageName());
-		model.addAttribute("pageDetails", app.getDescription());
-		model.addAttribute("uploadItem", new UploadItem());
 		try {
+			model.addAttribute("pageName", app.getPageName());
+			model.addAttribute("pageDetails", app.getDescription());
+			model.addAttribute("uploadItem", new UploadItem());
 			model.addAttribute("appModels", app.getApp().invokeMethod("getModels"));
 		} catch (Exception e) {
 			return "redirect:/error";
@@ -40,10 +40,10 @@ public class AppController {
 	@RequestMapping(value = "/apps/{appURL}/{subPage}", method = RequestMethod.GET)
 	public String displaySubPage(ModelMap model, @PathVariable String appURL, @PathVariable String subPage) {
 		App app = appManager.getApp(appURL);
-		model.addAttribute("pageName", app.getPageName());
-		model.addAttribute("pageDetails", app.getDescription());
-		model.addAttribute("uploadItem", new UploadItem());
 		try {
+			model.addAttribute("pageName", app.getPageName());
+			model.addAttribute("pageDetails", app.getDescription());
+			model.addAttribute("uploadItem", new UploadItem());
 			model.addAttribute("appModels", app.getApp().invokeMethod("getModels"));
 		} catch (Exception e) {
  			return "redirect:/error";
