@@ -30,7 +30,7 @@ public class LightsApp extends AbstractApp {
 	public String getState() throws NoSuchMethodException {
 		String state = "Device unavailable";
 		if (isDeviceAvailable()) {
-			state = "Power is currently " + (String) device.invokeMethod("getState");
+			state = "Power is currently " + (String) device.invokeMethod("getState") + "!";
 		}
 		return state;
 	}
@@ -39,7 +39,7 @@ public class LightsApp extends AbstractApp {
 	public String homeTile() throws NoSuchMethodException {
 		String state = "Device unavailable";
 		if (isDeviceAvailable()) {
-			state = "Power is currently " + (String) device.invokeMethod("getState");
+			state = "Power is currently " + (String) device.invokeMethod("getState") + "!";
 		}
 		return state;
 	}

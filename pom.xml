@@ -31,6 +31,15 @@
 		</repository>
 		
 		<repository>
+        	<id>com.pi.automation</id>
+            <name>automation-api</name>
+            <url>https://raw.github.com/oliviervg1/automation-api/releases</url>
+            <releases>
+            	<updatePolicy>always</updatePolicy>
+            </releases>
+    	</repository>
+		
+		<repository>
          	<id>twitter4j.org</id>
          	<name>twitter4j.org Repository</name>
          	<url>http://twitter4j.org/maven2</url>
@@ -40,16 +49,7 @@
          	<snapshots>
             	<enabled>true</enabled>
          	</snapshots>
-      	</repository>
-      	
-      	<repository>
-        	<id>com.pi.automation</id>
-            <name>automation-api</name>
-            <url>https://raw.github.com/oliviervg1/automation-api/releases</url>
-            <releases>
-            	<updatePolicy>always</updatePolicy>
-            </releases>
-    	</repository>	
+      	</repository>	
 	</repositories>
 
 	<!-- DEPENDENCIES -->
@@ -173,6 +173,12 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>com.pi.automation</groupId>
+			<artifactId>automation-api</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		
+		<dependency>
            <groupId>org.twitter4j</groupId>
            <artifactId>twitter4j-core</artifactId>
            <version>[3.0,)</version>
@@ -182,12 +188,6 @@
 			<groupId>org.twitter4j</groupId>
 			<artifactId>twitter4j-stream</artifactId>
 			<version>[3.0,)</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.pi.automation</groupId>
-			<artifactId>automation-api</artifactId>
-			<version>1.0.0</version>
 		</dependency>
  
  	</dependencies>
