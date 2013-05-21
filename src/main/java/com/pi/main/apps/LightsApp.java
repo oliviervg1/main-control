@@ -7,7 +7,7 @@ import javax.xml.namespace.QName;
 
 import automation.api.AbstractApp;
 
-public class LightsApp extends AbstractApp{
+public class LightsApp extends AbstractApp {
 		
 	@Override
 	public void onStartup() {
