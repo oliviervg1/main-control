@@ -1,4 +1,4 @@
-package com.pi.main;
+package com.pi.main.controllers;
 
 import java.security.Principal;
 
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.pi.main.ressources.AppManager;
+import com.pi.main.models.AppManager;
 
 public class MenuHandler extends HandlerInterceptorAdapter {
 	

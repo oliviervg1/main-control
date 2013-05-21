@@ -1,4 +1,4 @@
-package com.pi.main.ressources;
+package com.pi.main.models;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 

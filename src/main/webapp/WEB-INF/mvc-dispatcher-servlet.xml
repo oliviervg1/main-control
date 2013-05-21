@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-	<context:component-scan base-package="com.pi.main" />
+	<context:component-scan base-package="com.pi.main.controllers" />
 	
 	<!-- support JSR303 annotation if JSR 303 validation present on classpath -->
 	<mvc:annotation-driven />
@@ -25,7 +25,7 @@
 	</bean>
 	
 	<mvc:interceptors>
-  		<bean class="com.pi.main.MenuHandler" />
+  		<bean class="com.pi.main.controllers.MenuHandler" />
 	</mvc:interceptors> 
 
 	<bean id="tilesConfigurer"

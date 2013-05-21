@@ -1,4 +1,4 @@
-package com.pi.main;
+package com.pi.main.controllers;
 
 import java.io.File;
 import java.util.HashMap;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import automation.api.interfaces.ConnectedApp;
 
-import com.pi.main.ressources.AppManager;
-import com.pi.main.ressources.App;
-import com.pi.main.ressources.TwitterParameters;
-import com.pi.main.ressources.TwitterStreamFilterHandler;
-import com.pi.main.ressources.UploadItem;
+import com.pi.main.models.App;
+import com.pi.main.models.AppManager;
+import com.pi.main.models.TwitterParameters;
+import com.pi.main.models.TwitterStreamFilterHandler;
+import com.pi.main.models.UploadItem;
 
 @Controller
 public class AppController {
