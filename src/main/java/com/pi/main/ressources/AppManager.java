@@ -10,7 +10,6 @@ import automation.api.interfaces.ConnectedApp;
 
 public class AppManager {
 	
-	private static String selectedURL;
 	private static ArrayList<App> appList;
 	private static ClassLoader loader;
 	private static final String appDir = "file:///home/pi/FYP/apps/";
@@ -18,7 +17,6 @@ public class AppManager {
 	@SuppressWarnings("serial")
 	public AppManager() {
 		appList = new ArrayList<App>();
-		selectedURL = null;
 		
 		//TODO Implement a proper add app function
 		try {
@@ -57,23 +55,6 @@ public class AppManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		// DUMMY APPS FOR TESTING PURPOSES
-		try {
-			loader = new URLClassLoader(new URL[] {new URL("file:///home/pi/FYP/apache-tomcat-7.0.35/webapps/ROOT/WEB-INF/classes/")}, ConnectedApp.class.getClassLoader());
-			addApp(new App.Builder()
-				.name("Dummy")
-				.pageName("Danger: test zone")
-				.URL("dummy")
-				.description("This is where I test features before moving them into production.")
-				.icon("icon-circle-blank")
-				.app((ConnectedApp) loader.loadClass("com.pi.main.apps.DummyApp").newInstance())
-				.methodsAvailable(new HashMap<String,String>())
-				.build());
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	public ArrayList<App> getAppList() {
@@ -92,14 +73,6 @@ public class AppManager {
 	
 	public void removeApp(App app) {
 		appList.remove(app);
-	}
-
-	public String getSelectedURL() {
-		return selectedURL;
-	}
-
-	public void setSelectedURL(String selectedURL) {
-		AppManager.selectedURL = selectedURL;
 	}
 	
 	public App getApp(String appURL) {
