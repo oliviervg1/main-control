@@ -4,36 +4,32 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import automation.api.interfaces.ConnectedApp;
 
 public class AppManager {
 	
 	private static ArrayList<App> appList;
-	private static ClassLoader loader;
+	private static ClassLoader classLoader;
 	private static final String appDir = "file:///home/pi/FYP/apps/";
+	private static AppLoader appLoader;
 	
-	@SuppressWarnings("serial")
 	public AppManager() {
 		appList = new ArrayList<App>();
+		appLoader = new AppLoader();
 		
 		//TODO Implement a proper add app function
 		try {
-			loader = new URLClassLoader(new URL[] {new URL(appDir + "lights-app-1.0.0.jar")}, ConnectedApp.class.getClassLoader());
+			classLoader = new URLClassLoader(new URL[] {new URL(appDir + "lights-app-1.0.0.jar")}, ConnectedApp.class.getClassLoader());
+			appLoader.loadAppDetails(new URL(appDir + "lights.xml"));
 			addApp(new App.Builder()
-				.name("Lights")
-				.pageName("Let there be lights!")
-				.URL("lights")
-				.description("The 'Lights' application allows you to remotely monitor the energy consumption of a power socket. You can also turn it on or off!")
-				.icon("icon-lightbulb")
-				.app((ConnectedApp) loader.loadClass("com.pi.LightsApp").newInstance())
-				.methodsAvailable(new HashMap<String,String>() {
-					{
-						put("On", "turnOn");
-						put("Off", "turnOff");
-					}
-				})
+				.name(appLoader.getName())
+				.pageName(appLoader.getPageName())
+				.URL(appLoader.getUrl())
+				.description(appLoader.getDescription())
+				.icon(appLoader.getIcon())
+				.app((ConnectedApp) classLoader.loadClass(appLoader.getClassPackage()).newInstance())
+				.methodsAvailable(appLoader.getMethods())
 				.build());
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -41,15 +37,16 @@ public class AppManager {
 		}
 		
 		try {
-			loader = new URLClassLoader(new URL[] {new URL(appDir + "media-app-1.0.0.jar")}, ConnectedApp.class.getClassLoader());
+			classLoader = new URLClassLoader(new URL[] {new URL(appDir + "media-app-1.0.0.jar")}, ConnectedApp.class.getClassLoader());
+			appLoader.loadAppDetails(new URL(appDir + "media.xml"));
 			addApp(new App.Builder()
-				.name("Media")
-				.pageName("Care to listen to some music?")
-				.URL("media")
-				.description("The 'Media' application allows you to listen to music or watch videos anywhere in your house!")
-				.icon("icon-music")
-				.app((ConnectedApp) loader.loadClass("com.pi.MediaApp").newInstance())
-				.methodsAvailable(new HashMap<String,String>())
+				.name(appLoader.getName())
+				.pageName(appLoader.getPageName())
+				.URL(appLoader.getUrl())
+				.description(appLoader.getDescription())
+				.icon(appLoader.getIcon())
+				.app((ConnectedApp) classLoader.loadClass(appLoader.getClassPackage()).newInstance())
+				.methodsAvailable(appLoader.getMethods())
 				.build());
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | MalformedURLException e) {
 			// TODO Auto-generated catch block
