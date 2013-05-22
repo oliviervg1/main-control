@@ -22,7 +22,7 @@ $('#appTabs a').click(function (e) {
 		<div class="tab-pane fade active in" id="add">
 			<h1 class="lead">Upload an app</h1>
 				
-			<form:form class="form" modelAttribute="uploadItem" action="store/addApp" method="post" enctype="multipart/form-data">
+			<form:form class="form-inline" modelAttribute="uploadItem" action="store/addApp" method="post" enctype="multipart/form-data">
 				<fieldset>
 					<div class="control-group">
 						<form:label class="control-label" for="fileData" path="fileData">File</form:label>

@@ -16,15 +16,6 @@ public class AppManager {
 	public AppManager() {
 		appList = new ArrayList<App>();
 		appLoader = new AppLoader();
-		
-		//TODO Implement a proper add app function
-		try {
-			loadApp("lights.xml");
-			loadApp("media.xml");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	public ArrayList<App> getAppList() {

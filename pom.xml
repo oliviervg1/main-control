@@ -35,7 +35,7 @@
             <name>automation-api</name>
             <url>https://raw.github.com/oliviervg1/automation-api/releases</url>
             <releases>
-            	<updatePolicy>always</updatePolicy>
+            	<updatePolicy>daily</updatePolicy>
             </releases>
     	</repository>
 		
@@ -188,6 +188,12 @@
 			<groupId>org.twitter4j</groupId>
 			<artifactId>twitter4j-stream</artifactId>
 			<version>[3.0,)</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.ant</groupId>
+		    <artifactId>ant-compress</artifactId>
+		    <version>1.2</version>
 		</dependency>
  
  	</dependencies>

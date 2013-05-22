@@ -2,6 +2,7 @@ package com.pi.main.controllers;
 
 import java.io.File;
 
+import org.apache.ant.compress.taskdefs.Unzip;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -52,14 +53,24 @@ public class StoreController {
 		File file = new File(appDir + uploadItem.getFileData().getOriginalFilename());
 		try {
 			uploadItem.getFileData().transferTo(file);
-			addApp();
+			addApp(file);
 		}  catch (Exception e) {
 			return "redirect:/error";
 		}
 	    return "redirect:/dashboard";
 	}
 	
-	private void addApp() {
-		
+	private void addApp(File appContainer) {
+		Unzip unzipper = new Unzip();
+		unzipper.setSrc(appContainer);
+		unzipper.setDest(new File(appDir));
+		unzipper.execute();
+		try {
+			appManager.loadApp(appContainer.getName().replace("zip", "xml"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+		} finally {
+			appContainer.delete();
+		}
 	}
 }
