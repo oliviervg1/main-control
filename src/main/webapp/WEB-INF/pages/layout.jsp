@@ -103,14 +103,26 @@
 <script>
 //<![CDATA[
 jQuery(function() {
+  var found = false;
+  jQuery('#main-nav li').each(function() {
+	var href = jQuery(this).find('a').attr('href');
+	if (href === window.location.pathname) {
+	  	jQuery(this).addClass('active');
+	  	found = true;
+	} 
+  });
+  
+  if (!found) {
+	  jQuery('#main-nav li').first().addClass('active');
+  }
+	
   jQuery('#left-panel-content li').each(function() {
     var href = jQuery(this).find('a').attr('href');
     if (href === window.location.pathname) {
       jQuery(this).addClass('active');
-      found = true;
     } 
   });
-});  
+});
 //]]>
 </script>
 
@@ -126,8 +138,9 @@ jQuery(function() {
 				</a>
 
 				<div class="nav-collapse collapse">
-					<ul class="nav">
-						<li class="active"><a href="/dashboard">Apps</a></li>
+					<ul id="main-nav" class="nav">
+						<li><a href="/dashboard">Apps</a></li>
+						<li><a href="/store">Store</a></li>
 						<li><a href="#">About</a></li>
 						<li><a href="#">Contact</a></li>
 					</ul>
@@ -200,7 +213,7 @@ jQuery(function() {
 		<!-- Page footer
 				================================================== -->
 		<footer id="main-footer">
-			Copyright © 2013 <a href="#">Oli FYP</a>, all rights reserved.
+			Copyright © 2013 <a href="https://github.com/oliviervg1">Oli FYP</a>, all rights reserved.
 			<a href="#" class="pull-right" id="on-top-link">
 				On Top&nbsp;<i class=" icon-chevron-up"></i>
 			</a>

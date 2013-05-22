@@ -12,15 +12,15 @@
         <put-attribute name="body" value="/WEB-INF/pages/dashboard.jsp" />
     </definition>
     
+    <definition name="store" extends="base.definition">
+        <put-attribute name="body" value="/WEB-INF/pages/store.jsp" />
+    </definition>
+    
     <definition name="apps/lights" extends="base.definition">
         <put-attribute name="body" value="/WEB-INF/pages/apps/lights.jsp" />
     </definition>
     
     <definition name="apps/media" extends="base.definition">
         <put-attribute name="body" value="/WEB-INF/pages/apps/media.jsp" />
-    </definition>
-    
-    <definition name="apps/dummy" extends="base.definition">
-        <put-attribute name="body" value="/WEB-INF/pages/apps/dummy.jsp" />
     </definition>
 </tiles-definitions>

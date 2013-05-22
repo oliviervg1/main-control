@@ -5,6 +5,7 @@ import java.util.HashMap;
 import automation.api.interfaces.ConnectedApp;
 
 public class App {
+	private final String fileName;
 	private final String name;
 	private final String pageName;
 	private final String URL;
@@ -14,6 +15,7 @@ public class App {
 	private final HashMap<String, String> methodsAvailable;
 	
 	public static class Builder {
+		private String fileName;
 		private String name;
 		private String pageName;
 		private String URL;
@@ -23,7 +25,12 @@ public class App {
 		private HashMap<String, String> methodsAvailable;
 	
 		//builder methods for setting property
-        public Builder name(String name) {
+        public Builder fileName(String fileName) {
+        	this.fileName = fileName;
+        	return this;
+        }
+		
+		public Builder name(String name) {
         	this.name = name; 
         	return this; 
         }
@@ -65,6 +72,7 @@ public class App {
 	}
 	
 	private App(Builder builder) {
+		this.fileName = builder.fileName;
 		this.name = builder.name;
 		this.pageName = builder.pageName;
 		this.URL = builder.URL;
@@ -72,6 +80,10 @@ public class App {
 		this.icon = builder.icon;
 		this.description = builder.description;
 		this.methodsAvailable = builder.methodsAvailable;
+	}
+	
+	public String getFileName() {
+		return fileName;
 	}
 	
 	public String getName() {

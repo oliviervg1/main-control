@@ -16,13 +16,11 @@
 		<intercept-url pattern="/loginfailed" access="permitAll" />
 		<intercept-url pattern="/denied" access="permitAll" />
 		<intercept-url pattern="/" access="isAuthenticated()" />
-		<intercept-url pattern="/dashboard" access="isAuthenticated()" />
-		<intercept-url pattern="/settings" access="hasRole('admin')" />
-		<intercept-url pattern="/apps/lights" access="hasRole('user')" />
-		<intercept-url pattern="/apps/media" access="hasRole('user')" />
-		<intercept-url pattern="/apps/dummy" access="hasRole('guest')" />
-		<intercept-url pattern="/apps/**" access="isAuthenticated()" />
-		<intercept-url pattern="/**" access="denyAll" />
+		<intercept-url pattern="/dashboard**" access="isAuthenticated()" />
+		<intercept-url pattern="/store**" access="hasRole('user')" />
+		<intercept-url pattern="/settings**" access="hasRole('admin')" />
+		<intercept-url pattern="/apps/lights**" access="hasRole('user')" />
+		<intercept-url pattern="/apps/media**" access="hasRole('user')" />
 		<access-denied-handler error-page="/denied" />
 		<form-login login-page="/login" default-target-url="/dashboard"
 			authentication-failure-url="/loginfailed" />

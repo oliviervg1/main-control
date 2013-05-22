@@ -39,6 +39,7 @@ public class AppManager {
 		appLoader.loadAppDetails(new URL(appDir + xmlFile));
 		classLoader = new URLClassLoader(new URL[] {new URL(appDir + appLoader.getLocation())}, ConnectedApp.class.getClassLoader());
 		addApp(new App.Builder()
+			.fileName(appLoader.getLocation())
 			.name(appLoader.getName())
 			.pageName(appLoader.getPageName())
 			.URL(appLoader.getUrl())
