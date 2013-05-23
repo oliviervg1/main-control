@@ -20,16 +20,12 @@ $('#appTabs a').click(function (e) {
 	<div id="appTabsContent" class="tab-content">
 		<!-- Add Apps -->
 		<div class="tab-pane fade active in" id="add">
-			<h1 class="lead">Upload an app</h1>
+			<h1 class="lead">Install an app</h1>
 				
 			<form:form class="form-inline" modelAttribute="uploadItem" action="store/addApp" method="post" enctype="multipart/form-data">
 				<fieldset>
-					<div class="control-group">
-						<form:label class="control-label" for="fileData" path="fileData">File</form:label>
-					    <div class="controls">
-					    	<form:input path="fileData" type="file"/>
-					    </div>
-					</div>
+					<form:label class="control-label" for="fileData" path="fileData">Application file</form:label>
+					<form:input path="fileData" type="file"/>
 					<button type="submit" class="btn btn-primary">Add app</button>
 				</fieldset>
 			</form:form>
@@ -39,11 +35,22 @@ $('#appTabs a').click(function (e) {
 		<div class="tab-pane fade" id="remove">
 			<h1 class="lead">Select an app to remove</h1>
 			
-			<c:forEach var="app" items="${appManager.appList}">
-			<li>
-				<a href="/store/removeApp?p=${app.URL}">${app.name}</a>
-			</li>
-			</c:forEach>
+			<table class="table table-hover">
+			  <thead>
+			    <tr>
+			      <th>#</th>
+			      <th>Application</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <c:forEach var="app" items="${appManager.appList}">
+				<tr>
+			    	<td>${loop.index}</td>
+					<td><a href="/store/removeApp?p=${app.URL}">${app.name}</a></td>
+				</tr>
+				</c:forEach>
+			  </tbody>
+			</table>
 		</div>
 	</div>
 </section>
