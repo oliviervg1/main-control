@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import automation.api.interfaces.ConnectedApp;
 
-import com.pi.main.models.App;
-import com.pi.main.models.AppManager;
-import com.pi.main.models.TwitterParameters;
-import com.pi.main.models.TwitterStreamFilterHandler;
 import com.pi.main.models.UploadItem;
+import com.pi.main.models.apps.App;
+import com.pi.main.models.apps.AppManager;
+import com.pi.main.models.twitter.TwitterParameters;
+import com.pi.main.models.twitter.TwitterStreamFilterHandler;
 
 @Controller
 public class AppController {

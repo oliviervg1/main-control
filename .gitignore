@@ -16,4 +16,4 @@
 
 .springBeans
 
-src/main/java/com/pi/main/models/TwitterParameters.java
+src/main/java/com/pi/main/models/twitter/TwitterParameters.java

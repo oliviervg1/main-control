@@ -1,4 +1,7 @@
-package com.pi.main.models;
+package com.pi.main.models.twitter;
+
+import com.pi.main.models.apps.App;
+import com.pi.main.models.apps.AppManager;
 
 import twitter4j.FilterQuery;
 import twitter4j.StallWarning;

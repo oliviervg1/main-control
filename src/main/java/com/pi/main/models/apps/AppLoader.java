@@ -1,4 +1,4 @@
-package com.pi.main.models;
+package com.pi.main.models.apps;
 
 import java.io.IOException;
 import java.net.URL;

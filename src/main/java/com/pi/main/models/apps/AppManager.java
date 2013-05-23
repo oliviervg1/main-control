@@ -1,4 +1,4 @@
-package com.pi.main.models;
+package com.pi.main.models.apps;
 
 import java.net.URL;
 import java.net.URLClassLoader;
