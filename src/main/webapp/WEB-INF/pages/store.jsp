@@ -43,7 +43,7 @@ $('#appTabs a').click(function (e) {
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <c:forEach var="app" items="${appManager.appList}">
+			    <c:forEach var="app" items="${appManager.appList}" varStatus="loop">
 				<tr>
 			    	<td>${loop.index}</td>
 					<td><a href="/store/removeApp?p=${app.URL}">${app.name}</a></td>

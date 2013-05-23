@@ -8,25 +8,44 @@ import automation.api.interfaces.ConnectedApp;
 
 public class AppManager {
 	
+	private static final String appDir = "file:///home/pi/FYP/apps/";
+	private static ArrayList<String> xmlList;
 	private static ArrayList<App> appList;
 	private static ClassLoader classLoader;
-	private static final String appDir = "file:///home/pi/FYP/apps/";
 	private static AppLoader appLoader;
+	private static AppListLoader appListLoader;
 	
 	public AppManager() {
 		appList = new ArrayList<App>();
+		appListLoader = new AppListLoader();
+		xmlList = appListLoader.loadAppList();
 		appLoader = new AppLoader();
+		reloadApps();
 	}
 	
 	public ArrayList<App> getAppList() {
 		return appList;
 	}
 	
-	public void setAppList(ArrayList<App> appList) {
-		AppManager.appList = appList;
+	public ArrayList<String> getAppXmlList() {
+		return xmlList;
 	}
 	
+	public void reloadApps() {
+		for (String xmlFile : xmlList) {
+			try {
+				loadApp(xmlFile);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
 	public void loadApp(String xmlFile) throws Exception {
+		if (xmlList.contains(xmlFile) == false) {
+			xmlList.add(xmlFile);
+		}
 		appLoader.loadAppDetails(new URL(appDir + xmlFile));
 		classLoader = new URLClassLoader(new URL[] {new URL(appDir + appLoader.getLocation())}, ConnectedApp.class.getClassLoader());
 		addApp(new App.Builder()
@@ -49,6 +68,7 @@ public class AppManager {
 	
 	public void removeApp(App app) {
 		appList.remove(app);
+		xmlList.remove(app.getFileName().replace("jar", "xml"));
 	}
 	
 	public App getApp(String appURL) {

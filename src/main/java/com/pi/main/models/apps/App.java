@@ -1,10 +1,13 @@
 package com.pi.main.models.apps;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import automation.api.interfaces.ConnectedApp;
 
-public class App {
+public class App implements Serializable {
+	
+	private static final long serialVersionUID = 7103339589695714501L;
 	private final String fileName;
 	private final String name;
 	private final String pageName;
