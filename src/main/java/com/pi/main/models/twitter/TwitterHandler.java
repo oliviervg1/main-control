@@ -14,6 +14,7 @@ import twitter4j.TwitterAdapter;
 import twitter4j.TwitterListener;
 import twitter4j.TwitterStream;
 import twitter4j.TwitterStreamFactory;
+import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
 
 public class TwitterHandler {
@@ -34,9 +35,13 @@ public class TwitterHandler {
 			.setOAuthAccessToken(TwitterParameters.ACCESS_TOKEN)
 			.setOAuthAccessTokenSecret(TwitterParameters.ACCESS_TOKEN_SECRET);
 		
+		//Build configuration
+		Configuration configuration = cb.build();
+		Configuration configurationCopy = configuration; //can only build cb once...
+		
 		//Instantiate Twitter and TwitterStream
-		twitter = new AsyncTwitterFactory(cb.build()).getInstance();
-		twitterStream = new TwitterStreamFactory(cb.build()).getInstance();
+		twitter = new AsyncTwitterFactory(configuration).getInstance();
+		twitterStream = new TwitterStreamFactory(configurationCopy).getInstance();
 		
 	    //Create and add listeners
 		asyncListener = new TwitterAdapter();
@@ -88,7 +93,7 @@ public class TwitterHandler {
 					if (text.contains(key)) {
 						try {
 							app.getApp().invokeMethod(app.getMethodsAvailable().get(key));
-							twitter.updateStatus("Status for '" + app.getName() + "' is now: " + app.getApp().invokeMethod("getStatus"));
+							twitter.updateStatus("Status of '" + app.getName() + "' is now: " + app.getApp().invokeMethod("getState"));
 						} catch (Exception e) {
 							twitter.updateStatus("Oh uh... Seems like something went wrong. Was unable to do: "+ text);
 						}
