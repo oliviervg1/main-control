@@ -3,25 +3,29 @@ package com.pi.main.models.twitter;
 import com.pi.main.models.apps.App;
 import com.pi.main.models.apps.AppManager;
 
+import twitter4j.AsyncTwitter;
+import twitter4j.AsyncTwitterFactory;
 import twitter4j.FilterQuery;
 import twitter4j.StallWarning;
 import twitter4j.Status;
 import twitter4j.StatusDeletionNotice;
 import twitter4j.StatusListener;
+import twitter4j.TwitterAdapter;
+import twitter4j.TwitterListener;
 import twitter4j.TwitterStream;
 import twitter4j.TwitterStreamFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
-public class TwitterStreamFilterHandler {
+public class TwitterHandler {
 
 	private AppManager appManager;
+	private TwitterListener asyncListener;
+	private AsyncTwitter twitter;
 	private TwitterStream twitterStream;
-	private StatusListener listener;
-	private String[] filterKeywords;
+	private StatusListener listener;	
 	private ConfigurationBuilder cb;
-	private boolean started;
 		
-	public TwitterStreamFilterHandler(String[] keywords) {
+	public TwitterHandler() {
 		//Set OAUTH parameters
 		cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(false)
@@ -30,38 +34,22 @@ public class TwitterStreamFilterHandler {
 			.setOAuthAccessToken(TwitterParameters.ACCESS_TOKEN)
 			.setOAuthAccessTokenSecret(TwitterParameters.ACCESS_TOKEN_SECRET);
 		
-		//Not running yet
-		started = false;
-		
-		//Instantiate TwitterStream
+		//Instantiate Twitter and TwitterStream
+		twitter = new AsyncTwitterFactory(cb.build()).getInstance();
 		twitterStream = new TwitterStreamFactory(cb.build()).getInstance();
 		
-	    //Create and add stream listener
+	    //Create and add listeners
+		asyncListener = new TwitterAdapter();
+		twitter.addListener(asyncListener);
 		listener = createListener();
 		twitterStream.addListener(listener);
-		
-		//Set filterKeywords
-		filterKeywords = keywords;
 		
 		//Get the App Manager
 		appManager = new AppManager();
 	}
 	
-	public void changeFilterKeywords(String[] keywords) {
-		if (started) {
-			stop();
-			filterKeywords = keywords;
-			start();
-		} else {
-			filterKeywords = keywords;
-		}
-	}
-	
-	public void start() {
-		if (filterKeywords != null) {
-			twitterStream.filter(new FilterQuery().track(filterKeywords));
-			started = true;
-		}
+	public void start(String[] keywords) {
+		twitterStream.filter(new FilterQuery().track(keywords));
 	}
 	
 	public void stop() {
@@ -73,9 +61,15 @@ public class TwitterStreamFilterHandler {
 		StatusListener tempListener = new StatusListener() {
 			public void onStatus(Status status) {
 				for (String user : TwitterParameters.authorisedUsers) {
-					if (status.getUser().getScreenName().equalsIgnoreCase(user) && status.getText().contains("House")) {
-						processInput(status.getText());
-					} 
+					if (status.getUser().getScreenName().equalsIgnoreCase(user)) {
+						if (status.getText().contains("House")) {
+							processInput(status.getText());
+						} else {
+							twitter.updateStatus("@" + status.getUser().getScreenName() + " , it seems like you forgot the magic word ;)");
+						}
+					} else {
+						twitter.updateStatus("@" + status.getUser().getScreenName() + " INTRUDER ALERT! RAISE THE SHIELDS MR SPOCK!");
+					}
 				}
 			}
 			public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {}
@@ -94,8 +88,9 @@ public class TwitterStreamFilterHandler {
 					if (text.contains(key)) {
 						try {
 							app.getApp().invokeMethod(app.getMethodsAvailable().get(key));
+							twitter.updateStatus("Status for '" + app.getName() + "' is now: " + app.getApp().invokeMethod("getStatus"));
 						} catch (Exception e) {
-							//TODO fix this
+							twitter.updateStatus("Oh uh... Seems like something went wrong. Was unable to do: "+ text);
 						}
 					}
 				}

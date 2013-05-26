@@ -19,7 +19,7 @@ import com.pi.main.models.UploadItem;
 import com.pi.main.models.apps.App;
 import com.pi.main.models.apps.AppManager;
 import com.pi.main.models.twitter.TwitterParameters;
-import com.pi.main.models.twitter.TwitterStreamFilterHandler;
+import com.pi.main.models.twitter.TwitterHandler;
 
 @Controller
 public class AppController {
@@ -30,8 +30,8 @@ public class AppController {
 		//TODO fix this
 		String[] keywords = {"@AutomatIn"};
 		TwitterParameters.addUser("olivier_vg");
-		TwitterStreamFilterHandler stream = new TwitterStreamFilterHandler(keywords);
-		stream.start();
+		TwitterHandler twitter = new TwitterHandler();
+		twitter.start(keywords);
 	}
 	
 	@SuppressWarnings("unchecked")
