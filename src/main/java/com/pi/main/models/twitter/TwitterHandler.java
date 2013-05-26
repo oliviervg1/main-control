@@ -63,7 +63,7 @@ public class TwitterHandler {
 					if (status.getUser().getScreenName().equalsIgnoreCase(user)) {
 						// Command is valid
 						if (status.getText().contains("House")) {
-							processInput(status.getText(), status.getId());
+							processInput(status);
 							return;
 						} else {
 							updateStatus("@" + status.getUser().getScreenName() + ", it seems like you forgot the magic word ;)", status.getId());
@@ -83,19 +83,19 @@ public class TwitterHandler {
 		return tempListener;
 	}
 	
-	private void processInput(String status, long id) {
+	private void processInput(Status status) {
 		// Check if command belongs to a given app
 		for (App app : appManager.getAppList()) {
 			// App is found
-			if (status.contains(app.getName())) {
+			if (status.getText().contains(app.getName())) {
 				for (String key : app.getMethodsAvailable().keySet()) {
 					// Command is valid
-					if (status.contains(key)) {
+					if (status.getText().contains(key)) {
 						try {
 							app.getApp().invokeMethod(app.getMethodsAvailable().get(key));
-							updateStatus("Status of '" + app.getName() + "' is now: " + app.getApp().invokeMethod("getState"), id);
+							updateStatus("@" + status.getUser().getScreenName() + " Status of '" + app.getName() + "' is: " + app.getApp().invokeMethod("getState"), status.getId());
 						} catch (Exception e) {
-							updateStatus("Oh uh... Seems like something went wrong. Was unable to do: "+ status, id);
+							updateStatus("@" + status.getUser().getScreenName() + " Oh uh... Seems like something went wrong. Was unable to do: "+ status, status.getId());
 						}
 					}
 				}
