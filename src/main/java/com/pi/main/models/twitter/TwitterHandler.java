@@ -3,15 +3,15 @@ package com.pi.main.models.twitter;
 import com.pi.main.models.apps.App;
 import com.pi.main.models.apps.AppManager;
 
-import twitter4j.AsyncTwitter;
-import twitter4j.AsyncTwitterFactory;
 import twitter4j.FilterQuery;
 import twitter4j.StallWarning;
 import twitter4j.Status;
 import twitter4j.StatusDeletionNotice;
 import twitter4j.StatusListener;
-import twitter4j.TwitterAdapter;
-import twitter4j.TwitterListener;
+import twitter4j.StatusUpdate;
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
 import twitter4j.TwitterStream;
 import twitter4j.TwitterStreamFactory;
 import twitter4j.conf.Configuration;
@@ -20,32 +20,25 @@ import twitter4j.conf.ConfigurationBuilder;
 public class TwitterHandler {
 
 	private AppManager appManager;
-	private TwitterListener asyncListener;
-	private AsyncTwitter twitter;
+	private Twitter twitter;
 	private TwitterStream twitterStream;
 	private StatusListener listener;	
-	private ConfigurationBuilder cb;
 		
 	public TwitterHandler() {
 		//Set OAUTH parameters
-		cb = new ConfigurationBuilder();
-		cb.setDebugEnabled(false)
+		ConfigurationBuilder cb = new ConfigurationBuilder();
+		Configuration configuration = cb.setDebugEnabled(false)
 			.setOAuthConsumerKey(TwitterParameters.CONSUMER_KEY)
 			.setOAuthConsumerSecret(TwitterParameters.CONSUMER_SECRET)
 			.setOAuthAccessToken(TwitterParameters.ACCESS_TOKEN)
-			.setOAuthAccessTokenSecret(TwitterParameters.ACCESS_TOKEN_SECRET);
-		
-		//Build configuration
-		Configuration configuration = cb.build();
-		Configuration configurationCopy = configuration; //can only build cb once...
+			.setOAuthAccessTokenSecret(TwitterParameters.ACCESS_TOKEN_SECRET)
+			.build();
 		
 		//Instantiate Twitter and TwitterStream
-		twitter = new AsyncTwitterFactory(configuration).getInstance();
-		twitterStream = new TwitterStreamFactory(configurationCopy).getInstance();
+		twitter = new TwitterFactory(configuration).getInstance();
+		twitterStream = new TwitterStreamFactory(configuration).getInstance();
 		
 	    //Create and add listeners
-		asyncListener = new TwitterAdapter();
-		twitter.addListener(asyncListener);
 		listener = createListener();
 		twitterStream.addListener(listener);
 		
@@ -66,16 +59,18 @@ public class TwitterHandler {
 		StatusListener tempListener = new StatusListener() {
 			public void onStatus(Status status) {
 				for (String user : TwitterParameters.authorisedUsers) {
+					// User is authorised
 					if (status.getUser().getScreenName().equalsIgnoreCase(user)) {
+						// Command is valid
 						if (status.getText().contains("House")) {
-							processInput(status.getText());
+							processInput(status);
 						} else {
-							twitter.updateStatus("@" + status.getUser().getScreenName() + " , it seems like you forgot the magic word ;)");
+							updateStatus("@" + status.getUser().getScreenName() + ", it seems like you forgot the magic word ;)", status.getId());
 						}
-					} else {
-						twitter.updateStatus("@" + status.getUser().getScreenName() + " INTRUDER ALERT! RAISE THE SHIELDS MR SPOCK!");
-					}
+					} 
 				}
+				// Unauthorised user
+				updateStatus("@" + status.getUser().getScreenName() + " INTRUDER ALERT! RAISE THE SHIELDS MR SPOCK!", status.getId());
 			}
 			public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {}
 			public void onTrackLimitationNotice(int numberOfLimitedStatuses) {}
@@ -86,20 +81,29 @@ public class TwitterHandler {
 		return tempListener;
 	}
 	
-	private void processInput(String text) {
+	private void processInput(Status status) {
+		// Check if command belongs to a given app
 		for (App app : appManager.getAppList()) {
-			if (text.contains(app.getName())) {
+			// App is found
+			if (status.getText().contains(app.getName())) {
 				for (String key : app.getMethodsAvailable().keySet()) {
-					if (text.contains(key)) {
+					// Command is valid
+					if (status.getText().contains(key)) {
 						try {
 							app.getApp().invokeMethod(app.getMethodsAvailable().get(key));
-							twitter.updateStatus("Status of '" + app.getName() + "' is now: " + app.getApp().invokeMethod("getState"));
+							updateStatus("Status of '" + app.getName() + "' is now: " + app.getApp().invokeMethod("getState"), status.getId());
 						} catch (Exception e) {
-							twitter.updateStatus("Oh uh... Seems like something went wrong. Was unable to do: "+ text);
+							updateStatus("Oh uh... Seems like something went wrong. Was unable to do: "+ status.getText(), status.getId());
 						}
 					}
 				}
 			}
 		}
+	}
+	
+	private void updateStatus(String tweetBody, long tweetToReplyTo) {
+		try {
+			twitter.updateStatus(new StatusUpdate(tweetBody).inReplyToStatusId(tweetToReplyTo));
+		} catch (TwitterException e) {}
 	}
 }
