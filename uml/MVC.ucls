@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.2" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <package id="1" language="java" name="com.pi.main.models.apps" project="main-controller" 
+    file="/main-controller/src/main/java/com/pi/main/models/apps" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="122" y="308"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="com.pi.main.controllers" project="main-controller" 
+    file="/main-controller/src/main/java/com/pi/main/controllers" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="361" y="163"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="automation.api.interfaces" project="main-controller" 
+    file="/Users/olivier/.m2/repository/com/pi/automation/automation-api/1.0.0/automation-api-1.0.0.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="179" y="57"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="com.pi.main.models" project="main-controller" 
+    file="/main-controller/src/main/java/com/pi/main/models" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="564" y="311"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="5" language="java" name="com.pi.main.models.twitter" project="main-controller" 
+    file="/main-controller/src/main/java/com/pi/main/models/twitter" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="361" y="311"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <dependency id="6">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="7">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="8">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="9">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="10">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="11">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
