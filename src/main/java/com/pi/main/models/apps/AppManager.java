@@ -27,10 +27,6 @@ public class AppManager {
 		return appList;
 	}
 	
-	public ArrayList<String> getAppXmlList() {
-		return xmlList;
-	}
-	
 	public void reloadApps() {
 		for (String xmlFile : xmlList) {
 			try {
@@ -58,6 +54,7 @@ public class AppManager {
 			.app((ConnectedApp) classLoader.loadClass(appLoader.getClassPackage()).newInstance())
 			.methodsAvailable(appLoader.getMethods())
 			.build());
+		appListLoader.saveAppList(xmlList);
 	}
 	
 	public void addApp(App app) {
@@ -69,6 +66,7 @@ public class AppManager {
 	public void removeApp(App app) {
 		appList.remove(app);
 		xmlList.remove(app.getFileName().replace("jar", "xml"));
+		appListLoader.saveAppList(xmlList);
 	}
 	
 	public App getApp(String appURL) {

@@ -14,10 +14,6 @@ public class AppListLoader implements Serializable {
 	private ArrayList<String> appList;
 	private final transient String appDir = "/home/pi/FYP/apps/";
 	
-	public ArrayList<String> getList() {
-		return appList;
-	}
-	
 	public void saveAppList(ArrayList<String> appList) {
 		try {
 			this.appList = appList;
@@ -32,14 +28,14 @@ public class AppListLoader implements Serializable {
 	}
 	
 	public ArrayList<String> loadAppList() {
-		AppListLoader appList = null;
+		AppListLoader appListLoader = null;
 		try {
 			FileInputStream fileIn = new FileInputStream(appDir + "appList.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
-			appList = (AppListLoader) in.readObject();
+			appListLoader = (AppListLoader) in.readObject();
 			in.close();
 			fileIn.close();
-			return appList.getList();
+			return appListLoader.appList;
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 			return new ArrayList<String>();

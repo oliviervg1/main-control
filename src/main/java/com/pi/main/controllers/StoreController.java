@@ -15,12 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.pi.main.models.UploadItem;
 import com.pi.main.models.apps.App;
 import com.pi.main.models.apps.AppManager;
-import com.pi.main.models.apps.AppListLoader;
 
 @Controller
 public class StoreController {
 	
-	private AppListLoader appManagerLoader = new AppListLoader();
 	private AppManager appManager = new AppManager();
 	private final String appDir = "/home/pi/FYP/apps/";
 	private final String viewDir = "/home/pi/FYP/apache-tomcat-7.0.35/webapps/ROOT/WEB-INF/pages/apps/";
@@ -47,9 +45,6 @@ public class StoreController {
 		appXML.delete();
 		appView.delete();
 		
-		// Save appmanager state
-		appManagerLoader.saveAppList(appManager.getAppXmlList());
-		
 		//TODO add modal message
 		return "redirect:/store";
 	}
@@ -66,10 +61,6 @@ public class StoreController {
 		}  catch (Exception e) {
 			return "redirect:/error";
 		}
-		
-		// Save app manager state
-		appManagerLoader.saveAppList(appManager.getAppXmlList());
-	    
 		return "redirect:/dashboard";
 	}
 	
