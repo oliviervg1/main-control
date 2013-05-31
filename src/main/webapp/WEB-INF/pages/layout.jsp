@@ -10,7 +10,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>
-		Automat.in - Dashboard
+		Automat.in
 	</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
@@ -187,7 +187,7 @@ jQuery(function() {
 					<a href="#"><span class="icon-bullhorn"></span>Voice</a>
 				</li>
 	  			<li>
-					<a href="#"><span class="icon-group"></span>Social</a>
+					<a href="/social"><span class="icon-group"></span>Social</a>
 				</li>
 				<li>
 					<a href="#"><span class="icon-wrench"></span>Settings</a>
