@@ -118,9 +118,9 @@ jQuery(function() {
 	
   jQuery('#left-panel-content li').each(function() {
     var href = jQuery(this).find('a').attr('href');
-    if (href === window.location.pathname) {
-      jQuery(this).addClass('active');
-    } 
+    if(window.location.pathname.indexOf(href) != -1){
+    	jQuery(this).addClass('active');
+    }
   });
 });
 //]]>

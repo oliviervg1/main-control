@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.1.2" icons="true" automaticImage="PNG">  
+  <object id="1" language="java" name="com.pi.main.controllers.AppController" project="main-controller" 
+    file="/main-controller/src/main/java/com/pi/main/controllers/AppController.java" binary="false" 
+    label="appController" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="61" y="0"/>    
+    <execution id="2">      
+      <position height="517" width="0" x="0" y="84"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="454" width="0" x="0" y="126"/>    
+    </execution>  
+  </object>  
+  <object id="25" language="java" name="com.pi.main.models.apps.AppManager" project="main-controller" 
+    file="/main-controller/src/main/java/com/pi/main/models/apps/AppManager.java" binary="false" label="appManager" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="6">      
+      <position height="21" width="0" x="0" y="157"/>    
+    </execution>  
+  </object>  
+  <object id="26" language="java" name="org.springframework.ui.ModelMap" project="main-controller" 
+    file="/Users/olivier/.m2/repository/org/springframework/spring-context/3.2.1.RELEASE/spring-context-3.2.1.RELEASE.jar" 
+    binary="true" label="model" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="8">      
+      <position height="21" width="0" x="0" y="199"/>    
+    </execution>    
+    <execution id="12">      
+      <position height="21" width="0" x="0" y="283"/>    
+    </execution>    
+    <execution id="22">      
+      <position height="21" width="0" x="0" y="496"/>    
+    </execution>  
+  </object>  
+  <object id="27" language="java" name="com.pi.main.models.apps.App" project="main-controller" 
+    file="/main-controller/src/main/java/com/pi/main/models/apps/App.java" binary="false" label="app" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="10">      
+      <position height="21" width="0" x="0" y="241"/>    
+    </execution>    
+    <execution id="14">      
+      <position height="21" width="0" x="0" y="325"/>    
+    </execution>    
+    <execution id="16">      
+      <position height="21" width="0" x="0" y="370"/>    
+    </execution>  
+  </object>  
+  <object id="28" language="java" name="automation.api.interfaces.ConnectedApp" project="main-controller" 
+    file="/Users/olivier/.m2/repository/com/pi/automation/automation-api/1.0.0/automation-api-1.0.0.jar" binary="true" 
+    type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="18">      
+      <position height="21" width="0" x="0" y="412"/>    
+    </execution>  
+  </object>  
+  <object id="29" language="java" name="java.util.HashMap" project="main-controller" 
+    file="/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/rt.jar" binary="true" label="models" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="20">      
+      <position height="21" width="0" x="0" y="454"/>    
+    </execution>    
+    <execution id="24">      
+      <position height="21" width="0" x="0" y="538"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="displayPage(org.springframework.ui.ModelMap,java.lang.String):java.lang.String">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="getApp(java.lang.String):com.pi.main.models.apps.App">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="7" operation="addAttribute(java.lang.String,java.lang.Object):org.springframework.ui.ModelMap">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="9" operation="getPageName():java.lang.String">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="11" operation="addAttribute(java.lang.String,java.lang.Object):org.springframework.ui.ModelMap">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>  
+  <message id="13" operation="getDescription():java.lang.String">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="15" operation="getApp():automation.api.interfaces.ConnectedApp">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>  
+  <message id="17" operation="invokeMethod(java.lang.String):java.lang.Object">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="18"/>  
+  </message>  
+  <message id="19" operation="keySet():java.util.Set&lt;K&gt;">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="20"/>  
+  </message>  
+  <message id="21" operation="addAttribute(java.lang.String,java.lang.Object):org.springframework.ui.ModelMap">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="22"/>  
+  </message>  
+  <message id="23" operation="get(java.lang.Object):V">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="24"/>  
+  </message>
+</sequence-diagram>

@@ -3,6 +3,8 @@ package com.pi.main.controllers;
 import java.io.File;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -53,14 +55,15 @@ public class AppController {
 			HashMap<String, Object> models = (HashMap<String, Object>) app.getApp().invokeMethod("getModels");
 			for (String modelName : models.keySet()) {
 				model.addAttribute(modelName, models.get(modelName));
-			}		} catch (Exception e) {
+			}		
+		} catch (Exception e) {
  			return "redirect:/error";
 		}
 		return "apps/" + subPage;
 	}
 	
 	@RequestMapping(value = "/apps/{appURL}/webMethod/{webMethod}", method = RequestMethod.GET)
-	public String invokeWebMethod(ModelMap model, @PathVariable String appURL, @PathVariable String webMethod,
+	public String invokeWebMethod(HttpServletRequest request, ModelMap model, @PathVariable String appURL, @PathVariable String webMethod,
 					@RequestParam(value="p", required=false) Object[] parameters) {
 		
 		ConnectedApp client = appManager.getApp(appURL).getApp();		
@@ -73,7 +76,7 @@ public class AppController {
 		} catch (Exception e) {
 			return "redirect:/error";
 		}
-		return "redirect:/apps/" + appURL;
+		return "redirect:" + request.getHeader("Referer");
 	}
 	
 	@RequestMapping(value = "/apps/{appURL}/uploadFile", method = RequestMethod.POST)
