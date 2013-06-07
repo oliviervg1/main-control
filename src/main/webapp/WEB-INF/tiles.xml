@@ -20,6 +20,10 @@
         <put-attribute name="body" value="/WEB-INF/pages/social.jsp" />
     </definition>
     
+    <definition name="voice" extends="base.definition">
+        <put-attribute name="body" value="/WEB-INF/pages/voice.jsp" />
+    </definition>
+    
     <definition name="apps/*" extends="base.definition">
         <put-attribute name="body" value="/WEB-INF/pages/apps/{1}.jsp" />
     </definition>

@@ -34,6 +34,10 @@
     <link rel="stylesheet" href="/assets/osmplayer/jquery-ui/dark-hive/jquery-ui-1.8.18.custom.css">
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
     
+    <!-- Script for voice recognition -->
+    <script type="text/javascript" src="/assets/javascripts/textarea-helper.js"></script>
+    <script type="text/javascript" src="/assets/javascripts/speech-recognizer.js"></script>
+    
     <!-- Include osmplayer scripts and templates -->
 	<script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.compatibility.js"></script>
 	<script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.flags.js"></script>
@@ -184,7 +188,7 @@ jQuery(function() {
 	    		</li>
 	  			</c:forEach>
 	  			<li>
-					<a href="#"><span class="icon-bullhorn"></span>Voice</a>
+					<a href="/voice"><span class="icon-bullhorn"></span>Voice</a>
 				</li>
 	  			<li>
 					<a href="/social"><span class="icon-group"></span>Social</a>
