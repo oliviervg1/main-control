@@ -15,6 +15,9 @@
     <!-- support JSR303 annotation if JSR 303 validation present on classpath -->
     <mvc:annotation-driven />
 
+    <!-- static assets -->
+    <mvc:resources mapping="/static/**" location="/static/" />
+
     <bean id="viewResolver"
         class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass">

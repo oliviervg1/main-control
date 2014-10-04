@@ -14,21 +14,21 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <script src="/assets/javascripts/1.2.2/adminflare-demo-init.min.js" type="text/javascript"></script>
+    <script src="/static/javascript/1.2.2/adminflare-demo-init.min.js" type="text/javascript"></script>
 
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet" type="text/css">
     <script type="text/javascript">
         // Include Bootstrap stylesheet
-        document.write('<link href="/assets/css/' + DEMO_ADMINFLARE_VERSION + '/' + DEMO_CURRENT_THEME + '/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" id="bootstrap-css">');
+        document.write('<link href="/static/css/' + DEMO_ADMINFLARE_VERSION + '/' + DEMO_CURRENT_THEME + '/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" id="bootstrap-css">');
         // Include AdminFlare stylesheet
-        document.write('<link href="/assets/css/' + DEMO_ADMINFLARE_VERSION + '/' + DEMO_CURRENT_THEME + '/adminflare.min.css" media="all" rel="stylesheet" type="text/css" id="adminflare-css">');
+        document.write('<link href="/static/css/' + DEMO_ADMINFLARE_VERSION + '/' + DEMO_CURRENT_THEME + '/adminflare.min.css" media="all" rel="stylesheet" type="text/css" id="adminflare-css">');
     </script>
 
-    <script src="/assets/javascripts/1.2.2/modernizr-jquery.min.js" type="text/javascript"></script>
-    <script src="/assets/javascripts/1.2.2/adminflare-demo.min.js" type="text/javascript"></script>
+    <script src="/static/javascript/1.2.2/modernizr-jquery.min.js" type="text/javascript"></script>
+    <script src="/static/javascript/1.2.2/adminflare-demo.min.js" type="text/javascript"></script>
 
     <!--[if lte IE 9]>
-        <script src="assets/javascripts/jquery.placeholder.min.js" type="text/javascript"></script>
+        <script src="assets/javascript/jquery.placeholder.min.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $('input, textarea').placeholder();
@@ -39,7 +39,7 @@
     <style type="text/css">
         body {
             padding: 0;
-            background: #292929 url("/assets/images/left-menu-bg.png");
+            background: #292929 url("/static/images/left-menu-bg.png");
         }
 
         a, input, button {
@@ -214,7 +214,7 @@
         ================================================== -->
     <section class="signin-container">
         <a href="dashboard.html" title="AdminFlare" class="header">
-            <img src="/assets/images/af-logo-signin.png" alt="Sign in to Automat.in">
+            <img src="/static/images/af-logo-signin.png" alt="Sign in to Automat.in">
             <span>
                 Sign in to<br>
                 <strong>Automat.in</strong>
@@ -238,7 +238,7 @@
 
                 <label class="checkbox remember-me"><input type="checkbox" name="_spring_security_remember_me" id="j_remember" tabindex="3"/>Remember Me?</label>
 
-                <button type="submit" value="submit" class="btn btn-primary btn-block" tabindex="4">Sign In</button>
+                <button type="submit" value="submit" class="btn btn-primary btn-block" tabindex="4" formmethod="post">Sign In</button>
             </fieldset>
         </form>
     </section>

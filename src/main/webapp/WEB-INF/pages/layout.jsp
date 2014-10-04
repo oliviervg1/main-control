@@ -12,65 +12,61 @@
     <title>Automat.in</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <script src="/assets/javascripts/1.2.2/adminflare-demo-init.min.js" type="text/javascript"></script>
+    <script src="/static/javascript/1.2.2/adminflare-demo-init.min.js" type="text/javascript"></script>
 
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet" type="text/css">
     <script type="text/javascript">
         // Include Bootstrap stylesheet
-        document.write('<link href="/assets/css/' + DEMO_ADMINFLARE_VERSION + '/' + DEMO_CURRENT_THEME + '/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" id="bootstrap-css">');
+        document.write('<link href="/static/css/' + DEMO_ADMINFLARE_VERSION + '/' + DEMO_CURRENT_THEME + '/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" id="bootstrap-css">');
         // Include AdminFlare stylesheet
-        document.write('<link href="/assets/css/' + DEMO_ADMINFLARE_VERSION + '/' + DEMO_CURRENT_THEME + '/adminflare.min.css" media="all" rel="stylesheet" type="text/css" id="adminflare-css">');
+        document.write('<link href="/static/css/' + DEMO_ADMINFLARE_VERSION + '/' + DEMO_CURRENT_THEME + '/adminflare.min.css" media="all" rel="stylesheet" type="text/css" id="adminflare-css">');
     </script>
 
-    <script src="/assets/javascripts/1.2.2/modernizr-jquery.min.js" type="text/javascript"></script>
-    <script src="/assets/javascripts/1.2.2/adminflare-demo.min.js" type="text/javascript"></script>
-    <script src="/assets/javascripts/1.2.2/bootstrap.min.js" type="text/javascript"></script>
-    <script src="/assets/javascripts/1.2.2/adminflare.min.js" type="text/javascript"></script>
+    <script src="/static/javascript/1.2.2/modernizr-jquery.min.js" type="text/javascript"></script>
+    <script src="/static/javascript/1.2.2/adminflare-demo.min.js" type="text/javascript"></script>
+    <script src="/static/javascript/1.2.2/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/static/javascript/1.2.2/adminflare.min.js" type="text/javascript"></script>
 
     <!-- The stylesheet for the player -->
-    <link rel="stylesheet" href="/assets/osmplayer/jquery-ui/dark-hive/jquery-ui-1.8.18.custom.css">
+    <link rel="stylesheet" href="/static/osmplayer/jquery-ui/dark-hive/jquery-ui-1.8.18.custom.css">
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 
-    <!-- Script for voice recognition -->
-    <script type="text/javascript" src="/assets/javascripts/textarea-helper.js"></script>
-    <script type="text/javascript" src="/assets/javascripts/speech-recognizer.js"></script>
-
     <!-- Include osmplayer scripts and templates -->
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.compatibility.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.flags.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.async.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.plugin.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.display.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.image.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.file.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.playLoader.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.players.base.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.players.html5.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.players.flash.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.players.minplayer.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.players.youtube.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.players.vimeo.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.players.limelight.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/minplayer/src/minplayer.controller.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/src/osmplayer.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/src/osmplayer.parser.default.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/src/osmplayer.parser.youtube.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/src/osmplayer.parser.rss.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/src/osmplayer.parser.asx.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/src/osmplayer.parser.xspf.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/src/osmplayer.playlist.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/src/iscroll/src/iscroll.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/src/osmplayer.pager.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/src/osmplayer.teaser.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.compatibility.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.flags.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.async.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.plugin.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.display.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.image.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.file.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.playLoader.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.players.base.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.players.html5.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.players.flash.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.players.minplayer.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.players.youtube.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.players.vimeo.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.players.limelight.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/minplayer/src/minplayer.controller.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/src/osmplayer.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/src/osmplayer.parser.default.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/src/osmplayer.parser.youtube.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/src/osmplayer.parser.rss.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/src/osmplayer.parser.asx.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/src/osmplayer.parser.xspf.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/src/osmplayer.playlist.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/src/iscroll/src/iscroll.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/src/osmplayer.pager.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/src/osmplayer.teaser.js"></script>
 
-    <link rel="stylesheet" href="/assets/osmplayer/templates/default/css/osmplayer_default.css">
-    <script type="text/javascript" src="/assets/osmplayer/templates/default/js/osmplayer.default.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/templates/default/js/osmplayer.controller.default.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/templates/default/js/osmplayer.pager.default.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/templates/default/js/osmplayer.playLoader.default.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/templates/default/js/osmplayer.playlist.default.js"></script>
-    <script type="text/javascript" src="/assets/osmplayer/templates/default/js/osmplayer.teaser.default.js"></script>
+    <link rel="stylesheet" href="/static/osmplayer/templates/default/css/osmplayer_default.css">
+    <script type="text/javascript" src="/static/osmplayer/templates/default/js/osmplayer.default.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/templates/default/js/osmplayer.controller.default.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/templates/default/js/osmplayer.pager.default.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/templates/default/js/osmplayer.playLoader.default.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/templates/default/js/osmplayer.playlist.default.js"></script>
+    <script type="text/javascript" src="/static/osmplayer/templates/default/js/osmplayer.teaser.default.js"></script>
 
     <!-- Custom styles -->
     <style type="text/css">
@@ -132,7 +128,7 @@ jQuery(function() {
     <header class="navbar navbar-fixed-top" id="main-navbar">
         <div class="navbar-inner">
             <div class="container">
-                <a class="logo" href="/dashboard"><img alt="automatin_logo" src="/assets/images/af-logo.png"></a>
+                <a class="logo" href="/dashboard"><img alt="automatin_logo" src="/static/images/af-logo.png"></a>
 
                 <a class="btn nav-button collapsed" data-toggle="collapse" data-target=".nav-collapse">
                     <span class="icon-reorder"></span>
@@ -151,7 +147,7 @@ jQuery(function() {
                     <ul class="nav pull-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle usermenu" data-toggle="dropdown">
-                                <img alt="Avatar" src="/assets/images/avatar.png">
+                                <img alt="Avatar" src="/static/images/avatar.png">
                                 <span>&nbsp;&nbsp;${loggedUser}</span>
                             </a>
                             <ul class="dropdown-menu">
