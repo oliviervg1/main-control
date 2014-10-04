@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist xmlns="http://xspf.org/ns/0/" version="1">
+  <trackList>
+    <track id="Muse - Madness">
+      <title>Youtube: Muse - Madness</title>
+      <location>http://www.youtube.com/watch?v=Ek0SgwWmF9w</location>
+    </track>
+    <track id="Alphonse Brown - Le Frunkp">
+      <title>Youtube: Alphonse Brown - Le Frunkp</title>
+      <location>http://www.youtube.com/watch?v=TAriZUPqMlc</location>
+    </track>
+  </trackList>
+</playlist>
