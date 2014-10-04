@@ -23,96 +23,96 @@ import com.pi.main.models.apps.AppManager;
 
 @Controller
 public class AppController {
-	
-	private AppManager appManager = new AppManager();
-	
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/apps/{appURL}", method = RequestMethod.GET)
-	public String displayPage(ModelMap model, @PathVariable String appURL) {
-		App app = appManager.getApp(appURL);
-		try {
-			model.addAttribute("pageName", app.getPageName());
-			model.addAttribute("pageDetails", app.getDescription());
-			model.addAttribute("uploadItem", new UploadItem());
-			HashMap<String, Object> models = (HashMap<String, Object>) app.getApp().invokeMethod("getModels");
-			for (String modelName : models.keySet()) {
-				model.addAttribute(modelName, models.get(modelName));
-			}
-		} catch (Exception e) {
-			return "redirect:/error";
-		}
-		return "apps/" + appURL;
-	}
-	
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/apps/{appURL}/{subPage}", method = RequestMethod.GET)
-	public String displaySubPage(ModelMap model, @PathVariable String appURL, @PathVariable String subPage) {
-		App app = appManager.getApp(appURL);
-		try {
-			model.addAttribute("pageName", app.getPageName());
-			model.addAttribute("pageDetails", app.getDescription());
-			model.addAttribute("uploadItem", new UploadItem());
-			HashMap<String, Object> models = (HashMap<String, Object>) app.getApp().invokeMethod("getModels");
-			for (String modelName : models.keySet()) {
-				model.addAttribute(modelName, models.get(modelName));
-			}		
-		} catch (Exception e) {
- 			return "redirect:/error";
-		}
-		return "apps/" + subPage;
-	}
-	
-	@RequestMapping(value = "/apps/{appURL}/webMethod/{webMethod}", method = RequestMethod.GET)
-	public String invokeWebMethod(HttpServletRequest request, ModelMap model, @PathVariable String appURL, @PathVariable String webMethod,
-					@RequestParam(value="p", required=false) Object[] parameters) {
-		
-		ConnectedApp client = appManager.getApp(appURL).getApp();		
-		try {
-			if (parameters == null) {
-				client.invokeMethod(webMethod);
-			} else {
-				client.invokeMethod(webMethod,parameters);
-			}
-		} catch (Exception e) {
-			return "redirect:/error";
-		}
-		return "redirect:" + request.getHeader("Referer");
-	}
-	
-	@RequestMapping(value = "/apps/{appURL}/uploadFile", method = RequestMethod.POST)
-	public String uploadFile(@ModelAttribute("uploadItem") UploadItem uploadItem, @PathVariable String appURL, BindingResult result) {
-		if (result.hasErrors()) {
-	    	return "redirect:/error";
-	    }
-		ConnectedApp client = appManager.getApp(appURL).getApp();
-		File file = new File("/home/pi/FYP/apache-tomcat-7.0.35/webapps/uploads/" + uploadItem.getFileData().getOriginalFilename());
-		try {
-			uploadItem.getFileData().transferTo(file);
-			Object parameters[] = {uploadItem.getName(), file};
-			client.invokeMethod("uploadFile", parameters);
-		}  catch (Exception e) {
-			return "redirect:/error";
-		}
-	    return "redirect:/apps/" + appURL;
-	}
 
-	@RequestMapping(value = "/apps/{appURL}/getState", method = RequestMethod.GET)
-	public @ResponseBody String getState(@PathVariable String appURL) {
-		ConnectedApp client = appManager.getApp(appURL).getApp();
-		try {
-			return (String) client.invokeMethod("getState");
-		} catch (Exception e) {
-			return "Error Occured";
-		}
-	}
-	
-	@RequestMapping(value = "/apps/{appURL}/homeTile", method = RequestMethod.GET)
-	public @ResponseBody String homeTile(@PathVariable String appURL) {
-		ConnectedApp client = appManager.getApp(appURL).getApp();
-		try {
-			return (String) client.invokeMethod("homeTile");
-		} catch (Exception e) {
-			return "Error Occured";
-		}
-	}
+    private AppManager appManager = new AppManager();
+
+    @SuppressWarnings("unchecked")
+    @RequestMapping(value = "/apps/{appURL}", method = RequestMethod.GET)
+    public String displayPage(ModelMap model, @PathVariable String appURL) {
+        App app = appManager.getApp(appURL);
+        try {
+            model.addAttribute("pageName", app.getPageName());
+            model.addAttribute("pageDetails", app.getDescription());
+            model.addAttribute("uploadItem", new UploadItem());
+            HashMap<String, Object> models = (HashMap<String, Object>) app.getApp().invokeMethod("getModels");
+            for (String modelName : models.keySet()) {
+                model.addAttribute(modelName, models.get(modelName));
+            }
+        } catch (Exception e) {
+            return "redirect:/error";
+        }
+        return "apps/" + appURL;
+    }
+
+    @SuppressWarnings("unchecked")
+    @RequestMapping(value = "/apps/{appURL}/{subPage}", method = RequestMethod.GET)
+    public String displaySubPage(ModelMap model, @PathVariable String appURL, @PathVariable String subPage) {
+        App app = appManager.getApp(appURL);
+        try {
+            model.addAttribute("pageName", app.getPageName());
+            model.addAttribute("pageDetails", app.getDescription());
+            model.addAttribute("uploadItem", new UploadItem());
+            HashMap<String, Object> models = (HashMap<String, Object>) app.getApp().invokeMethod("getModels");
+            for (String modelName : models.keySet()) {
+                model.addAttribute(modelName, models.get(modelName));
+            }
+        } catch (Exception e) {
+             return "redirect:/error";
+        }
+        return "apps/" + subPage;
+    }
+
+    @RequestMapping(value = "/apps/{appURL}/webMethod/{webMethod}", method = RequestMethod.GET)
+    public String invokeWebMethod(HttpServletRequest request, ModelMap model, @PathVariable String appURL, @PathVariable String webMethod,
+                    @RequestParam(value="p", required=false) Object[] parameters) {
+
+        ConnectedApp client = appManager.getApp(appURL).getApp();
+        try {
+            if (parameters == null) {
+                client.invokeMethod(webMethod);
+            } else {
+                client.invokeMethod(webMethod,parameters);
+            }
+        } catch (Exception e) {
+            return "redirect:/error";
+        }
+        return "redirect:" + request.getHeader("Referer");
+    }
+
+    @RequestMapping(value = "/apps/{appURL}/uploadFile", method = RequestMethod.POST)
+    public String uploadFile(@ModelAttribute("uploadItem") UploadItem uploadItem, @PathVariable String appURL, BindingResult result) {
+        if (result.hasErrors()) {
+            return "redirect:/error";
+        }
+        ConnectedApp client = appManager.getApp(appURL).getApp();
+        File file = new File("/home/pi/FYP/apache-tomcat-7.0.35/webapps/uploads/" + uploadItem.getFileData().getOriginalFilename());
+        try {
+            uploadItem.getFileData().transferTo(file);
+            Object parameters[] = {uploadItem.getName(), file};
+            client.invokeMethod("uploadFile", parameters);
+        }  catch (Exception e) {
+            return "redirect:/error";
+        }
+        return "redirect:/apps/" + appURL;
+    }
+
+    @RequestMapping(value = "/apps/{appURL}/getState", method = RequestMethod.GET)
+    public @ResponseBody String getState(@PathVariable String appURL) {
+        ConnectedApp client = appManager.getApp(appURL).getApp();
+        try {
+            return (String) client.invokeMethod("getState");
+        } catch (Exception e) {
+            return "Error Occured";
+        }
+    }
+
+    @RequestMapping(value = "/apps/{appURL}/homeTile", method = RequestMethod.GET)
+    public @ResponseBody String homeTile(@PathVariable String appURL) {
+        ConnectedApp client = appManager.getApp(appURL).getApp();
+        try {
+            return (String) client.invokeMethod("homeTile");
+        } catch (Exception e) {
+            return "Error Occured";
+        }
+    }
 }

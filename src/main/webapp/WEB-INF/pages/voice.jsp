@@ -17,9 +17,9 @@
 
 <section class="row-fluid">
 
-	<h1 class="lead">Click microphone to start</h1>
-	<textarea class="txt" id="txt" placeholder="House {app name} {app command}"></textarea>
-	<input class="btn btn-large speech" id="speech" x-webkit-speech />
+    <h1 class="lead">Click microphone to start</h1>
+    <textarea class="txt" id="txt" placeholder="House {app name} {app command}"></textarea>
+    <input class="btn btn-large speech" id="speech" x-webkit-speech />
 
 </section>
 
@@ -29,7 +29,7 @@ speech.onfocus = speech.blur;
 speech.onwebkitspeechchange = function(e) {
     document.getElementById('txt').value = speech.value;
     var voiceInput = 'voice/processVoice?p=' + speech.value;
-	window.location.href = voiceInput;
+    window.location.href = voiceInput;
     speech.value = "";
 };
 </script>

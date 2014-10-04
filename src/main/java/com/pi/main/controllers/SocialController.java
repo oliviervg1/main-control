@@ -10,20 +10,20 @@ import com.pi.main.models.twitter.TwitterParameters;
 
 @Controller
 public class SocialController {
-	
-	private TwitterHandler twitter;
-	
-	public SocialController() {
-		String[] keywords = {"@AutomatIn"};
-		TwitterParameters.addUser("olivier_vg");
-		twitter = new TwitterHandler();
-		twitter.start(keywords);
-	}
-	
-	@RequestMapping(value = "/social", method = RequestMethod.GET)
-	public String displayPage(ModelMap model) {
-		model.addAttribute("pageName", "Social");
-		model.addAttribute("pageDetails", "View your house's recent Twitter activity here");
-		return "social";
-	}
+
+    private TwitterHandler twitter;
+
+    public SocialController() {
+        String[] keywords = {"@AutomatIn"};
+        TwitterParameters.addUser("olivier_vg");
+        twitter = new TwitterHandler();
+        twitter.start(keywords);
+    }
+
+    @RequestMapping(value = "/social", method = RequestMethod.GET)
+    public String displayPage(ModelMap model) {
+        model.addAttribute("pageName", "Social");
+        model.addAttribute("pageDetails", "View your house's recent Twitter activity here");
+        return "social";
+    }
 }

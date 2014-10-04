@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class DashboardController {
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String redirectToDashboard(ModelMap model) {
-		return "redirect:/dashboard";
-	}
-	
-	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-	public String displayHomepage(ModelMap model) {
-		model.addAttribute("pageName", "Welcome!");
-		model.addAttribute("pageDetails", "Control and monitor your house appliances from a simple and intuitive web interface.");
-		return "dashboard";
-	}
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String redirectToDashboard(ModelMap model) {
+        return "redirect:/dashboard";
+    }
+
+    @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
+    public String displayHomepage(ModelMap model) {
+        model.addAttribute("pageName", "Welcome!");
+        model.addAttribute("pageDetails", "Control and monitor your house appliances from a simple and intuitive web interface.");
+        return "dashboard";
+    }
 }

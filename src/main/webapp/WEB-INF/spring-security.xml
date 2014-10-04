@@ -1,42 +1,42 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
-	xmlns:beans="http://www.springframework.org/schema/beans" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-	http://www.springframework.org/schema/security
-	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
- 
- 	<http pattern="/assets/**" security="none" />
- 	<http pattern="/img/**" security="none" />
- 	<http pattern="/lights-companion-1.0.0/**" security="none" />
- 
-	<http auto-config="true" use-expressions="true">
-		<intercept-url pattern="/login" access="permitAll" />
-		<intercept-url pattern="/logout" access="permitAll" />
-		<intercept-url pattern="/loginfailed" access="permitAll" />
-		<intercept-url pattern="/denied" access="permitAll" />
-		<intercept-url pattern="/" access="isAuthenticated()" />
-		<intercept-url pattern="/dashboard**" access="isAuthenticated()" />
-		<intercept-url pattern="/store**" access="hasRole('user')" />
-		<intercept-url pattern="/settings**" access="hasRole('admin')" />
-		<intercept-url pattern="/apps/lights**" access="hasRole('user')" />
-		<intercept-url pattern="/apps/media**" access="hasRole('user')" />
-		<access-denied-handler error-page="/denied" />
-		<form-login login-page="/login" default-target-url="/dashboard"
-			authentication-failure-url="/loginfailed" />
-		<logout logout-success-url="/logout" />
-		<remember-me key="myAppKey" token-validity-seconds="864000" />
-	</http>
- 
-	<authentication-manager>
-	  <authentication-provider>
-		<password-encoder hash="sha-256" />
-		<user-service>
-			<user name="Admin" password="78ee6a334ecda18fb37e25cb46dfaf472e6fa5d4f2079a5e1beb06be55db5f44" authorities="admin, user, guest" />
-			<user name="User" password="817afa8f6c6de155d6c23f51dc6d8b8881c559d8505f7daf7a10c186e352c6c4" authorities="user, guest" />
-			<user name="Guest" password="f81977d003f14860ec904c4526ade1a7c572e146a1c9757ef67c534548e9b245" authorities="guest" />
-		</user-service>
-	  </authentication-provider>
-	</authentication-manager>
- 
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+    <http pattern="/assets/**" security="none" />
+    <http pattern="/img/**" security="none" />
+    <http pattern="/lights-companion-1.0.0/**" security="none" />
+
+    <http auto-config="true" use-expressions="true">
+        <intercept-url pattern="/login" access="permitAll" />
+        <intercept-url pattern="/logout" access="permitAll" />
+        <intercept-url pattern="/loginfailed" access="permitAll" />
+        <intercept-url pattern="/denied" access="permitAll" />
+        <intercept-url pattern="/" access="isAuthenticated()" />
+        <intercept-url pattern="/dashboard**" access="isAuthenticated()" />
+        <intercept-url pattern="/store**" access="hasRole('user')" />
+        <intercept-url pattern="/settings**" access="hasRole('admin')" />
+        <intercept-url pattern="/apps/lights**" access="hasRole('user')" />
+        <intercept-url pattern="/apps/media**" access="hasRole('user')" />
+        <access-denied-handler error-page="/denied" />
+        <form-login login-page="/login" default-target-url="/dashboard"
+            authentication-failure-url="/loginfailed" />
+        <logout logout-success-url="/logout" />
+        <remember-me key="myAppKey" token-validity-seconds="864000" />
+    </http>
+
+    <authentication-manager>
+      <authentication-provider>
+        <password-encoder hash="sha-256" />
+        <user-service>
+            <user name="Admin" password="78ee6a334ecda18fb37e25cb46dfaf472e6fa5d4f2079a5e1beb06be55db5f44" authorities="admin, user, guest" />
+            <user name="User" password="817afa8f6c6de155d6c23f51dc6d8b8881c559d8505f7daf7a10c186e352c6c4" authorities="user, guest" />
+            <user name="Guest" password="f81977d003f14860ec904c4526ade1a7c572e146a1c9757ef67c534548e9b245" authorities="guest" />
+        </user-service>
+      </authentication-provider>
+    </authentication-manager>
+
 </beans:beans>
