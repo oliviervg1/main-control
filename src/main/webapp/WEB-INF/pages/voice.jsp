@@ -28,7 +28,7 @@ var speech = document.getElementById('speech');
 speech.onfocus = speech.blur;
 speech.onwebkitspeechchange = function(e) {
     document.getElementById('txt').value = speech.value;
-    var voiceInput = 'voice/processVoice?p=' + speech.value;
+    var voiceInput = 'voice/process?p=' + speech.value;
     window.location.href = voiceInput;
     speech.value = "";
 };

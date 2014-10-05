@@ -21,7 +21,7 @@ public class VoiceController {
         return "voice";
     }
 
-    @RequestMapping(value = "/voice/processVoice", method = RequestMethod.GET)
+    @RequestMapping(value = "/voice", method = RequestMethod.POST)
     public String processVoice(@RequestParam(value="p", required=true) String voiceInput) {
         if (voiceInput.contains("house")) {
             try {

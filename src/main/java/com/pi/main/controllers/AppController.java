@@ -62,7 +62,7 @@ public class AppController {
         return "apps/" + subPage;
     }
 
-    @RequestMapping(value = "/apps/{appURL}/webMethod/{webMethod}", method = RequestMethod.GET)
+    @RequestMapping(value = "/apps/{appURL}/{webMethod}", method = RequestMethod.POST)
     public String invokeWebMethod(HttpServletRequest request, ModelMap model, @PathVariable String appURL, @PathVariable String webMethod,
                     @RequestParam(value="p", required=false) Object[] parameters) {
 
@@ -79,13 +79,13 @@ public class AppController {
         return "redirect:" + request.getHeader("Referer");
     }
 
-    @RequestMapping(value = "/apps/{appURL}/uploadFile", method = RequestMethod.POST)
+    @RequestMapping(value = "/apps/{appURL}/upload", method = RequestMethod.POST)
     public String uploadFile(@ModelAttribute("uploadItem") UploadItem uploadItem, @PathVariable String appURL, BindingResult result) {
         if (result.hasErrors()) {
             return "redirect:/error";
         }
         ConnectedApp client = appManager.getApp(appURL).getApp();
-        File file = new File("/home/pi/FYP/apache-tomcat-7.0.35/webapps/uploads/" + uploadItem.getFileData().getOriginalFilename());
+        File file = new File("/static/uploads/" + uploadItem.getFileData().getOriginalFilename());
         try {
             uploadItem.getFileData().transferTo(file);
             Object parameters[] = {uploadItem.getName(), file};
@@ -96,7 +96,7 @@ public class AppController {
         return "redirect:/apps/" + appURL;
     }
 
-    @RequestMapping(value = "/apps/{appURL}/getState", method = RequestMethod.GET)
+    @RequestMapping(value = "/apps/{appURL}/state", method = RequestMethod.GET)
     public @ResponseBody String getState(@PathVariable String appURL) {
         ConnectedApp client = appManager.getApp(appURL).getApp();
         try {
@@ -106,7 +106,7 @@ public class AppController {
         }
     }
 
-    @RequestMapping(value = "/apps/{appURL}/homeTile", method = RequestMethod.GET)
+    @RequestMapping(value = "/apps/{appURL}/home", method = RequestMethod.GET)
     public @ResponseBody String homeTile(@PathVariable String appURL) {
         ConnectedApp client = appManager.getApp(appURL).getApp();
         try {

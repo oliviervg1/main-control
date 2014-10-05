@@ -238,7 +238,7 @@
 
                 <label class="checkbox remember-me"><input type="checkbox" name="_spring_security_remember_me" id="j_remember" tabindex="3"/>Remember Me?</label>
 
-                <button type="submit" value="submit" class="btn btn-primary btn-block" tabindex="4" formmethod="post">Sign In</button>
+                <button type="submit" value="submit" class="btn btn-primary btn-block" tabindex="4">Sign In</button>
             </fieldset>
         </form>
     </section>

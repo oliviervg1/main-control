@@ -8,7 +8,7 @@ import automation.api.interfaces.ConnectedApp;
 
 public class AppManager {
 
-    private static final String appDir = "file:///home/pi/FYP/apps/";
+    private static final String appDir = "/apps/";
     private static ArrayList<String> xmlList;
     private static ArrayList<App> appList;
     private static ClassLoader classLoader;
@@ -42,9 +42,13 @@ public class AppManager {
         if (xmlList.contains(xmlFile) == false) {
             xmlList.add(xmlFile);
         }
-        appLoader.loadAppDetails(new URL(appDir + xmlFile));
+        appLoader.loadAppDetails(
+            this.getClass().getClassLoader().getResource(appDir + xmlFile)
+        );
         classLoader = new URLClassLoader(
-            new URL[] {new URL(appDir + appLoader.getLocation())},
+            new URL[] {
+                this.getClass().getClassLoader().getResource(appDir + appLoader.getLocation())
+            },
             ConnectedApp.class.getClassLoader()
         );
         addApp(new App.Builder()

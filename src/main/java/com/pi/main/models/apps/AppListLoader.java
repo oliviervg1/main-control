@@ -12,12 +12,14 @@ public class AppListLoader implements Serializable {
 
     private static final long serialVersionUID = -8359698970028429156L;
     private ArrayList<String> appList;
-    private final transient String appDir = "/home/pi/FYP/apps/";
+    private final transient String appDir = "/apps/";
 
     public void saveAppList(ArrayList<String> appList) {
         try {
             this.appList = appList;
-            FileOutputStream fileOut = new FileOutputStream(appDir + "appList.ser");
+            FileOutputStream fileOut = new FileOutputStream(
+                this.getClass().getClassLoader().getResource(appDir + "appList.ser").getPath()
+            );
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(this);
             out.close();
@@ -30,7 +32,9 @@ public class AppListLoader implements Serializable {
     public ArrayList<String> loadAppList() {
         AppListLoader appListLoader = null;
         try {
-            FileInputStream fileIn = new FileInputStream(appDir + "appList.ser");
+            FileInputStream fileIn = new FileInputStream(
+                this.getClass().getClassLoader().getResource(appDir + "appList.ser").getPath()
+            );
             ObjectInputStream in = new ObjectInputStream(fileIn);
             appListLoader = (AppListLoader) in.readObject();
             in.close();

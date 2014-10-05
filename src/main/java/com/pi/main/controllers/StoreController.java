@@ -20,8 +20,8 @@ import com.pi.main.models.apps.AppManager;
 public class StoreController {
 
     private AppManager appManager = new AppManager();
-    private final String appDir = "/home/pi/FYP/apps/";
-    private final String viewDir = "/home/pi/FYP/apache-tomcat-7.0.35/webapps/ROOT/WEB-INF/pages/apps/";
+    private final String appDir = "/apps/";
+    private final String viewDir = "/WEB-INF/pages/apps/";
 
     @RequestMapping(value = "/store", method = RequestMethod.GET)
     public String displayPage(ModelMap model) {
@@ -31,15 +31,23 @@ public class StoreController {
         return "store";
     }
 
-    @RequestMapping(value = "/store/removeApp", method = RequestMethod.GET)
+    @RequestMapping(value = "/store/remove", method = RequestMethod.POST)
     public String removeApp(ModelMap model, @RequestParam(value="p", required=true) String appURL) {
         // Remove app from app manager
         App appToRemove = appManager.getApp(appURL);
         appManager.removeApp(appToRemove);
 
         // Remove files from hard disk
-        File appFile = new File(appDir + appToRemove.getFileName());
-        File appXML = new File(appDir + appToRemove.getFileName().replace("jar", "xml"));
+        File appFile = new File(
+            this.getClass().getClassLoader().getResource(
+                appDir + appToRemove.getFileName()
+            ).getPath()
+        );
+        File appXML = new File(
+            this.getClass().getClassLoader().getResource(
+                appDir + appToRemove.getFileName().replace("jar", "xml")
+            ).getPath()
+        );
         File appView = new File(viewDir + appToRemove.getURL() + ".jsp");
         appFile.delete();
         appXML.delete();
@@ -49,12 +57,14 @@ public class StoreController {
         return "redirect:/store";
     }
 
-    @RequestMapping(value = "/store/addApp", method = RequestMethod.POST)
+    @RequestMapping(value = "/store/add", method = RequestMethod.POST)
     public String uploadFile(@ModelAttribute("uploadItem") UploadItem uploadItem, BindingResult result) {
         if (result.hasErrors()) {
             return "redirect:/error";
         }
-        File file = new File(appDir + uploadItem.getFileData().getOriginalFilename());
+        File file = new File(
+            this.getClass().getClassLoader().getResource(appDir).getPath() + uploadItem.getFileData().getOriginalFilename()
+        );
         try {
             uploadItem.getFileData().transferTo(file);
             addApp(file);
@@ -67,7 +77,9 @@ public class StoreController {
     private void addApp(File appContainer) {
         Unzip unzipper = new Unzip();
         unzipper.setSrc(appContainer);
-        unzipper.setDest(new File(appDir));
+        unzipper.setDest(
+            new File(this.getClass().getClassLoader().getResource(appDir).getPath())
+        );
         unzipper.execute();
         try {
             appManager.loadApp(appContainer.getName().replace("zip", "xml"));
@@ -86,7 +98,9 @@ public class StoreController {
                 return name.endsWith(".jsp");
             }
         };
-        File[] fileList = new File(appDir).listFiles(filter);
+        File[] fileList = new File(
+            this.getClass().getClassLoader().getResource(appDir).getPath()
+        ).listFiles(filter);
         if (fileList != null) {
             for (File appView : fileList) {
                 appView.renameTo(new File(viewDir + appView.getName()));

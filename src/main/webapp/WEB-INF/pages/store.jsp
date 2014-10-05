@@ -22,7 +22,7 @@ $('#appTabs a').click(function (e) {
         <div class="tab-pane fade active in" id="add">
             <h1 class="lead">Install an app</h1>
 
-            <form:form class="form-inline" modelAttribute="uploadItem" action="store/addApp" method="post" enctype="multipart/form-data">
+            <form:form class="form-inline" modelAttribute="uploadItem" action="/store/add" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <form:label class="control-label" for="fileData" path="fileData">Application file</form:label>
                     <form:input path="fileData" type="file"/>
@@ -46,7 +46,11 @@ $('#appTabs a').click(function (e) {
                 <c:forEach var="app" items="${appManager.appList}" varStatus="loop">
                 <tr>
                     <td>${loop.index}</td>
-                    <td><a href="/store/removeApp?p=${app.URL}">${app.name}</a></td>
+                    <td>
+                      <form action="/store/remove?p=${app.URL}" method="post">
+                        <button type="submit">Remove ${app.name}</button>
+                      </form>
+                    </td>
                 </tr>
                 </c:forEach>
               </tbody>
